@@ -1,0 +1,118 @@
+
+<!doctype html>
+<html xmlns:th="http://thymeleaf.org">
+
+
+<head>
+
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Diferensia Foundation</title>
+
+    <!-- CSS -->
+    <css th:replace="link::header-css"></css>
+    <page th:replace="link::page"></page>    
+    <!-- CSS -->
+</head>
+
+<body class="home">
+    <!-- Header -->
+    <header id="charity-header" class="charity-header-one">
+    <!-- Header -->
+	    <!-- Main Header -->
+		<div th:if="${penggunaAktif} == null">
+			<belumLogin th:replace="nav::nav1"></belumLogin>
+		</div>
+		<div th:if="${penggunaAktif} != null">
+	        <setelahLogin th:replace="nav::nav2"></setelahLogin>
+	    </div>    	    
+   		<!-- Main Header -->
+    </header>
+    <!-- Header -->
+
+    <!-- Banner -->
+    <div class="charity-subheader">
+        <span class="black-transparent"></span>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 th:text="${kategori.namaKategori}"></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner -->
+
+    <!-- Content -->
+    <div class="charity-main-content">
+
+        <!-- Main Section -->
+        <div class="charity-main-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        
+                        <!-- Causes -->
+                        <div class="charity-causes charity-cause-grid inner-wrap">
+                            <ul class="row" id=example>
+                                <li class="col-md-4" th:each="proyek, iterStat:${listproyek}" >
+                                    <figure><a href="#"><img th:src="@{'data:image/jpg;base64,' + *{T(org.springframework.util.Base64Utils).encodeToString(proyek.getFotoUtamaProyek().foto)}}"
+                                    alt="foto proyek" class="img"></a>
+										<a th:href="@{proyek-detail(id=${proyek.id})}"  class="charity-caption-btn"><span>View Detail</span></a>
+                                    </figure>
+                                    <div data-width='90' data-target='95' class="charity-cause-progressbar"></div>
+                                    <div class="charity-cause-grid-text">
+                                        <span class="charity-cause-raised">Raised <br> <strong th:text="${proyek.totalDana}"></strong></span>
+                                        <small class="charity-cause-raised">Goal <br> <strong th:text="${proyek.targetDana}"></strong></small>
+                                        <div class="clearfix"></div>
+                                        <h2><a href="#" th:text="${proyek.namaProyek}"></a></h2>
+                                        <h5 th:text="${proyek.pengguna.nama}"></h5>
+                                        <a th:href="@{sponsor(id=${proyek.id})}" class="charity-more-btn"><i class="fas fa-arrow-right"></i> Sponsor Now</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Causes -->
+
+                   <!--      Pagination
+                        <div class="charity-pagination">
+                            <ul class="page-numbers">
+                               <li><a class="previous page-numbers" href="404"><span aria-label="Next"><i class="fa fa-angle-left"></i> Previous Post</span></a></li>
+                               <li><span class="page-numbers current">01</span></li>
+                               <li><a class="page-numbers" href="404">02</a></li>
+                               <li><a class="page-numbers" href="404">03</a></li>
+                               <li><a class="page-numbers" href="404">...</a></li>
+                               <li><a class="page-numbers" href="404">10</a></li>
+                               <li><a class="next page-numbers" href="404"><span aria-label="Next">Next Post<i class="fa fa-angle-right"></i></span></a></li>
+                            </ul>
+                          </div>
+                          Pagination
+ -->                    </div>
+                </div>
+            </div>
+        </div>        <!-- Main Section -->
+
+    </div>
+    <!-- Content -->
+
+    <!-- Footer -->
+   <!-- Footer -->
+	    <!-- Footer -->
+    <footer th:replace="footer::foot"></footer>
+    <!-- Footer -->
+    
+        <!-- Search Modal -->
+    <searching th:replace="modal::search"></searching>
+    <!-- jQuery -->
+    <manyscript th:replace="script::ms"></manyscript>
+    <script12 th:replace="script::page"></script12>
+    
+
+</body>
+
+
+<!-- Mirrored from ritetags.com/html/charity/cause-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:16:38 GMT -->
+</html>

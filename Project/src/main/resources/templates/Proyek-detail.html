@@ -1,0 +1,397 @@
+<!doctype html>
+<html xmlns:th="http://thymeleaf.org">
+
+
+<head>
+
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Diferensia Foundation</title>
+
+    <!-- CSS -->
+    <css th:replace="link::header-css"></css>
+    <bar th:replace="link::bar"></bar>
+    
+    <!-- CSS -->
+</head>
+
+<body class="home">
+    <!-- Header -->
+    <header id="charity-header" class="charity-header-one">
+    <!-- Header -->
+	    <!-- Main Header -->
+		<div th:if="${penggunaAktif} == null">
+			<belumLogin th:replace="nav::nav1"></belumLogin>
+		</div>
+		<div th:if="${penggunaAktif} != null">
+	        <setelahLogin th:replace="nav::nav2"></setelahLogin>
+	    </div>    	    
+   		<!-- Main Header -->
+	</header>
+    <!-- Header -->
+
+<!-- Banner -->
+    <div class="charity-subheader">
+        <span class="black-transparent"></span>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 th:text="${proyek.namaProyek}"></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner -->
+
+    <!-- Content -->
+    <div class="charity-main-content">
+
+        <!-- Main Section -->
+        <div class="charity-main-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="charity-rich-editor charity-cause-detail">
+                            <figure class="charity-cause-thumb"><img alt="foto proyek"
+                            th:src="@{'data:image/jpg;base64,' + *{T(org.springframework.util.Base64Utils).encodeToString(photo)}}"></figure>
+                            <ul class="charity-event-option-two">
+                                <li>
+                                    <i class="fa fa-calendar"></i>
+                                    <h6>Project Sechudule:</h6>
+                                    <p>
+                                    <span th:text="${#dates.dayOfWeekName(proyek.createDate)}"></span>
+                                    <span>,</span>
+                                    <span th:text="${#dates.format(proyek.createDate,'dd')}"></span>
+                                    <span th:text="${#dates.monthNameShort(proyek.createDate)}"></span>
+                                    <span th:text="${#dates.format(proyek.createDate,'yyyy')}"></span>
+                                    To 
+                                    <span th:text="${#dates.dayOfWeekName(proyek.tanggalBerakhir)}"></span>
+                                    <span>,</span>
+                                    <span th:text="${#dates.format(proyek.tanggalBerakhir,'dd/MM/yyyy')}"></span>
+                                	</p>
+                                </li>
+                                <li>
+                                    <i class="fa fa-map-marker-alt"></i>
+                                    <h6>Location:</h6>
+                                    <p th:text="${proyek.wilayah.namaWilayah}"></p>
+                                </li>
+                            </ul>
+                            <div class="row charity-countdown">
+                                <span class="countdown-transparent"></span>
+                                <input id="date1" type="text" th:value="${proyek.tanggalBerakhir}"/>
+                                <div class="col-md-2 charitycountdown p-l-20">
+    	                            <span id="day" style="font-size: 40px;"></span></br>
+    	                            <span style="font-size: 20px;">Days</span>
+                                </div>
+                                <div class="col-md-2 charitycountdown">
+                                	<span id="hour" style="font-size: 40px;"></span></br>
+                                	<span style="font-size: 20px;">Hours</span>
+                                </div>
+                                <div class="col-md-2 charitycountdown">
+                                	<span id="minute" style="font-size: 40px;"></span></br>
+                                	<span style="font-size: 20px;">Minutes</span>
+                                </div>
+                                <div class="col-md-2 charitycountdown">
+                                	<span id="second" style="font-size: 40px;"></span></br>
+                                	<span style="font-size: 20px;">Seconds</span>
+                                </div>
+                                <div class="col-md-3">
+	                                <a th:href="@{login}"  th:if="${penggunaAktif} == null" class="charity-join-btn">I Am Joining (12)</a>
+	                                <a th:href="@{sponsor(id=${proyek.id})}" th:if="${penggunaAktif} != null" class="charity-join-btn">I Am Joining (12)</a>
+                                </div>
+                             </div>
+                            <div class="charity-cause-donate">
+                                <div class="skillst">
+                                    <h6>Raised: <span th:text="${proyek.totalDana}"></span></h6>
+                                    <h6 class="skillst-right">Goal: <span th:text="${proyek.targetDana}"></span></h6>
+                                </div>
+                                <div class="skillst">
+                                    <h6><span th:text="${persentaseDana}"></span><span>%</span></h6>
+                                    <h6 class="skillst-right"><span th:text="${100}"></span><span>%</span></h6>
+                                	<div id="progressbar" class="m-l-5 m-r-5"></div>                                	
+                                </div>
+                                <a th:href="@{login}"  th:if="${penggunaAktif} == null" class="charity-plan-btn">Sponsor Now <i class="fa fa-heart"></i></a>
+                                <a th:href="@{sponsor(id=${proyek.id})}" th:if="${penggunaAktif} != null" class="charity-plan-btn">Sponsor Now <i class="fa fa-heart"></i></a>
+                                <ul class="charity-cause-social">
+                                   <li><a href="https://www.facebook.com/" class="fab fa-facebook"></a></li>
+                                    <li><a href="https://www.twitter.com/" class="fab fa-twitter"></a></li>
+                                    <li><a href="https://www.linkedin.com/" class="fab fa-linkedin"></a></li>
+                                    <li><a href="https://www.youtube.com/" class="fab fa-youtube"></a></li>
+                                    <li><a href="https://www.vimeo.com/" class="fab fa-vimeo"></a></li>
+                                </ul>
+                            </div>
+                            <div class="widget_title"><h2>Event Discription</h2></div>
+                                <blockquote th:text="${proyek.deskripsiSingkat}"></blockquote>
+                                <p th:text="${proyek.deskripsiLengkap}"></p>
+                          </div>
+                        <div class="widget_title"><h2>Proyek Gallery</h2></div>
+                        <div class="charity-event-gallery">
+                             <ul>
+                                <li th:each="foto,iterStat:${listfoto}">
+                                <a data-fancybox="gallery" th:src="@{'data:image/jpg;base64,' + *{T(org.springframework.util.Base64Utils).encodeToString(foto.foto)}}"  class="fancybox">
+                                <img th:src="@{'data:image/jpg;base64,' + *{T(org.springframework.util.Base64Utils).encodeToString(foto.foto)}}" alt="">
+                                <i class="icon-add2"></i></a></li>
+	                       </ul>
+                        </div>
+                        <!-- <div class="widget_title"><h2>Proyek Gallery</h2></div>
+                        <div class="row charity-event-gallery">
+							  <div class="column" th:each="foto,iterStat:${listfoto}">
+							    <img th:src="@{'data:image/jpg;base64,' + *{T(org.springframework.util.Base64Utils).encodeToString(foto.foto)}}" 
+							    style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+							  </div>
+						</div>         -->                
+                        <!-- <div class="charity-event-map">
+                            <div class="widget_title"><h2>Proyek Location</h2></div>
+                            <div id="map"></div>
+                        </div>
+                        <div class="charity-rich-editor">
+                            <div class="charity-post-tags">
+                                <div class="charity-tags">
+                                    <span>Tags:</span>
+                                    <a href="404">charity </a>
+                                    <a href="404">/ donation</a>
+                                    <a href="404"> / needy</a>
+                                </div>
+                                <div class="charity-blog-social">
+                                    <span>Share:</span>
+                                    <ul>
+                                        <li>
+                                            <a href="https://www.facebook.com/" class="fab fa-facebook"></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.twitter.com/" class="fab fa-twitter"></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.linkedin.com/" class="fab fa-linkedin"></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.youtube.com/" class="fab fa-youtube"></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.vimeo.com/" class="fab fa-vimeo"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="charity-prenxt-post">
+                            <ul>
+                                <li class="charity-prev-post">
+                                    <figure>
+                                        <a href="404"><img src="extra-images/slide1.jpg" alt=""></a>
+                                    </figure>
+                                    <div class="charity-prev-artical">
+                                        <a href="404" class="charity-post-arrow"><i class="fa fa-angle-double-left"></i> Previous Article</a>
+                                        <h3><a href="404">Ramadhan</a></h3>
+                                    </div>
+                                </li>
+                                <li class="charity-next-post">
+                                    <figure>
+                                        <a href="404"><img src="extra-images/slide2.jpg" alt=""></a>
+                                    </figure>
+                                    <div class="charity-next-artical">
+                                        <a href="404" class="charity-post-arrow">Next Article <i class="fa fa-angle-double-right"></i></a>
+                                        <h3><a href="404">Ramadhan Tiba</a></h3>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div> -->
+
+                        <div class="widget_title"><h2>Creator</h2></div>
+                        <div class="row charity-admin-post">
+                            <div class="col-md-2">
+	                            <figure>
+	                                <img alt="avatar" th:if="${proyek.pengguna.fotoProfil} == null" th:src="@{images/index.png}" class="avatar">                                
+	                                <img alt="avatar" th:if="${proyek.pengguna.fotoProfil} != null"
+	                          	    th:src="@{'data:image/jpg;base64,' + *{T(org.springframework.util.Base64Utils).encodeToString(proyek.pengguna.fotoProfil)}}" class="avatar">
+	                                <figcaption>
+	                                    <h6 th:text="${proyek.pengguna.nama}"></h6>
+	                                </figcaption>
+	                            </figure>
+                            </div>
+                            <div class="charity-admin-post-text col-md-10">
+                                <span th:text=${proyek.pengguna.biografi}></span>
+                                <ul class="charity-admin-social">
+                                    <li>
+                                        <a href="https://www.facebook.com/" class="fab fa-facebook"></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.twitter.com/" class="fab fa-twitter"></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.linkedin.com/" class="fab fa-linkedin"></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.youtube.com/" class="fab fa-youtube"></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.vimeo.com/" class="fab fa-vine"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="widget_title"><h2>Comments</h2></div>
+                        <div class="comments-area">
+                            <!--// coments \\-->
+                            <ul class="comment-list">
+                                <li>
+                                    <div class="thumb-list">
+                                        <figure>
+                                        <img alt="" src="extra-images/comment-img1.png">
+                                        </figure>
+                                        <div class="text-holder">
+                                            <h6></h6>
+                                            <time class="post-date" datetime="2008-02-14 20:00">June 16, 2017 at 2:10 pm</time>
+                                            <p>Hai Mikiy</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <!-- #comment-## -->
+                                <li>
+                                    <div class="thumb-list">
+                                        <figure><img alt="" src="extra-images/comment-img2.png"></figure>
+                                        <div class="text-holder">
+                                            <h6>Donal</h6>
+                                            <time class="post-date" datetime="2008-02-14 20:00">June 16, 2017 at 2:10 pm</time>
+                                            <a class="comment-reply-link" href="#"><i class="fa fa-share"></i> Reply</a>
+                                            <p>Hai hai hai hai</p>
+                                        </div>
+                                    </div>
+                                    <ul class="children">
+                                        <li>
+                                            <div class="thumb-list">
+                                                <figure><img alt="" src="extra-images/comment-img3.png"></figure>
+                                                <div class="text-holder">
+                                                    <h6>Brutus</h6>
+                                                    <time class="post-date" datetime="2008-02-14 20:00">June 16, 2017 at 2:10 pm</time>
+                                                    <a class="comment-reply-link" href="#"><i class="fa fa-share"></i> Reply</a>
+                                                    <p>Hai.hai hai </p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <!-- #comment-## -->
+                                    </ul>
+                                    <!-- .children -->
+                                </li>
+                                <!-- #comment-## -->
+                            </ul>
+                            <!--// coments \\-->
+                        </div>
+                        <!--// comment-respond \\-->
+                        <div class="widget_title"><h2>Leave a Comment</h2></div>
+                        <div class="comment-respond">
+                            <form method="post" th:if="${penggunaAktif} != null" th:action="@{proyek-detail}">
+                                <p class="charity-respond-full-form">
+                                    <label>Comment:</label>
+                                    <textarea name="isiKomentar" placeholder="Type your comment*" class="commenttextarea"></textarea>
+                                </p>
+                                <p class="form-submit">
+                                    <input name="submit" class="submit" value="Submit" type="submit">
+                                    <input name="comment_post_ID" value="99" id="comment_post_ID" type="hidden">
+                                </p>
+                            </form>
+                        </div>
+                        <!--// comment-respond \\-->
+                    </div>
+                    <aside class="col-md-3">
+                
+                        <!-- Widget Search -->
+                        <!-- <div class="widget widget_search">
+                            <div class="widget_title"><h2>Search Here</h2></div>
+                            <form>
+                                <input type="text" placeholder="Search Here">
+                                <input type="submit" value="">
+                                <i class="fa fa-search"></i>
+                            </form>
+                        </div> -->
+                        <!-- Widget Search -->
+                        <!-- Widget Archive -->
+                        <!-- Widget Event -->
+                        <div class="widget widget_events">
+                            <div class="widget_title"><h2>Update Proyek</h2></div>
+                            <div class="cx3">
+                                <ul>
+                                <li th:each="pp, iterStat:${listprogresproyek}">
+                                    <time ><div th:text="${#dates.format(pp.createDate,'dd')}"></div>
+                                    <div th:text="${#dates.monthNameShort(pp.createDate)}"></div></time>
+                                    <div class="charity-events">
+                                       <h6><a th:href="@{proyek-update(id=${pp.id})}" th:text="${pp.judulProyek}"></a></h6>
+                                       <a th:href="@{proyek-update(id=${pp.id})}" ><i class="fa fa-map-marker-alt"></i><span th:text="${pp.proyek.wilayah.namaWilayah}"></span></a>
+                                    </div>
+                                </li>
+                             </ul>
+                            </div>
+                        </div>
+
+                        <div class="widget widget_events">
+                            <div class="widget_title"><h2>Sponsor Proyek</h2></div>
+                             <div class="cx4">
+                                <ul>
+                                    <li>
+                                        <div class="thumb-list">
+                                            <center th:each="s, iterStat:${listsponsor}">
+                                                 <img src="images/avatar.png" alt="Avatar" class="avatar">
+                                                    <div class="text-holder">
+                                                        <h6 th:text="${s.pengguna.nama}"></h6>
+                                                        <time class="post-date" th:text=${s.createDate}></time>
+                                                        <p th:text="${s.jumlahSponsor}"></p>
+                                                    </div>
+                                            </center>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Widget Event -->
+                        <!-- Widget Gallery -->
+                        <!-- <div class="widget widget_gallery">
+                            <div class="widget_title"> <h2>Our Gallery</h2> </div>
+                            <ul>
+                                <li><a data-fancybox="gallery" href="extra-images/pendidikan.jpg"><img src="extra-images/pendidikan.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                                <li><a data-fancybox="gallery" href="extra-images/kesehatan.jpg"><img src="extra-images/kesehatan.jpg" alt=""> <i class="fa fa-plus"></i>
+                                </a></li>
+                                <li><a data-fancybox="gallery" href="extra-images/masyarakat.jpg"><img src="extra-images/masyarakat.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                                <li><a data-fancybox="gallery" href="extra-images/pendidikan.jpg"><img src="extra-images/pendidikan.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                                <li><a data-fancybox="gallery" href="extra-images/kesehatan.jpg"><img src="extra-images/kesehatan.jpg" alt=""> <i class="fa fa-plus"></i>
+                                </a></li>
+                                <li><a data-fancybox="gallery" href="extra-images/kesehatan2.jpg"><img src="extra-images/kesehatan2.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                                <li><a data-fancybox="gallery" href="extra-images/kesehatan3.jpg"><img src="extra-images/kesehatan3.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                                <li><a data-fancybox="gallery" href="extra-images/pendidikan.jpg"><img src="extra-images/pendidikan.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                                <li><a data-fancybox="gallery" href="extra-images/pendidikan.jpg"><img src="extra-images/pendidikan.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            </ul>
+                        </div>
+ -->                        <!-- Widget Gallery -->
+
+                    </aside>
+                </div>
+            </div>
+        </div>
+        <!-- Main Section -->
+
+    </div>
+    <!-- Content -->
+
+  <!-- Footer -->
+	    <!-- Footer -->
+    <footer th:replace="footer::foot"></footer>
+    <!-- Footer -->
+    
+    <!-- Search Modal -->
+    <searching th:replace="modal::search"></searching>
+    <image th:replace="modal::modalimage"></image>
+    <!-- jQuery -->
+    <manyscript th:replace="script::ms"></manyscript>
+
+	<script6 th:replace="script::countdown"></script6>
+	<script8 th:replace="script::modalgallery"></script8>
+	<script14 th:replace="script::bar"></script14>
+	
+	
+ </body>
+
+
+<!-- Mirrored from ritetags.com/html/charity/cause-detail.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:16:42 GMT -->
+</html>

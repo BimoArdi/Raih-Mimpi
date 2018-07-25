@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+
+
+<head>
+
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Diferensia Foundation </title>
+
+    <!-- CSS -->
+    <css th:replace="link::header-css"></css>
+    <!-- CSS -->
+</head>
+
+<body class="home">
+    <!-- Header -->
+    <header id="charity-header" class="charity-header-one">
+    <!-- Header -->
+	    <!-- Main Header -->
+		<div th:if="${penggunaAktif} == null">
+			<belumLogin th:replace="nav::nav1"></belumLogin>
+		</div>
+		<div th:if="${penggunaAktif} != null">
+	        <setelahLogin th:replace="nav::nav2"></setelahLogin>
+	    </div>    	    
+   		<!-- Main Header -->
+	</header>
+    <!-- Header -->
+
+    <!-- Banner -->
+    <div class="charity-subheader">
+        <span class="black-transparent"></span>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Contact Us</h1>
+                    <p>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner -->
+
+    <!-- Content -->
+    <div class="charity-main-content">
+
+        <!-- Main Section -->
+        <div class="charity-main-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="charity-fancy-title">
+                            <h2>We would love to hear from you</h2>
+                        </div>
+                        <form method="post" class="myform" action="http://ritetags.com/html/charity/process-form.php">
+                            <div class="charity-contact-form">
+                                <ul class="row">
+                                    <li class="col-md-6"><input type="text" placeholder="First Name" name="name" required></li>
+                                    <li class="col-md-6"><input type="text" placeholder="Last Name" name="name" required></li>
+                                    <li class="col-md-6"><input type="text" placeholder="Email" name="email" required></li>
+                                    <li class="col-md-6"><input type="text" placeholder="Phone Number" name="number" required></li>
+                                    <li class="col-md-12"><textarea placeholder="Messages" name="Message"></textarea></li>
+                                    <li class="col-md-12"><input type="submit" value="Submit Request"> <span class="output_message"></span> </li>
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="charity-contact-list">
+                            <ul class="row">
+                                <li class="col-md-4">
+                                    <div class="charity-contact-list-wrap">
+                                        <i class="fa fa-map-marker-alt"></i>
+                                        <h2 class="charity-color">Address</h2>
+                                        <span>Jl.Gunung Batu no.57 Bandung <br> Bandung,Indonesia</span>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="charity-contact-list-wrap">
+                                        <i class="fa fa-phone-volume"></i>
+                                        <h2 class="charity-color">Phone Numbers</h2>
+                                        <span>+881254586987 <br> +12356674897</span>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <div class="charity-contact-list-wrap">
+                                        <i class="far fa-envelope-open"></i>
+                                        <h2 class="charity-color">Contact Mail</h2>
+                                        <a href="mailto:name@email.com">info@difrensia.com</a> <br>
+                                        <a href="mailto:name@email.com">info@example.com</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main Section -->
+
+        <!-- Main Section -->
+        <div class="charity-main-section map-full">
+            <div class="container-fluid">
+                <div class="row">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Main Section -->
+
+    </div>
+    <!-- Content -->
+  <!-- Footer -->
+	    <!-- Footer -->
+    <footer th:replace="footer::foot"></footer>
+    <!-- Footer -->
+    
+    <!-- Search Modal -->
+    <searching th:replace="modal::search"></searching>
+    <!-- jQuery -->
+	    <manyscript th:replace="script::ms"></manyscript>
+
+
+</body>
+
+
+<!-- Mirrored from ritetags.com/html/charity/contact-us.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:18:07 GMT -->
+</html>

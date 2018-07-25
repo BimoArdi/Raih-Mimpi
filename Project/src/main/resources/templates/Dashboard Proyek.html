@@ -1,0 +1,186 @@
+<!doctype html>
+<html xmlns:th="http://thymeleaf.org">
+
+
+<head>
+
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Dashboard</title>
+
+    <!-- CSS -->
+    <css th:replace="link::header-css"></css>
+    <!-- CSS -->
+</head>
+
+<body onload="myFunction()" style="margin:0;" class="home">
+	<div id="loader"></div>
+	<div style="display:none;" id="myDiv" class="animate-bottom">
+    <!-- Header -->
+    <header id="charity-header" class="charity-header-one">
+    <!-- Header -->
+	    <!-- Main Header -->
+	        <setelahLogin th:replace="nav::nav2"></setelahLogin>
+   		<!-- Main Header -->
+
+    </header>
+    <!-- Header -->
+
+    <!-- Banner -->
+    <div class="charity-subheader" style="height: 275px;">
+        <div class="black-transparent" style="height: 275px;"></div>
+    </div>
+
+	<dataProfil th:replace="nav::nav3"></dataProfil>
+    
+        <div class="charity-main-section m-t-10 m-b-20">
+            <div class="container">
+                <div class="row charity-profil-head">
+                    <div class="col-md-2">
+                        <div>
+                            <ul class="sidebar-menu" id="nav-accordion">
+                                <li class="charity-list m-t-10 active"><a href="#">Proyek</a></li>
+                                <li class="charity-list"><a href="dashboard-update-proyek">Progres Proyek</a></li>
+                                <li class="charity-list"><a href="dashboard-sponsor">Sponsor</a></li>
+                                <li class="charity-list"><a href="dashboard-pencairan">Pencairan Dana</a></li>
+                                <li class="charity-list"><a href="dashboard-profil">Edit Profil</a></li>
+                                <li class="charity-list"><a href="dashboard-verifikasi">Verifikasi</a></li>
+                                <li class="charity-list m-b-100"><a href="dashboard-password">Ubah Password</a></li>
+                           </ul>
+
+                        </div>
+                    </div>
+                    <div class="col-md-10 charity-profil-bio">
+                        <br>
+                        <div class="widget_title1 ">
+                            <h2 >Proyek Aktif<font color="white"></font></h2>
+                            <br><br>
+                            <div class="col-md-12">
+                                <div class="charity-causes charity-cause-grid inner-wrap">
+                                    <div class="thumb-list1">
+                                        <div class="text-holder" >
+                                            <div class="row figure">
+                                                <div class="col-md-4 charproyek">
+                                                    <h5><a href="rincian">Kesehatan</a></h5>
+                                                    <div class="clearfix"></div>
+                                                    <figure><a href="#"><img src="extra-images/kesehatan.jpg" alt="" class="imgs"></a>
+                                                        <figcaption><a href="#" class="charity-cause-grid-hover1"><i class="fa fa-users"></i> 21 Donors</a></figcaption>
+                                                    </figure>
+                                                    <div data-width='90' data-target='95' class="charity-cause-progressbar container"></div>
+                                                    <div class="charity-cause-grid-text">
+                                                        <span class="charity-cause-raised ">Raised <br> <strong>$2000</strong></span>
+                                                        <small class="charity-cause-raised" style="margin-left: 105px;">Goal <br> <strong>$5000</strong></small>
+                                                   </div>
+                                                </div>
+                                                <div class="col-md-4 charproyek2">
+                                                    <h5><a href="#">Kesehatan</a></h5>
+                                                    <div class="clearfix"></div>
+                                                    <figure><a href="#"><img src="extra-images/kesehatan.jpg" alt="" class="imgs"></a>
+                                                        <figcaption><a href="#" class="charity-cause-grid-hover1"><i class="fa fa-users"></i> 21 Donors</a></figcaption>
+                                                    </figure>
+                                                    <div data-width='90' data-target='95' class="charity-cause-progressbar container"></div>
+                                                    <div class="charity-cause-grid-text">
+                                                        <span class="charity-cause-raised ">Raised <br> <strong>$2000</strong></span>
+                                                        <small class="charity-cause-raised" style="margin-left: 105px;">Goal <br> <strong>$5000</strong></small>
+                                                   </div>
+                                                </div>
+                                                <div class="col-md-4 charproyek1">
+                                                    <h5><a href="#">Kesehatan</a></h5>
+                                                    <div class="clearfix"></div>
+                                                    <figure><a href="#"><img src="extra-images/kesehatan.jpg" alt="" class="imgs"></a>
+                                                        <figcaption><a href="#" class="charity-cause-grid-hover1"><i class="fa fa-users"></i> 21 Donors</a></figcaption>
+                                                    </figure>
+                                                    <div data-width='90' data-target='95' class="charity-cause-progressbar container"></div>
+                                                    <div class="charity-cause-grid-text">
+                                                        <span class="charity-cause-raised ">Raised <br> <strong>$2000</strong></span>
+                                                        <small class="charity-cause-raised" style="margin-left: 105px;">Goal <br> <strong>$5000</strong></small>
+                                                   </div>
+                                                </div>
+                                            <div>
+                                        </div>
+                                    </div>  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                           <div class="widget_title1">
+                            <h2 >Proyek Belum Aktif<font color="white"></font></h2>
+                            <br><br>
+                            <div class="col-md-12">
+                                <div class="charity-causes charity-cause-grid inner-wrap">
+                                    <div class="thumb-list1 ">
+                                        <div class="text-holder" >
+                                            <div class="row figure">
+                                                <div class="col-md-4 charproyek">
+                                                    <h5><a href="#">Kesehatan</a></h5>
+                                                    <div class="clearfix"></div>
+                                                    <figure><a href="#"><img src="extra-images/kesehatan.jpg" alt="" class="imgs"></a>
+                                                        <figcaption><a href="#" class="charity-cause-grid-hover1"><i class="fa fa-users"></i> 21 Donors</a></figcaption>
+                                                    </figure>
+                                                    <div data-width='90' data-target='95' class="charity-cause-progressbar container"></div>
+                                                    <div class="charity-cause-grid-text">
+                                                        <span class="charity-cause-raised ">Raised <br> <strong>$2000</strong></span>
+                                                        <small class="charity-cause-raised" style="margin-left: 105px;">Goal <br> <strong>$5000</strong></small>
+                                                   </div>
+                                                </div>
+                                                <div class="col-md-4 charproyek2">
+                                                    <h5><a href="#">Kesehatan</a></h5>
+                                                    <div class="clearfix"></div>
+                                                    <figure><a href="#"><img src="extra-images/kesehatan.jpg" alt="" class="imgs"></a>
+                                                        <figcaption><a href="#" class="charity-cause-grid-hover1"><i class="fa fa-users"></i> 21 Donors</a></figcaption>
+                                                    </figure>
+                                                    <div data-width='90' data-target='95' class="charity-cause-progressbar container"></div>
+                                                    <div class="charity-cause-grid-text">
+                                                        <span class="charity-cause-raised ">Raised <br> <strong>$2000</strong></span>
+                                                        <small class="charity-cause-raised" style="margin-left: 105px;">Goal <br> <strong>$5000</strong></small>
+                                                   </div>
+                                                </div>
+                                                <div class="col-md-4 charproyek1">
+                                                    <h5><a href="#">Kesehatan</a></h5>
+                                                    <div class="clearfix"></div>
+                                                    <figure><a href="#"><img src="extra-images/kesehatan.jpg" alt="" class="imgs"></a>
+                                                        <figcaption><a href="#" class="charity-cause-grid-hover1"><i class="fa fa-users"></i> 21 Donors</a></figcaption>
+                                                    </figure>
+                                                    <div data-width='90' data-target='95' class="charity-cause-progressbar container"></div>
+                                                    <div class="charity-cause-grid-text">
+                                                        <span class="charity-cause-raised ">Raised <br> <strong>$2000</strong></span>
+                                                        <small class="charity-cause-raised" style="margin-left: 105px;">Goal <br> <strong>$5000</strong></small>
+                                                   </div>
+                                                </div>
+                                            <div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                                <button class="charity-btn-createproyek" type="submit" href="Proyek.html"><b><font color="#000">Create</font></b></font></button>
+                        </div>
+                    </div>
+                </div>               
+                </div>
+            </div>
+        </div>
+
+
+      <!-- Footer -->
+	    <!-- Footer -->
+    	<footer th:replace="footer::foot"></footer>
+    <!-- Footer -->
+    
+    <!-- Search Modal -->
+	    <searching th:replace="modal::search"></searching>
+    <!-- jQuery -->
+	    <manyscript th:replace="script::ms"></manyscript>
+		<script13 th:replace="script::loader"></script13>	
+	</div>
+
+</body>
+
+
+<!-- Mirrored from ritetags.com/html/charity/event-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:15:53 GMT -->
+</html>

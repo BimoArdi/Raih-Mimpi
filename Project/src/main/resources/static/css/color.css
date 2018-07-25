@@ -1,0 +1,36 @@
+.charity-color,.charity-colorhover:hover,.charity-navigation ul > li.active > a,.charity-navigation ul > li:hover > a,.charity-navigation .children > li:hover > a:before,
+.charity-banner .slick-arrow,.charity-strip-text span i,.charity-service-link,.charity-donation-parallex-btn,.widget_usefull_links ul li:hover a,.charity-pagination > ul > li:hover > a,
+.charity-pagination > ul > li:hover > span,.charity-pagination > ul > li:hover > .previous,.charity-pagination > ul > li:hover > .next,.charity-pagination > ul > li > span.current,
+.charity-classic-team-text ul li:hover a {
+    color: #fcea9e;
+}
+.charity-color1,.charity-service-link1 {
+	color: orange;
+}
+
+.bgcolor,.charity-bgcolorhover:hover,.charity-navigation1 > ul > li > a:before,.charity-navigation > ul > li > a:before,.charity-header-options > li > a:hover,.charity-banner-caption a:hover,.charity-banner .slick-arrow:hover,
+.charity-more-btn,.charity-service-link:before,.charity-simple-services li:hover i,.charity-fancy-title h2:before,.charity-fancy-title h2:after,.charity-event-grid figure figcaption,.charity-caption-btn:before,
+.charity-simple-gallery figure figcaption:before,.charity-donation-parallex-btn:hover,.charity-loadbtn a,.charity-simple-blog-btn,.charity-simple-blog figcaption:before,.charity-newslatter,
+.charity-footer-title h2:before,.charity-footer-title h2:after,.widget_recent_news figure a:before,.widget_gallery ul li a:before,
+.blog-large-more:hover,.charity-large-blog figure figcaption:before,.widget_title h2:before,.widget_title h2:after,.widget_events ul li time,
+/* Yang Baru di tambahkan */
+.widget_title1 h2:before,.widget_title1 h2:after,.widget_events1 ul li time
+.charity-blog-grid figure figcaption:before,.charity-event-list-cart,.charity-event-list-btn:hover,.charity-cause-list-btn:hover,.charity-grid-prayer figure figcaption:before,ul li:hover .charity-grid-prayer-btn,
+.charity-prayer-btn,.charity-list-prayer ul li figure figcaption:before,.error-page-btn:hover,.charity-contact-form input[type="submit"],.comment-respond form p input[type="submit"],.charity-event-gallery ul li a:before,.widget_calendar caption,.charity-join-btn,
+.charity-plan-btn,.charity-volunteer-form form ul li input[type="submit"],.charity-select-two:after,.charity-about-btn,.charity-partner-slider .slick-arrow:hover {
+    background-color: #fcea9e;
+}
+.charity-bgcolor{
+	background-color: #8a2be2;
+}
+
+.charity-border-color,.charity-border-colorhover:hover,.charity-header-options > li > a:hover,.charity-banner-caption a:hover,
+.charity-banner .slick-arrow,.charity-service-link,.charity-donation-parallex-btn {
+    border-color: #fcea9e;
+}
+.charity-counter i:after,.charity-simple-blog figcaption time:before {
+	border-top-color: #fcea9e;
+}
+.back-top:before,.back-top:after {
+	border-bottom-color:#fcea9e;
+}

@@ -1,0 +1,310 @@
+<!doctype html>
+<html xmlns:th="http://thymeleaf.org">
+
+
+<head>
+
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Diferensia Foundation</title>
+
+    <!-- CSS -->
+	<css th:replace="link::header-css"></css>
+</head>
+
+<body class="home">
+    <!-- Header -->
+    <header id="charity-header" class="charity-header-one">
+    <!-- Header -->
+	    <!-- Main Header -->
+		<div th:if="${penggunaAktif} == null">
+			<belumLogin th:replace="nav::nav1"></belumLogin>
+		</div>
+		<div th:if="${penggunaAktif} != null">
+	        <setelahLogin th:replace="nav::nav2"></setelahLogin>
+	    </div>    	    
+   		<!-- Main Header -->
+	</header>
+
+	<div class="charity-banner">
+	        <div class="charity-banner-layer">
+	            <span class="charity-banner-transparent"></span>
+	            <img src="extra-images/slide1.jpg" alt="">
+	            <div class="charity-banner-caption">
+	                <div class="container">
+	                    <h1>Raih Mimpi.org  <span class="charity-color">Support People</span></h1>
+	                    <div class="clearfix"></div>
+	                    <p>Membantu meningkatkan dan mengembangkan ekonomi masyarakat</p>
+	                    <div class="clearfix"></div>
+	                    <a href="#">Learn More</a>
+	                    <a href="#">Donate Now</a>
+	                </div>
+	            </div>
+	        </div>
+	        <div class="charity-banner-layer">
+	            <span class="charity-banner-transparent"></span>
+	            <img src="extra-images/slide2.jpg" alt="">
+	            <div class="charity-banner-caption align-left-caption">
+	                <div class="container">
+	                    <h1>Raih Mimpi.org  <span class="charity-color">Support People</span></h1>
+	                    <div class="clearfix"></div>
+	                    <p>Membantu meningkatkan dan mengembangkan ekonomi masyarakat</p>
+	                    <div class="clearfix"></div>
+	                    <a href="#">Learn More</a>
+	                    <a href="#">Donate Now</a>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	
+<!-- Penjelasan  -->
+	        <div class="charity-main-section" >
+	            <div class="container">
+	                <div class="row">
+	                    <div class="col-md-12">
+	                        <div class="charity-fancy-title">
+	                            <br>
+	                            <p>Raih Mimpi</p>
+	                        </div>
+	                    </div>
+	                    <div class="col-md-6">
+	                        <figure class="short-text-thumb"><img src="images/Logo-rm.png" alt=""></figure>
+	                    </div>
+	                    <div class="col-md-6 charity-short-text">
+	                        <h5><p>Raih Mimpi merupakan lembaga nirlaba bidang kesehatan yang memiliki spesialisasi pada program wirausaha sosial kesehatan dan peningkatan kapasitas para pelaku pemberdayaan kesehatan</p></h5>
+	                        <p>Yang Mempunyai MISI</p>
+	                        <ul>
+	                            <li>List 1</li>
+	                            <li>list 2</li>
+	                            <li>list 3</li>
+	                        </ul>
+	                        <a href="#" class="charity-more-btn"><i class="fas fa-arrow-right"></i> Read More</a>
+	                    </div>
+	                 </div>
+	              </div>
+	           </div>
+	                    
+<!-- Progress  -->
+		       <div class="charity-main-section charity_counter_full">
+		           <span class="black-transparent"></span>
+			          <div class="container">
+			              <div class="row">
+			                  <div class="col-md-12">
+			                      <div class="charity-counter" id="counter">
+			                          <ul class="row">
+			                              <li class="col-md-3">
+			                                  <i class="icon-donation2 bgcolor"></i>
+		                                   <span class="counter-value" data-count="5012">0</span>
+		                                   <small>Sponsor</small>
+		                               </li>
+		                               <li class="col-md-3">
+		                                   <i class="icon-ribbon bgcolor"></i>
+		                                   <span class="counter-value" data-count="60574">0</span>
+		                                   <small>Kesehatan</small>
+		                               </li>
+		                               <li class="col-md-3">
+		                                   <i class="icon-mortarboard bgcolor"></i>
+		                                   <span class="counter-value" data-count="30047">0</span>
+		                                   <small>Pendidikan</small>
+		                               </li>
+		                               <li class="col-md-3">
+		                                   <i class="icon-help bgcolor"></i>
+		                                   <span class="counter-value" data-count="7814">0</span>
+		                                   <small>Masyarakat</small>
+		                               </li>
+		                           </ul>
+		                       </div>
+		                   </div>
+		               </div>
+		           </div>
+		       </div>           
+		       
+	       <div class="charity-main-section" >
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="charity-services charity-simple-services">
+                                <ul class="row">
+                                    <li class= "col-md-1"> 
+                                    </li>
+                                    <li class="col-md-2">
+                                        <i class="fas fa-book charity-color"></i>
+                                        <div class="charity-simple-services-text">
+                                            <h2>Pendidikan</h2>
+                                            <p>Penjelasan Penjelasan </p>
+                                            <a href="#" class="charity-service-link">Read More</a>
+                                        </div>
+                                    </li>
+                                    <li class="col-md-2">
+                                        <i class="fas fa-heart charity-color"></i>
+                                        <div class="charity-simple-services-text">
+                                            <h2>Masyarakat</h2>
+                                            <p>Penjelasan Penjelasan </p>
+                                            <a href="#" class="charity-service-link">Read More</a>
+                                        </div>
+                                    </li>
+                                    <li class="col-md-2">
+                                        <i class="fas fa-users charity-color"></i>
+                                        <div class="charity-simple-services-text">
+                                            <h2>Ekonomi</h2>
+                                            <p>Penjelasan Penjelasan</p>
+                                            <a href="#" class="charity-service-link">Read More</a>
+                                        </div>
+                                    </li>
+                                    <li class="col-md-2">
+                                        <i class="fas fa-users charity-color"></i>
+                                        <div class="charity-simple-services-text">
+                                            <h2>Sosial</h2>
+                                            <p>Penjelasan Penjelasan</p>
+                                            <a href="#" class="charity-service-link">Read More</a>
+                                        </div>
+                                    </li>
+                                    <li class="col-md-2">
+                                        <i class="fas fa-users charity-color"></i>
+                                        <div class="charity-simple-services-text">
+                                            <h2>Lingkungan</h2>
+                                            <p>Penjelasan Penjelasan</p>
+                                            <a href="#" class="charity-service-link">Read More</a>
+                                        </div>
+                                    </li>
+                                    <li class= "col-md-1"> 
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+             </div>             
+	<!--Proyek Terakhir -->
+       <div class="charity-main-section charity-event-grid-full">
+           <div class="container">
+               <div class="row">
+                   <div class="col-md-12">
+                       <div class="charity-fancy-title">
+                      	  <h2>Proyek</h2>
+	                        </div>
+	                           <div class="charity-causes charity-cause-grid">
+		                            <ul class="row">
+	                                <li class="col-md-4">
+	                                    <figure><a href="proyek-detail"><img src="extra-images/pendidikan.jpg" alt="" class="img"></a>
+	                                        <figcaption><a href="proyek-detail" class="charity-cause-grid-hover"><i class="fa fa-users"></i> 21 Donors</a></figcaption>
+	                                    </figure>
+	                                    <div data-width='80' data-target='100' class="charity-cause-progressbar"></div>
+	                                    <div class="charity-cause-grid-text">
+	                                        <span class="charity-cause-raised">Raised <br> <strong>$2000</strong></span>
+	                                        <small class="charity-cause-raised">Goal <br> <strong>$5000</strong></small>
+	                                        <div class="clearfix"></div>
+	                                        <h2><a href="proyek-detail">Pendidikan</a></h2>
+	                                        <p>Deskripsi Singkat Proyek yang di lakukan</p>
+	                                        <a href="login.html" class="charity-more-btn"><i class="fas fa-arrow-right"></i> Sponsor</a>
+	                                    </div>
+	                                </li>
+	                                <li class="col-md-4">
+	                                    <figure><a href="proyek-detail"><img src="extra-images/masyarakat.jpg" alt="" class="img"></a>
+	                                        <figcaption><a href="proyek-detail" class="charity-cause-grid-hover"><i class="fa fa-users"></i> 21 Donors</a></figcaption>
+	                                    </figure>
+	                                    <div data-width='60' data-target='100' class="charity-cause-progressbar"></div>
+	                                    <div class="charity-cause-grid-text">
+	                                        <span class="charity-cause-raised">Raised <br> <strong>$1000</strong></span>
+	                                        <small class="charity-cause-raised">Goal <br> <strong>$3000</strong></small>
+	                                        <div class="clearfix"></div>
+	                                        <h2><a href="proyek-detail">Masyarakat</a></h2>
+	                                        <p>Deskripsi Singkat Proyek yang di lakukan</p>
+	                                        <a href="login.html" class="charity-more-btn"><i class="fas fa-arrow-right"></i>Sponsor</a>
+	                                    </div>
+	                                </li>
+	                                <li class="col-md-4">
+	                                    <figure><a href="proyek-detail"><img src="extra-images/kesehatan.jpg" alt="" class="img"></a>
+	                                        <figcaption><a href="proyek-detail" class="charity-cause-grid-hover"><i class="fa fa-users"></i> 21 Donors</a></figcaption>
+	                                    </figure>
+	                                    <div data-width='45' data-target='100' class="charity-cause-progressbar"></div>
+	                                    <div class="charity-cause-grid-text">
+	                                        <span class="charity-cause-raised">Raised <br> <strong>$7000</strong></span>
+	                                        <small class="charity-cause-raised">Goal <br> <strong>$9000</strong></small>
+	                                        <div class="clearfix"></div>
+	                                        <h2><a href="proyek-detail">Kesehatan</a></h2>
+	                                        <p>Deskipsi Singkat Proyek yang di lakukan </p>
+	                                        <a href="login.html" class="charity-more-btn"><i class="fas fa-arrow-right"></i>Sponosr</a>
+	                                    </div>
+	                                </li>
+	                            </ul>
+	                        </div>
+			                 <div class="charity-event charity-event-grid">
+			                      <ul class="row">
+			                          <li class="col-md-4">
+			                              <figure><a href="proyek-detail"><img src="extra-images/kesehatan.jpg" alt="" class="img"></a>
+			                                  <figcaption>
+			                                      15 <span>Jan</span>
+			                                  </figcaption>
+			                                  <a href="by-kategori" class="charity-caption-btn"><span>View Detail</span></a>
+			                              </figure>
+			                              <div class="charity-event-grid-text">
+			                                  <h2><a href="#">Buka Klinik</a></h2>
+			                                  <p>Klinik Kesehatan di buka untuk melayani masyarakat sekitar</p>
+			                                  <ul class="charity-event-grid-option">
+			                                      <li><span>Start Time :</span> 01 December 2018</li>
+			                                      <li><span>Ending Time :</span> 22 December 2018</li>
+			                                  </ul>
+			                              </div>
+			                          </li>
+			                          <li class="col-md-4">
+			                              <figure><a href="proyek-detail"><img src="extra-images/masyarakat.jpg" alt="" class="img"></a>
+			                                  <figcaption>
+			                                      19 <span>Dec</span>
+			                                  </figcaption>
+			                                  <a href="by-kategori" class="charity-caption-btn"><span>View Detail</span></a>
+			                              </figure>
+			                              <div class="charity-event-grid-text">
+			                                  <h2><a href="#">Even Masyarakat</a></h2>
+			                                  <p>Indonesia Penuh warna dengan beragam suku dan budayanya</p>
+			                                  <ul class="charity-event-grid-option">
+			                                      <li><span>Start Time :</span> 04 November 2018</li>
+			                                      <li><span>Ending Time :</span> 28 November 2018</li>
+			                                  </ul>
+			                              </div>
+			                          </li>
+			                          <li class="col-md-4">
+			                              <figure><a href="proyek-detail"><img src="extra-images/pendidikan.jpg" alt="" class="img"></a>
+			                                  <figcaption>
+			                                      23 <span>NOV</span>
+			                                  </figcaption>
+			                                  <a href="by-kategori" class="charity-caption-btn"><span>View Detail</span></a>
+			                              </figure>
+			                              <div class="charity-event-grid-text">
+			                                  <h2><a href="#">Pembangunan Sekolah Sederhana</a></h2>
+			                                  <p>Sekolah Sederhana untuk anak-anak kurang mampu </p>
+			                                  <ul class="charity-event-grid-option">
+			                                      <li><span>Start Time :</span> 07 April 2018</li>
+			                                      <li><span>Ending Time :</span> 20 April 2018</li>
+			                                 </ul>
+			                              </div>
+			                           </li>
+			                        </ul>
+			                     </div>
+			                   <div class="charity-loadbtn"><a href="kategori">See All </a></div>
+			                </div>
+			             </div>
+			          </div>
+			       </div>
+			    
+			    
+
+
+  <!-- Footer -->
+	    <!-- Footer -->
+    <footer th:replace="footer::foot"></footer>
+    <!-- Footer -->
+    
+    <!-- Search Modal -->
+    <searching th:replace="modal::search"></searching>
+    <!-- jQuery -->
+	    <manyscript th:replace="script::ms"></manyscript>
+
+</body>
+
+
+<!-- Mirrored from ritetags.com/html/charity/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:13:42 GMT -->
+</html>

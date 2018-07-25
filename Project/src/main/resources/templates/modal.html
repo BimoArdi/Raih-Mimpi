@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<searching th:fragment="search">
+	<div class="modal fade searchmodal" id="searchModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <a href="#" class="charity-close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+                    <form>
+                        <input type="text" value="Type Your Keyword" onblur="if(this.value == '') { this.value ='Type Your Keyword'; }" onfocus="if(this.value =='Type Your Keyword') { this.value = ''; }">
+                        <input type="submit" value="">
+                        <i class="fa fa-search"></i>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</searching>
+
+<logout th:fragment="logout">
+	<div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <div>
+                <center>
+                 <h4 class="modal-title">LogOut</h4>   
+                </center>
+                 
+            </div>
+             <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <center>
+                <p>Apakah Anda Yakin ingin Keluar ?</p>    
+            </center>
+            
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-default" ><a href="index">YA</a></button>
+            <button type="button" class="btn btn-default"><a href="index-1">Tidak</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+</logout>
+
+
+<image th:fragment="modalimage">
+	<div id="myModal" class="modal">
+	  <span class="close cursor" onclick="closeModal()">&times;</span>
+	  <div class="modal-content">
+	
+	    <div class="mySlides" th:each="foto,iterStat:${listfoto}">
+	      <div class="numbertext">1 / 4</div>
+	      <img th:src="@{'data:image/jpg;base64,' + *{T(org.springframework.util.Base64Utils).encodeToString(foto.foto)}}"  
+	      style="width:100%">
+	    </div>
+	    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+	    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+	
+	    <div class="caption-container">
+	      <p id="caption"></p>
+	    </div>
+	
+	
+	    <div class="column" th:each="foto,iterStat:${listfoto}">
+	      <img class="demo cursor" th:src="@{'data:image/jpg;base64,' + *{T(org.springframework.util.Base64Utils).encodeToString(foto.foto)}}" 
+	      style="width:100%" onclick="currentSlide(1)" alt="Nature and sunrise">
+	    </div>
+	  </div>
+	</div>	
+</image>
+
+</body>
+</html>

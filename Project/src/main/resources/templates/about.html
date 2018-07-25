@@ -1,0 +1,215 @@
+<!doctype html>
+<html xmlns:th="http://thymeleaf.org">
+
+
+<head>
+
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Diferensia Foundation</title>
+    <!-- CSS -->
+    <css th:replace="link::header-css"></css>
+    <!-- CSS -->
+</head>
+
+<body class="home">
+    <!-- Header -->
+    <header id="charity-header" class="charity-header-one">
+    <!-- Header -->
+	    <!-- Main Header -->
+		<div th:if="${penggunaAktif} == null">
+			<belumLogin th:replace="nav::nav1"></belumLogin>
+		</div>
+		<div th:if="${penggunaAktif} != null">
+	        <setelahLogin th:replace="nav::nav2"></setelahLogin>
+	    </div>    	    
+   		<!-- Main Header -->
+	</header>
+    <!-- Header -->
+
+    <!-- Banner -->
+    <div class="charity-subheader">
+        <span class="black-transparent"></span>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>About Us</h1>
+                    <p>Penjelasan Singkat</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner -->
+
+    <!-- Content -->
+    <div class="charity-main-content">
+
+        <!--Deskripsi Perusahaan  -->
+        <div class="charity-main-section charity-aboutus-text-full">
+            <div class="container">
+                <div class="row">
+                        
+                    <div class="col-md-7">
+                        <div class="charity-aboutus-text">
+                            <h2>We Are Non Profit Team</h2>
+                            <p>Diferensia merupakan lembaga nirlaba bidang kesehatan yang memiliki spesialisasi pada program wirausaha sosial kesehatan dan peningkatan kapasitas para pelaku pemberdayaan kesehatan Mempunyai Misi </p>
+                            <ul class="charity-list-style-one">
+                                <li>Menjalankan model bisnis sosial yang solid untuk menyehatkan masyarakat </li>
+                                <li>Melakukan upaya promosi kesehatan yang inovatif dan efektif.</li>
+                                <li>Menyebarkan inspirasi dan pengetahuan tentang pendekatan bisnis sosial kesehatan</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <figure class="chrity-thumb-style">
+                            <img src="extra-images/difrensia.jpg" alt="">
+                        </figure>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Main Section -->
+
+        <!-- Main Section -->
+        <div class="charity-main-section charity_counter_full">
+            <span class="black-transparent"></span>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="charity-counter" id="counter">
+                            <ul class="row">
+                                <li class="col-md-3">
+                                    <i class="icon-donation2 bgcolor"></i>
+                                    <span class="counter-value" data-count="5012">0</span>
+                                    <small>Seponsor</small>
+                                </li>
+                                <li class="col-md-3">
+                                    <i class="icon-ribbon bgcolor"></i>
+                                    <span class="counter-value" data-count="60574">0</span>
+                                    <small>Kesehatan</small>
+                                </li>
+                                <li class="col-md-3">
+                                    <i class="icon-mortarboard bgcolor"></i>
+                                    <span class="counter-value" data-count="30047">0</span>
+                                    <small>Pendidikan</small>
+                                </li>
+                                <li class="col-md-3">
+                                    <i class="icon-help bgcolor"></i>
+                                    <span class="counter-value" data-count="7814">0</span>
+                                    <small>Masyarakat</small>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main Section -->
+
+        <!-- Main Section -->
+        <div class="charity-main-section charity-simple-services-full">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="charity-fancy-title">
+                            <h2>Our Services</h2>
+                        </div>
+                        <div class="charity-services charity-simple-services">
+                            <ul class="row">
+                                <li class="col-md-4">
+                                    <i class="fas fa-book charity-color"></i>
+                                    <div class="charity-simple-services-text">
+                                        <h2>Pendidikan</h2>
+                                        <p>Penjelasan Penjelasan </p>
+                                        <a href="#" class="charity-service-link">Read More</a>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <i class="fas fa-heart charity-color"></i>
+                                    <div class="charity-simple-services-text">
+                                        <h2>Kesehatan</h2>
+                                        <p>Penjelasan Penjelasan </p>
+                                        <a href="#" class="charity-service-link">Read More</a>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <i class="fas fa-users charity-color"></i>
+                                    <div class="charity-simple-services-text">
+                                        <h2>Masyarakat</h2>
+                                        <p>Penjelasan Penjelasan</p>
+                                        <a href="#" class="charity-service-link">Read More</a>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <i class="fas fa-book charity-color"></i>
+                                    <div class="charity-simple-services-text">
+                                        <h2>Pendidikan</h2>
+                                        <p>Penjelasan Penjelasan </p>
+                                        <a href="#" class="charity-service-link">Read More</a>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <i class="fas fa-heart charity-color"></i>
+                                    <div class="charity-simple-services-text">
+                                        <h2>Kesehatan</h2>
+                                        <p>Penjelasan Penjelasan </p>
+                                        <a href="#" class="charity-service-link">Read More</a>
+                                    </div>
+                                </li>
+                                <li class="col-md-4">
+                                    <i class="fas fa-users charity-color"></i>
+                                    <div class="charity-simple-services-text">
+                                        <h2>Masyarakat</h2>
+                                        <p>Penjelasan Penjelasan</p>
+                                        <a href="#" class="charity-service-link">Read More</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- Partner -->
+        <div class="charity-main-section charity-partner-slider-full">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="charity-fancy-title">
+                            <h2>Our Partners</h2>
+                        </div>
+                        <div class="charity-partner-slider">
+                            <div> <a href="404"><img src="extra-images/partner-logo-1.png" alt=""></a> </div>
+                            <div> <a href="404"><img src="extra-images/partner-logo-2.png" alt=""></a> </div>
+                            <div> <a href="404"><img src="extra-images/partner-logo-3.png" alt=""></a> </div>
+                            <div> <a href="404"><img src="extra-images/partner-logo-4.png" alt=""></a> </div>
+                            <div> <a href="404"><img src="extra-images/partner-logo-3.png" alt=""></a> </div>
+                        </div>
+                        <!--// Partner \\-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main Section -->
+    </div>
+  
+    <!-- Footer -->
+	    <!-- Footer -->
+    <footer th:replace="footer::foot"></footer>
+    <!-- Footer -->
+    
+    <!-- Search Modal -->
+    <searching th:replace="modal::search"></searching>
+    <!-- jQuery -->
+    <manyscript th:replace="script::ms"></manyscript>
+
+</body>
+
+
+<!-- Mirrored from ritetags.com/html/charity/about.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:17:32 GMT -->
+</html>

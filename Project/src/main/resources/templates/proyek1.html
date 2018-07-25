@@ -1,0 +1,329 @@
+<!doctype html>
+<html xmlns:th="http://thymeleaf.org">
+
+
+<head>
+
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Proyek</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/fontawesome-all.css"/>
+    <link rel="stylesheet" href="css/flaticon.css"/>
+    <link rel="stylesheet" href="css/slick-slider.css"/>
+    <link rel="stylesheet" href="css/fancybox.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/color.css"/>
+    <link rel="stylesheet" href="css/responsive.css"/>
+    <link rel="stylesheet" href="css/slick-theme.css"/>
+    <link rel="stylesheet" href="css/util.css"/>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  	<link rel="stylesheet" href="/resources/demos/style.css">
+  	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+	<!-- <script src="script/jquery.js"></script> -->
+    <script src="script/popper.min.js"></script>
+    <script src="script/bootstrap.min.js"></script>
+    <script src="script/slick.slider.min.js"></script>
+    <script src="script/progressbar.js"></script>
+    <script src="script/fancybox.min.js"></script>
+    <script src="script/jquery.countdown.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="script/jquery.jplayer.js"></script>
+    <script src="script/jplayer.playlist.js"></script>
+    <script src="script/functions.js"></script>
+
+
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link href="css/editor.css" type="text/css" rel="stylesheet"/>
+</head>
+
+<body class="home">
+    <!-- Header -->
+    <header id="charity-header" class="charity-header-one">
+        
+        <!-- Top Strip -->
+        <div class="charity-top-strip">
+            <div class="container">
+                <div class="row">
+                    <aside class="col-6 charity-strip-text">
+                        <p>Explore The Deferensia </p>
+                        <span><i class="fas fa-phone fa-rotate-90"></i> 082-6613704 </span>
+                        <span><i class="far fa-envelope"></i> <a href="mailto:name@email.com">Admin@deferensia.org</a></span>
+                    </aside>
+                    <aside class="col-6">
+                        <div class="float-right">
+                          <ul class="charity-social-network">
+                              <li><a href="#" class="fab fa-facebook-f"></a></li>
+                              <li><a href="#" class="fab fa-google"></a></li>
+                              <li><a href="#" class="fab fa-pinterest-p"></a></li>
+                              <li><a href="#" class="fab fa-linkedin-in"></a></li>
+                              <li><a href="#" class="fab fa-twitter"></a></li>
+                          </ul>
+                          <a href="#" class="charity-strip-btn charity-bgcolor">Sponsor Now</a>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+        <!-- Top Strip -->
+
+        <!-- Main Header -->
+        <div class="charity-main-header">
+            <div class="container">
+                <div class="row">
+                    <aside class="col-3"><a href="index.html" class="charity-logo"><img src="images/logo.png" alt=""></a></aside>
+                    <aside class="col-9">
+                        <div class="float-right">
+                            <a href="#menu" class="menu-link active"><span></span></a>
+                            <nav id="menu" class="menu charity-navigation">
+                                <ul>
+                                    <li class="active"><a href="/index-1">Home</a></li>
+                                    <li><a href="#">Kategori</a>
+                                        <ul class="children">
+                                            <li><a href="Kategori.html">Kesehatan</a></li>
+                                            <li><a href="Kategori.html">Pendidikan</a></li>
+                                            <li><a href="Kategori.html">Pembangunan</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#Proyek">Proyek</a>
+                                        <ul class="children">
+                                            <li><a href="proyek-list.html">Proyek List</a></li>
+                                            <li><a href="proyek-grid.html">Proyek Grid</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Team</a>
+                                        <ul class="children">
+                                            <li><a href="team-grid.html">Team Grid</a></li>
+                                            <li><a href="team-classic.html">Team Classic</a></li>
+                                            <li><a href="team-detail.html">Team Detail</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Pages</a>
+                                        <ul class="children">
+                                            <li><a href="about.html">About Us</a></li>
+                                            <li><a href="404.html">404 Error</a></li>
+                                            <li><a href="search-result.html">Search Result</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact-us.html">Contact</a></li>
+                                    <li><a href="#" data-toggle="modal" data-target="#searchModal"><i class="fas fa-search"></i></a></li>
+                                    <li><a href="#"><img src="images/avatar.png" alt="Avatar" class="avatar"></a>
+                                    <ul class="children">
+                                        <li><a href="dashboard-profil.html">Profil</a></li>
+                                        <li><a data-toggle="modal" data-target="#myModal">Logout</a></li>
+                                    </ul>
+                                   </li>
+                                </ul>
+                            </nav> 
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+        <!-- Main Header -->
+
+    </header>
+    <!-- Header -->
+
+    <!-- Banner -->
+    <div class="charity-subheader">
+        <span class="black-transparent"></span>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Proyek</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner -->
+
+    <!-- Content -->
+        <div class="charity-main-section">
+            <div class="container">
+                <div class="row charity-login-wrap m-l-50 m-r-50">
+                    <div class="col-md-12 charity-login">
+                        <form method="post" th:action="@{dashboard-proyek.html}" th:object="${Proyek}" enctype="multipart/form-data">
+                            <div class="row charity-profil-text p-t-40">
+                                <div class="widget_title_b m-t-10"><b>Judul Proyek</b></div>
+                                <div class="col-md-8 charity-profil-input" style="width: 100%;">
+                                <input type="text" name="namaProjek" style="width: 100%;" required /></div>
+                            </div>
+                            <div class="row charity-profil-text">
+                                <div class="widget_title_b m-t-10"><b>Target Dana</b></div>
+                                <div class="col-md-8 charity-profil-input">
+                                <input type="text" name="targetDana" style="width: 100%;" required/></div>
+                            </div>
+                            <div class="row charity-profil-text">
+                                <div class="widget_title_b m-t-10"><b>Tanggal Berakhir</b></div>
+                                <div class="col-md-8 charity-profil-input">
+                                <input type="text" id="datepicker1" name="tanggalBerakhir" style="width: 100%;" /></div>
+                            </div>
+                            <div class="row charity-profil-text">
+                                <div class="widget_title_b m-t-10"><b>Link Proyek</b></div>
+                                <div class="col-md-8 charity-profil-input">
+                                <input type="text" name="link" style="width: 100%;" required/></div>
+                            </div>
+                          	<div class="row charity-profil-text">
+                                <div class="widget_title_b m-t-10"><b>Kategori</b></div>
+                                <div class="col-md-8 charity-profil-input">
+                                <select name="kategori" style="width: 100%">
+                                <option th:each="k,iterStat:${listkategori}"
+                                 th:value="${k.id}" th:text="${k.namaKategori}"></option></select></div>
+                            </div> 
+                            <div class="row charity-profil-text">
+                                <div class="widget_title_b m-t-10"><b>Lokasi</b></div>
+                                <div class="col-md-8 charity-profil-input"><select name="wilayah" style="width: 100%">
+                                <option th:each="k,iterStat:${listwilayah}"
+                                 th:value="${k.id}" th:text="${k.namaWilayah}"></option></select></div>
+                            </div> 
+                            <div class="row charity-profil-text">
+                                <div class="widget_title_b m-t-10"><b>Foto Utama Proyek</b></div>
+                                <div class="col-md-8 charity-proyek-create">
+                                        <input id="file-input" type="file" class="m-l-210" name="foto" required/>
+                                 </div>
+                            </div>
+                            <div class="row charity-profil-text">
+                                <div class="widget_title_b m-t-10"><b>Video Proyek</b></div>
+                                <div class="col-md-8 charity-profil-input">
+                                <input type="text" name="linkVideo" style="width: 100%;" required/></div>
+                            </div>
+                            <div class="row charity-profil-text">
+                                <div class="widget_title_b m-t-10"><b>Deskripsi Singkat</b></div>
+                                <div class="col-md-8 charity-profil-input">
+                                <textarea  id="txtEditor" name="deskripsiSingkat" style="width: 100%;" required></textarea></div>
+                            </div>
+                            <div class="row charity-profil-text">
+                                <div class="widget_title_b m-t-10"><b>Deskripsi Lengkap</b></div>
+                                <div class="col-md-8 charity-profil-input">
+                                <textarea id="txtEditor1" name="deskripsiLengkap" style="width: 100%;" required></textarea></div>
+                            </div>                            
+                            <div class="charity-btn-profil">
+                                <button class="charity-btn-profil-save" type="submit"><b>Save</b></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Content -->
+
+    <!-- Footer -->
+    <footer id="charity-footer" class="charity-footer-one">
+        <!-- Footer Widget -->
+        <div class="charity-footer-widget">
+            <div class="container">
+                <div class="row">
+                    <aside class="col-md-4 widget widget_usefull_links">
+                        <div class="charity-footer-title"> <h2>Quick Links</h2> </div>
+                        <ul>
+                            <li><a href="#">Causes</a></li>
+                            <li><a href="#">Donors</a></li>
+                            <li><a href="#">Blogs</a></li>
+                            <li><a href="#">Latest News</a></li>
+                            <li><a href="#">Testimonials</a></li>
+                            <li><a href="#">Volunteers</a></li>
+                            <li><a href="#">Gallery</a></li>
+                            <li><a href="#">Contact us</a></li>
+                            <li><a href="#">Newsletter</a></li>
+                            <li><a href="#">Events</a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-md-4 widget widget_recent_news">
+                        <div class="charity-footer-title"> <h2>Recent News</h2> </div>
+                        <ul>
+                            <li>
+                                <figure><a href="#"><img src="extra-images/recent-news-widget-1.jpg" alt=""></a></figure>
+                                <div class="widget_recent_news_text">
+                                    <h6><a href="#">Praesent sit amet tellus sed qum biben dum faucus</a></h6>
+                                    <span>22 Sept, 2016</span>
+                                </div>
+                            </li>
+                            <li>
+                                <figure><a href="#"><img src="extra-images/recent-news-widget-2.jpg" alt=""></a></figure>
+                                <div class="widget_recent_news_text">
+                                    <h6><a href="#">Morbi pulvinar faucibus urna, sit amet euisd nulla.</a></h6>
+                                    <span>22 Sept, 2016</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </aside>
+                    <aside class="col-md-4 widget widget_gallery">
+                        <div class="charity-footer-title"> <h2>Our Gallery</h2> </div>
+                        <ul>
+                            <li><a data-fancybox="gallery" href="extra-images/widget-gallery-1.jpg"><img src="extra-images/widget-gallery-1.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/widget-gallery-2.jpg"><img src="extra-images/widget-gallery-2.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/widget-gallery-3.jpg"><img src="extra-images/widget-gallery-3.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/widget-gallery-4.jpg"><img src="extra-images/widget-gallery-4.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/widget-gallery-5.jpg"><img src="extra-images/widget-gallery-5.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/widget-gallery-6.jpg"><img src="extra-images/widget-gallery-6.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/widget-gallery-7.jpg"><img src="extra-images/widget-gallery-7.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/widget-gallery-8.jpg"><img src="extra-images/widget-gallery-8.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                        </ul>
+                    </aside>
+                </div>
+                <!-- CopyRight -->
+                <div class="charity-copyright">
+                    <a href="#" class="back-top charity-bgcolor"><i class="fa fa-angle-up"></i></a>
+                    <p>© 2018, All Right Reserved - by </p>
+                    <ul>
+                        <li><a href="404.html">Terms and conditions</a></li>
+                        <li><a href="404.html">Privacy policy</a></li>
+                    </ul>
+                </div>
+                <!-- CopyRight -->
+            </div>
+        </div>
+        <!-- Footer Widget -->
+
+    </footer>
+    <!-- Footer -->
+
+    <!-- Search Modal -->
+    <div class="modal fade searchmodal" id="searchModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <a href="#" class="charity-close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+                    <form>
+                        <input type="text" value="Type Your Keyword" onblur="if(this.value == '') { this.value ='Type Your Keyword'; }" onfocus="if(this.value =='Type Your Keyword') { this.value = ''; }">
+                        <input type="submit" value="">
+                        <i class="fa fa-search"></i>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <!-- jQuery -->
+   <script>
+   $( function() {
+	    $( "#datepicker1" ).datepicker();
+	  } );
+  </script>
+		<script src="script/editor.js"></script>
+		<script>
+			$(document).ready(function() {
+				$("#txtEditor").Editor();
+			});
+		</script>
+		<script>
+			$(document).ready(function() {
+				$("#txtEditor1").Editor();
+			});
+		</script>
+</body>
+
+</html>

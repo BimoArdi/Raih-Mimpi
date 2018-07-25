@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+</head>
+<body>
+<belumLogin th:fragment="nav1">
+     <!-- <div class="charity-mainheader w3-top">
+        <div class="container-fluid charity-banner-transparent"> -->
+      <div class="charity-mainheader">
+        <div class="container-fluid">
+            <div class="row">
+            	<aside class="col-md-1"></aside>
+                <aside class="col-md-2"><a href="/"><img src="images/Logo-rm.png" alt="home" class="charity-logo"></a></aside>
+                <aside class="col-9">
+                    <div class="float-right">
+                        <a href="#menu" class="menu-link active"><span></span></a>
+                        <nav id="menu" class="menu charity-navigation">
+                            <ul>
+                                <li><a href="#">Kategori</a>
+                                    <ul class="children">
+                                        <li th:each="K,iterStat:${listkategori}">
+                                        <a th:value="${K.id}" th:text="${K.namaKategori}" th:href="@{by-kategori(id=${K.id})}"></a>
+                                        </li>
+                                        <li><a href="all-proyek">Lihat Semua </a></li>  
+                                    </ul>
+                                </li>
+                                <li><a href="login">Create Proyek</a></li>
+                                <li><a href="all-proyek">Sponsor Now</a>
+                                <li><a href="login">Login</a></li>
+                                <li><a href="#" >
+									<form>
+				                        <input class="pencarian" id="myInput" type="text" value="Type Your Keyword" onblur="if(this.value == '') { this.value ='Type Your Keyword'; }" onfocus="if(this.value =='Type Your Keyword') { this.value = ''; }">
+				                        <i class="fas fa-search"></i>
+				                    </form>
+                                </a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+        <!-- Main Header -->
+</belumLogin>
+
+<setelahLogin th:fragment="nav2">
+     <div class="charity-mainheader">
+        <div class="container-fluid">
+            <div class="row">
+            	<aside class="col-md-1"></aside>
+                <aside class="col-md-2"><a href="index"><img src="images/Logo-rm.png" alt="home" class="charity-logo"></a></aside>
+                <aside class="col-9">
+                    <div class="float-right">
+                        <a href="#menu" class="menu-link active"><span></span></a>
+                        <nav id="menu" class="menu charity-navigation">
+                            <ul>
+                                <li><a href="#">Kategori</a>
+                                    <ul class="children">
+                                        <li th:each="K,iterStat:${listkategori}">
+                                        <a th:value="${K.id}" th:text="${K.namaKategori}" th:href="@{by-kategori(id=${K.id})}"></a>
+                                        </li>
+                                        <li><a href="all-proyek">Lihat Semua</a></li>  
+                                    </ul>
+                                </li>
+                                <li><a href="proyek">Create Proyek</a></li>
+                                <li><a href="all-proyek">Sponsor Now</a>
+                                <li><a href="#" >
+									<form>
+				                        <input  type="text" id="provider-json" value="Type Your Keyword" onblur="if(this.value == '') { this.value ='Type Your Keyword'; }" onfocus="if(this.value =='Type Your Keyword') { this.value = ''; }">
+				                        <i class="fas fa-search"></i>
+				                    </form>
+                                </a></li>
+                                <li><a href="dashboard-profil">
+                                <img alt="avatar" th:if="${penggunaAktif.pengguna.fotoProfil} == null" th:src="@{images/index.png}" class="avatar">                                
+                                <img alt="avatar" th:if="${penggunaAktif.pengguna.fotoProfil} != null"
+                            	th:src="@{'data:image/jpg;base64,' + *{T(org.springframework.util.Base64Utils).encodeToString(penggunaAktif.pengguna.fotoProfil)}}" class="avatar">
+                                    <span th:text="${penggunaAktif.username}"></span></a>
+                                    <!-- <ul class="children">
+                                        <li><a href="dashboard-profil">Profil</a></li>
+                                        <li><a  href="logout">Logout</a></li>
+                                    </ul> -->
+                                </li>
+                                <li><a href="logout">Logout</a>
+                            </ul>
+                        </nav>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</setelahLogin>
+
+<dataProfil th:fragment="nav3">
+	<div class="charity-main-section m-t-30 m-b-20">
+            <div class="container">
+                <div class="row charity-profil-head">
+                    <div class="col-md-2">
+                        <div>
+	                        <img th:if="${penggunaAktif.pengguna.fotoProfil} == null"
+                            src="images/index.png" class="charity-profil-photo m-b-20" style="width:140px; height:140px;"  alt="foto profil"/>
+                            <img th:if="${penggunaAktif.pengguna.fotoProfil} != null" class="charity-profil-photo m-b-20" style="width:140px; height:140px;"  alt="foto profil" 
+                            th:src="@{'data:image/jpg;base64,' + *{T(org.springframework.util.Base64Utils).encodeToString(penggunaAktif.pengguna.fotoProfil)}}" />
+                        </div>
+                    </div>
+                    <div class="col-md-10 charity-profil-bio">
+                        <div class="row">
+                            <div class="col-md-4 m-t-10 m-b-10">
+                                <div class="col-md-12 widget_title"><h2 th:text=${penggunaAktif.username}><font color="white"></font></h2></div>
+                                <div>
+                                    <span class="col-md-4"><b>Nama</b></span>
+                                    <span class="col-md-8" th:text=${penggunaAktif.pengguna.nama} ></span>
+                                </div>
+                                <div>
+                                    <span class="col-md-2"><b>Email</b></span>
+                                    <span class="col-md-10" th:text=${penggunaAktif.email}></span>
+                                </div>
+                                <div>
+                                    <span class="col-md-4"><b>No.HP</b></span>
+                                    <span class="col-md-8" th:text=${penggunaAktif.pengguna.telephone} ></span>
+                                </div>
+                            </div>
+                            <div class="col-md-8 m-t-10 m-b-10">
+                                <div class="col-md-10"><b>Biografi</b></div>
+                                <div>
+                                    <p class="col-md-12" th:text=${penggunaAktif.pengguna.biografi}></p>        
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+</dataProfil>
+
+</body>
+</html>

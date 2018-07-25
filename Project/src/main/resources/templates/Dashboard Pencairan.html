@@ -1,0 +1,103 @@
+<!doctype html>
+<html xmlns:th="http://thymeleaf.org">
+
+
+<head>
+
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Dashboard</title>
+
+    <!-- CSS -->
+    <css th:replace="link::header-css"></css>
+    <!-- CSS -->
+</head>
+
+<body onload="myFunction()" style="margin:0;" class="home">
+	<div id="loader"></div>
+	<div style="display:none;" id="myDiv" class="animate-bottom">
+    <!-- Header -->
+    <header id="charity-header" class="charity-header-one">
+    <!-- Header -->
+	    <!-- Main Header -->
+	        <setelahLogin th:replace="nav::nav2"></setelahLogin>
+   		<!-- Main Header -->
+	</header>
+    <!-- Header -->
+
+    <!-- Banner -->
+    <div class="charity-subheader" style="height: 275px;">
+        <div class="black-transparent" style="height: 275px;"></div>
+    </div>
+
+	<dataProfil th:replace="nav::nav3"></dataProfil>
+
+        <div class="charity-main-section m-t-10 m-b-20">
+            <div class="container">
+                <div class="row charity-profil-head">
+                    <div class="col-md-2">
+                         <ul class="sidebar-menu" id="nav-accordion">
+                             <li class="charity-list m-t-10"><a href="dashboard-proyek">Proyek</a></li>
+                             <li class="charity-list"><a href="dashboard-update-proyek">Progres Proyek</a></li>
+                             <li class="charity-list"><a href="dashboard-sponsor">Sponsor</a></li>
+                             <li class="charity-list active"><a href="#">Pencairan Dana</a></li>
+                             <li class="charity-list"><a href="dashboard-profil">Edit Profil</a></li>
+                             <li class="charity-list"><a href="dashboard-verifikasi">Verifikasi</a></li>
+                             <li class="charity-list m-b-100"><a href="dashboard-password">Ubah Password</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-10 charity-profil-bio">
+                        <form method="post" action="dashboard-pencairan">
+                            <div class="row charity-profil-text p-t-40">
+                                <div class="widget_title_b m-t-10"><b>Nama Proyek</b></div>
+                                <div class="col-md-8 charity-profil-input" style="width: 100%;">
+                                <select th:name="proyek" style="width: 100%">
+                                <option th:each="proyek, iterStat:${listproyek}"
+				                th:value="${proyek.id}" th:text="${proyek.namaProyek}">
+               					</option>
+                                </select></div>
+                            </div>
+                            <div class="row charity-profil-text m-t-10">
+                                <div class="col-md-3 p-l-30 m-r-10"><b>Nama Pencair</b></div>
+                                <div class="col-md-8 charity-profil-input" style="width: 100%;">
+                                <input type="text" name="namaPencair" style="width: 100%;"/></div>
+                            </div>
+                            <div class="row charity-profil-text">
+                                <div class="col-md-3 p-l-30 m-r-10"><b>No Rekening</b></div>
+                                <div class="col-md-8 charity-profil-input" style="width: 100%;">
+                                <input type="text" name="noRekening" style="width: 100%;"/></div>
+                            </div>
+                            <div class="row charity-profil-text">
+                                <div class="col-md-3 p-l-30 m-r-10"><b>Jumlah Dana</b></div>
+                                <div class="col-md-8 charity-profil-input">
+                                <input type="text" name="jumlahDana" style="width: 100%;"/></div>
+                            </div>
+                            <div class="charity-btn-profil">
+                                <button class="charity-btn-profil-save" type="submit">
+                                <b><font color="black">Cairkan</font></b></button>
+                            </div>
+                        </form>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+
+
+  <!-- Footer -->
+	    <footer th:replace="footer::foot"></footer>
+    <!-- Footer -->
+    
+    <!-- Search Modal -->
+	    <searching th:replace="modal::search"></searching>
+    <!-- jQuery -->
+	    <manyscript th:replace="script::ms"></manyscript>
+		<script13 th:replace="script::loader"></script13>	
+	</div>
+</body>
+
+
+<!-- Mirrored from ritetags.com/html/charity/event-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:15:53 GMT -->
+</html>

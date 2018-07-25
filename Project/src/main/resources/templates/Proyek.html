@@ -1,0 +1,162 @@
+<!doctype html>
+<html xmlns:th="http://thymeleaf.org">
+
+
+<head>
+
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Proyek</title>
+
+<!--<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+      
+    <script src="script/slick.slider.min.js"></script>
+    <script src="script/progressbar.js"></script>
+    <script src="script/fancybox.min.js"></script>
+    <script src="script/jquery.countdown.min.js"></script>
+   
+    <script src="script/jquery.jplayer.js"></script>
+    <script src="script/jplayer.playlist.js"></script>
+ -->
+	<!-- CSS -->	
+    <css th:replace="link::header-css"></css>
+    <date th:replace="link::date"></date>
+    <!-- CSS -->
+        
+</head>
+
+<body class="home">
+    <!-- Header -->
+    <header id="charity-header" class="charity-header-one">
+    <!-- Header -->
+	    <!-- Main Header -->
+	        <setelahLogin th:replace="nav::nav2"></setelahLogin>
+   		<!-- Main Header -->
+	</header>
+    <!-- Header -->
+
+    <!-- Banner -->
+    <div class="charity-subheader">
+        <span class="black-transparent"></span>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Proyek</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner -->
+
+    <!-- Content -->
+        <div class="charity-main-section">
+            <div class="container">
+                <div class="row charity-login-wrap m-l-50 m-r-50">
+                    <div class="col-md-12 charity-login">
+                        <form method="post" th:action="@{dashboard-proyek}" enctype="multipart/form-data">
+                            <div class="row charity-profil-text p-t-40">
+                                <div class="widget_title_b m-t-10"><b>Judul Proyek</b></div>
+                                <div class="col-md-8 charity-profil-input">
+                                <input type="text" name="namaProyek" style="width: 100%;" required /></div>
+                            </div>
+                            <div class="row charity-profil-text">
+                                <div class="widget_title_b m-t-10"><b>Target Dana</b></div>
+                                <div class="col-md-8 charity-profil-input">
+                                <input type="text" name="targetDana" style="width: 100%;" required/></div>
+                            </div>
+                            <div class="row charity-profil-text">
+                                <div class="widget_title_b m-t-10"><b>Tanggal Berakhir</b></div>
+                                <div class="col-md-8 charity-profil-input">
+                                <input type="text" id="datepicker" name="tanggalBerakhir" style="width: 100%;" required></div>
+                            </div>
+                            <div class="row charity-profil-text">
+                                <div class="widget_title_b m-t-10"><b>Link Proyek</b></div>
+                                <div class="col-md-8 charity-profil-input">
+                                <input type="text" name="link" style="width: 100%;" required/></div>
+                            </div>
+                             <div class="row charity-profil-text">
+                                <div class="widget_title_b m-t-10"><b>Kategori</b></div>
+                                <div class="col-md-8 charity-profil-input">
+                                <select th:name="kategori" style="width: 100%">
+                                <option th:each="kategori, iterStat:${listkategori}"
+				                th:value="${kategori.id}" th:text="${kategori.namaKategori}">
+               					</option>
+                                </select></div>
+                            </div>
+                             <div class="row charity-profil-text">
+                                <div class="widget_title_b m-t-10"><b>Lokasi</b></div>
+                                <div class="col-md-8 charity-profil-input"><select th:name="wilayah" style="width: 100%">
+                                <option th:each="wilayah, iterStat:${listwilayah}"
+				   	            th:value="${wilayah.id}" th:text="${wilayah.namaWilayah}">
+				                </option>
+
+                                </select></div>
+                            </div> 
+                            <div class="row charity-profil-text">
+                                <div class="widget_title_b m-t-10"><b>Foto Utama Proyek</b></div>
+                                <div class="col-md-8 charity-proyek-create">
+	                                    <label for="file-input" >
+											<img id="Tfoto" src="#" alt="" class="imgproyek"/>                                   
+										</label> 
+										<div class="middle">                                  
+	                                    	<span>Klik Untuk Menambahkan Gambar</span>
+	                                    </div>
+	                                    <input id="file-input" onchange="TampilFoto();" type="file" name="foto" accept="image/*" required/>
+                                </div>
+                            </div>
+							<div class="row charity-profil-text">
+                                <div class="widget_title_b m-t-10"><b>Foto Tambahan Proyek</b></div>
+                                <div class="col-md-8 charity-profil-input">
+                                <input type="file" name="fototambahan" accept="image/*"  style="width: 100%;" multiple/></div>
+                            </div>
+                            <div class="row charity-profil-text">
+                                <div class="widget_title_b m-t-10"><b>Video Proyek</b></div>
+                                <div class="col-md-8 charity-profil-input">
+                                <input type="text" name="linkVideo" style="width: 100%;" id="url" onChange="ValidURL();" required/></div>
+                            </div>
+                            <div class="row charity-profil-text">
+                                <div class="widget_title_b m-t-10"><b>Deskripsi Singkat</b></div>
+                                <div class="col-md-8 charity-profil-input">
+                                <textarea name="deskripsiSingkat" id="txtEditor" style="width: 100%; height:100px;" required></textarea></div>
+                            </div>
+                            <div class="row charity-profil-text">
+                                <div class="widget_title_b m-t-10"><b>Deskripsi Lengkap</b></div>
+                                <div class="col-md-8 charity-profil-input">
+                                <textarea name="deskripsiLengkap" id="txtEditor1" onkeydown="InsertBreak(event);"
+                                rows="15" cols="50" style="width: 100%; height:300px;" required></textarea></div>
+                            	</br>
+                            </div>                            
+                            <div class="charity-btn-profil">
+                                <button class="charity-btn-profil-save" type="submit" onclick="ValidURL();"><b>Save</b></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Content -->
+    <!-- Footer -->
+    <footer th:replace="footer::foot"></footer>
+    <!-- Footer -->
+    
+    <!-- Search Modal -->
+    <searching th:replace="modal::search"></searching>
+    <!-- jQuery -->
+    <manyscript th:replace="script::ms"></manyscript>
+
+	<script2 th:replace="script::s2"></script2>
+	<script3 th:replace="script::s3"></script3>
+	<script4 th:replace="script::s4"></script4>
+	<script10 th:replace="script::date"></script10>	
+	
+</body>
+
+
+<!-- Mirrored from ritetags.com/html/charity/event-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:15:53 GMT -->
+</html>

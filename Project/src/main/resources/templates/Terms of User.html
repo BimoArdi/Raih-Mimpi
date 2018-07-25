@@ -1,0 +1,174 @@
+<!doctype html>
+<html xmlns:th="http://thymeleaf.org">
+
+
+<head>
+
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Diferensia Foundation Terms of User</title>
+
+    <!-- CSS -->
+    <css th:replace="link::header-css"></css>
+    <!-- CSS -->
+</head>
+
+<body class="home">
+    <!-- Header -->
+    <header id="charity-header" class="charity-header-one">
+    <!-- Header -->
+	    <!-- Main Header -->
+		<div th:if="${penggunaAktif} == null">
+			<belumLogin th:replace="nav::nav1"></belumLogin>
+		</div>
+		<div th:if="${penggunaAktif} != null">
+	        <setelahLogin th:replace="nav::nav2"></setelahLogin>
+	    </div>    	    
+   		<!-- Main Header -->
+	</header>
+    <!-- Header -->
+
+    <!-- Banner -->
+    <div class="charity-subheader">
+        <span class="black-transparent"></span>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner -->
+
+    <!-- Content -->
+        <div class="charity-main-section">
+            <div class="container">
+                <div class="row charity-login-wrap m-l-200 m-r-200">
+                    <div class="col-md-12 charity-login p-b-50">
+                        <div class="widget_title m-t-10"><h2>Terms of User</h2></div>
+                        <div>1. bla bla bla bla bla bla bla bla</div>
+                        <div>2. bla bla bla bla bla bla bla bla</div>
+                        <div>3. bla bla bla bla bla bla bla bla</div>
+                        <div>4. bla bla bla bla bla bla bla bla</div>
+                    	<div class="charity-btn-profil">
+		                	<a href="Login.html"><button class="charity-btn-profil-save">OK</button></a>
+	    	        	</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Content -->
+
+    <!-- Footer -->
+    <footer id="charity-footer" class="charity-footer-one">
+        <!-- Footer Widget -->
+        <div class="charity-footer-widget">
+            <div class="container">
+                <div class="row">
+                    <aside class="col-md-4 widget widget_usefull_links">
+                        <div class="charity-footer-title"> <h2>Quick Links</h2> </div>
+                        <ul>
+                            <li><a href="#">Causes</a></li>
+                            <li><a href="#">Donors</a></li>
+                            <li><a href="#">Blogs</a></li>
+                            <li><a href="#">Latest News</a></li>
+                            <li><a href="#">Testimonials</a></li>
+                            <li><a href="#">Volunteers</a></li>
+                            <li><a href="#">Gallery</a></li>
+                            <li><a href="#">Contact us</a></li>
+                            <li><a href="#">Newsletter</a></li>
+                            <li><a href="#">Events</a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-md-4 widget widget_recent_news">
+                        <div class="charity-footer-title"> <h2>Recent News</h2> </div>
+                        <ul>
+                            <li>
+                                <figure><a href="#"><img src="extra-images/recent-news-widget-1.jpg" alt=""></a></figure>
+                                <div class="widget_recent_news_text">
+                                    <h6><a href="#">Praesent sit amet tellus sed qum biben dum faucus</a></h6>
+                                    <span>22 Sept, 2016</span>
+                                </div>
+                            </li>
+                            <li>
+                                <figure><a href="#"><img src="extra-images/recent-news-widget-2.jpg" alt=""></a></figure>
+                                <div class="widget_recent_news_text">
+                                    <h6><a href="#">Morbi pulvinar faucibus urna, sit amet euisd nulla.</a></h6>
+                                    <span>22 Sept, 2016</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </aside>
+                    <aside class="col-md-4 widget widget_gallery">
+                        <div class="charity-footer-title"> <h2>Our Gallery</h2> </div>
+                        <ul>
+                            <li><a data-fancybox="gallery" href="extra-images/widget-gallery-1.jpg"><img src="extra-images/widget-gallery-1.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/widget-gallery-2.jpg"><img src="extra-images/widget-gallery-2.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/widget-gallery-3.jpg"><img src="extra-images/widget-gallery-3.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/widget-gallery-4.jpg"><img src="extra-images/widget-gallery-4.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/widget-gallery-5.jpg"><img src="extra-images/widget-gallery-5.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/widget-gallery-6.jpg"><img src="extra-images/widget-gallery-6.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/widget-gallery-7.jpg"><img src="extra-images/widget-gallery-7.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/widget-gallery-8.jpg"><img src="extra-images/widget-gallery-8.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                        </ul>
+                    </aside>
+                </div>
+                <!-- CopyRight -->
+                <div class="charity-copyright">
+                    <a href="#" class="back-top charity-bgcolor"><i class="fa fa-angle-up"></i></a>
+                    <p>© 2018, All Right Reserved - by </p>
+                    <ul>
+                        <li><a href="404.html">Terms and conditions</a></li>
+                        <li><a href="404.html">Privacy policy</a></li>
+                    </ul>
+                </div>
+                <!-- CopyRight -->
+            </div>
+        </div>
+        <!-- Footer Widget -->
+
+    </footer>
+    <!-- Footer -->
+
+    <!-- Search Modal -->
+    <div class="modal fade searchmodal" id="searchModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <a href="#" class="charity-close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+                    <form>
+                        <input type="text" value="Type Your Keyword" onblur="if(this.value == '') { this.value ='Type Your Keyword'; }" onfocus="if(this.value =='Type Your Keyword') { this.value = ''; }">
+                        <input type="submit" value="">
+                        <i class="fa fa-search"></i>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <!-- jQuery -->
+    <script src="script/jquery.js"></script>
+    <script src="script/popper.min.js"></script>
+    <script src="script/bootstrap.min.js"></script>
+    <script src="script/slick.slider.min.js"></script>
+    <script src="script/progressbar.js"></script>
+    <script src="script/fancybox.min.js"></script>
+    <script src="script/jquery.countdown.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="script/jquery.jplayer.js"></script>
+    <script src="script/jplayer.playlist.js"></script>
+    <script src="script/functions.js"></script>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    
+</body>
+
+
+<!-- Mirrored from ritetags.com/html/charity/event-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:15:53 GMT -->
+</html>

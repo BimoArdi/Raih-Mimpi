@@ -1,0 +1,327 @@
+<!doctype html>
+<html xmlns:th="http://thymeleaf.org">
+
+
+<head>
+
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Diferensia Foundation</title>
+
+    <!-- CSS -->
+    <css th:replace="link::header-css"></css>
+    <!-- CSS -->
+</head>
+
+<body class="home">
+    <!-- Header -->
+    <header id="charity-header" class="charity-header-one">
+    <!-- Header -->
+	    <!-- Main Header -->
+		<div th:if="${penggunaAktif} == null">
+			<belumLogin th:replace="nav::nav1"></belumLogin>
+		</div>
+		<div th:if="${penggunaAktif} != null">
+	        <setelahLogin th:replace="nav::nav2"></setelahLogin>
+	    </div>    	    
+   		<!-- Main Header -->
+	</header>
+    
+
+    <!-- Banner -->
+    <div class="charity-subheader">
+        <span class="black-transparent"></span>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Team Detail</h1>
+                    <p>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner -->
+
+    <!-- Content -->
+    <div class="charity-main-content">
+
+        <!-- Main Section -->
+        <div class="charity-main-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="charity-team-warp">
+                            <figure><img src="extra-images/team-detail-img.png" alt=""></figure>
+                            <h3>Julai Martyn</h3>
+                            <span>Co-Director</span>
+                            <p>Penjelasan Bagian . </p>
+                            <div class="charity-team-contact">
+                                <ul class="chaity-contact-info">
+                                    <li>
+                                        <h6>Phone:</h6>
+                                        <span>+123 45 678</span>
+                                    </li>
+                                    <li>
+                                        <h6>Email:</h6>
+                                        <a href="mailto:name@email.com">info@example.com</a>
+                                    </li>
+                                </ul>
+                                <div class="charity-blog-social">
+                                 <ul>
+                                    <li><a href="https://www.facebook.com/" class="fab fa-facebook"></a></li>
+                                    <li><a href="https://twitter.com/login" class="fab fa-twitter"></a></li>
+                                    <li><a href="https://www.linkedin.com/uas/login" class="fab fa-linkedin"></a></li>
+                                    <li><a href="https://www.youtube.com/" class="fab fa-youtube"></a></li>
+                                    <li><a href="https://vine.co/" class="fab fa-vine"></a></li>
+                                 </ul>
+                              </div>
+                            </div>
+                            <p>Resmi dicanangkan awal 2014, Jaminan Kesehatan Nasional sistemnya menggunakan sistem asuransi. Artinya seluruh warga Indonesia nantinya wajib menyisihkan sebagian kecil uangnya untuk jaminan kesehatan di masa depan. Masyarakat miskin yang tidak mampu membayar iuran akan ditanggung pemerintah sebagai PBI (Penerima Bantuan Iuran). JKN dan BPJS itu berbeda. Karena JKN adalah nama program, sedangkan BPJS merupakan badan penyelenggaranya yang kinerjanya diawasi oleh DJSN (Dewan Jaminan Sosial Nasional). </p>
+                            <blockquote>Resmi dicanangkan awal 2014, Jaminan Kesehatan Nasional sistemnya menggunakan sistem asuransi. Artinya seluruh warga Indonesia nantinya wajib menyisihkan sebagian kecil uangnya untuk jaminan kesehatan di masa depan. Masyarakat miskin yang tidak mampu membayar iuran akan ditanggung pemerintah sebagai PBI (Penerima Bantuan Iuran). JKN dan BPJS itu berbeda. Karena JKN adalah nama program, sedangkan BPJS merupakan badan penyelenggaranya yang kinerjanya diawasi oleh DJSN (Dewan Jaminan Sosial Nasional).</blockquote>
+                            <p>Resmi dicanangkan awal 2014, Jaminan Kesehatan Nasional sistemnya menggunakan sistem asuransi. Artinya seluruh warga Indonesia nantinya wajib menyisihkan sebagian kecil uangnya untuk jaminan kesehatan di masa depan. Masyarakat miskin yang tidak mampu membayar iuran akan ditanggung pemerintah sebagai PBI (Penerima Bantuan Iuran). JKN dan BPJS itu berbeda. Karena JKN adalah nama program, sedangkan BPJS merupakan badan penyelenggaranya yang kinerjanya diawasi oleh DJSN (Dewan Jaminan Sosial Nasional).</p>
+                        </div>
+                        <!--// company-timeline \\-->
+                        <div class="charity-team-timeline">
+                          <div class="widget_title"><h2>We Need Your Help</h2></div>
+                          <ul>
+                             <li>
+                                <div class="charity-image">
+                                   <i class="icon-users-group"></i>
+                                   <span></span>
+                                </div>
+                                <div class="charity-team-timeline-text">
+                                   <h6>We want to help as many as we can</h6>
+                                   <p>Ide usaha merupakan hal terpenting sebelum memulai suatu usaha, rasanya sangat mustahil kita memulai usaha tanpa ada ide usaha sebelumnya. Mengapa ide usaha menjadi begitu penting, ini di karenakan usaha jika di awali dengan ide yang baik serta memandang jauh ke depan akan menghasilkan usaha dengan kualitas yang prima. Lalu yang menjadi pertanyaan terbesar, bagaimana kita menentukan ide usaha?</p>
+                                </div>
+                             </li>
+                             <li>
+                                <div class="charity-image">
+                                   <i class="icon-donation"></i>
+                                   <span></span>
+                                </div>
+                                <div class="charity-team-timeline-text">
+                                   <h6>We want to help as many as we can</h6>
+                                   <p>Ide usaha merupakan hal terpenting sebelum memulai suatu usaha, rasanya sangat mustahil kita memulai usaha tanpa ada ide usaha sebelumnya. Mengapa ide usaha menjadi begitu penting, ini di karenakan usaha jika di awali dengan ide yang baik serta memandang jauh ke depan akan menghasilkan usaha dengan kualitas yang prima. Lalu yang menjadi pertanyaan terbesar, bagaimana kita menentukan ide usaha</p>
+                                </div>
+                             </li>
+                             <li>
+                                <div class="charity-image">
+                                   <i class="icon-books-stack-of-three"></i>
+                                   <span></span>
+                                </div>
+                                <div class="charity-team-timeline-text">
+                                   <h6>We want to help as many as we can</h6>
+                                   <p>Ide usaha merupakan hal terpenting sebelum memulai suatu usaha, rasanya sangat mustahil kita memulai usaha tanpa ada ide usaha sebelumnya. Mengapa ide usaha menjadi begitu penting, ini di karenakan usaha jika di awali dengan ide yang baik serta memandang jauh ke depan akan menghasilkan usaha dengan kualitas yang prima. Lalu yang menjadi pertanyaan terbesar, bagaimana kita menentukan ide usaha  </p>
+                                </div>
+                             </li>
+                             <li>
+                                <div class="charity-image">
+                                   <i class="icon-heart"></i>
+                                   <span></span>
+                                </div>
+                                <div class="charity-team-timeline-text">
+                                   <h6>We want to help as many as we can</h6>
+                                   <p>Ide usaha merupakan hal terpenting sebelum memulai suatu usaha, rasanya sangat mustahil kita memulai usaha tanpa ada ide usaha sebelumnya. Mengapa ide usaha menjadi begitu penting, ini di karenakan usaha jika di awali dengan ide yang baik serta memandang jauh ke depan akan menghasilkan usaha dengan kualitas yang prima. Lalu yang menjadi pertanyaan terbesar, bagaimana kita menentukan ide usaha?</p>
+                                </div>
+                             </li>
+                          </ul>
+                        </div>
+                        <!--// company-timeline \\-->
+                        
+                        <!--// volunteer-form \\-->
+                        <div class="charity-team-contactus">
+                            <ul>
+                                <li>
+                                    <i class="fa fa-envelope"></i>
+                                    <h5>Email Us At:</h5>
+                                    <a href="mailto:name@email.com">info@example.com</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-phone"></i>
+                                    <h5>Call Us At:</h5>
+                                    <span>+(091)61 3146 8728</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <aside class="col-md-3">
+                        
+                        <!-- Widget Search -->
+                        <div class="widget widget_search">
+                            <div class="widget_title"><h2>Search Here</h2></div>
+                            <form>
+                                <input type="text" placeholder="Search Here">
+                                <input type="submit" value="">
+                                <i class="fa fa-search"></i>
+                            </form>
+                        </div>
+                        <!-- Widget Search -->
+                        <!-- Widget Archive -->
+                        <div class="widget widget_archive">
+                            <div class="widget_title"><h2>Calender Archives</h2></div>
+                            <ul>
+                                <li><a href="404.html">13 August 2017</a></li>
+                                <li><a href="404.html">28 September 2017</a></li>
+                                <li><a href="404.html">19 May 2017</a></li>
+                                <li><a href="404.html">03 March 2017</a></li>
+                                <li><a href="404.html">28 February 2017</a></li>
+                            </ul>
+                        </div>
+                        <!-- Widget Archive -->
+                        <!-- Widget Event -->
+                        <div class="widget widget_events">
+                            <div class="widget_title"><h2>Upcoming Events</h2></div>
+                            <ul>
+                                <li>
+                                    <time datetime="2008-02-14 20:00">22 Aug</time>
+                                    <div class="charity-events">
+                                       <h6><a href="event-detail.html">Kesehatan</a></h6>
+                                       <a href="event-detail.html"><i class="fa fa-map-marker-alt"></i>Jakarta Selatan </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <time datetime="2008-02-14 20:00">13 Sep</time>
+                                    <div class="charity-events">
+                                       <h6><a href="event-detail.html">Masyarakat</a></h6>
+                                       <a href="event-detail.html"><i class="fa fa-map-marker-alt"></i> Jakarta Selatan</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <time datetime="2008-02-14 20:00">07 Dec</time>
+                                    <div class="charity-events">
+                                       <h6><a href="event-detail.html">Pendidikan</a></h6>
+                                       <a href="event-detail.html"><i class="fa fa-map-marker-alt"></i> Jakarta Selatan</a>
+                                    </div>
+                                </li>
+                             </ul>
+                        </div>
+                        <!-- Widget Event -->
+                        <!-- Widget Gallery -->
+                        <div class="widget widget_gallery">
+                            <div class="widget_title"> <h2>Our Gallery</h2> </div>
+                            <ul>
+                                <li><a data-fancybox="gallery" href="extra-images/widget-gallery-1.jpg"><img src="extra-images/widget-gallery-1.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                                <li><a data-fancybox="gallery" href="extra-images/widget-gallery-2.jpg"><img src="extra-images/widget-gallery-2.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                                <li><a data-fancybox="gallery" href="extra-images/widget-gallery-3.jpg"><img src="extra-images/widget-gallery-3.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                                <li><a data-fancybox="gallery" href="extra-images/widget-gallery-4.jpg"><img src="extra-images/widget-gallery-4.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                                <li><a data-fancybox="gallery" href="extra-images/widget-gallery-5.jpg"><img src="extra-images/widget-gallery-5.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                                <li><a data-fancybox="gallery" href="extra-images/widget-gallery-6.jpg"><img src="extra-images/widget-gallery-6.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                                <li><a data-fancybox="gallery" href="extra-images/widget-gallery-7.jpg"><img src="extra-images/widget-gallery-7.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                                <li><a data-fancybox="gallery" href="extra-images/widget-gallery-8.jpg"><img src="extra-images/widget-gallery-8.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                                <li><a data-fancybox="gallery" href="extra-images/widget-gallery-6.jpg"><img src="extra-images/widget-gallery-6.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            </ul>
+                        </div>
+                        <!-- Widget Gallery -->
+
+                    </aside>
+                </div>
+            </div>
+        </div>
+        <!-- Main Section -->
+
+    </div>
+    <!-- Content -->
+ <!-- Footer -->
+    <footer id="charity-footer" class="charity-footer-one">
+        <!-- Footer Widget -->
+        <div class="charity-footer-widget">
+            <div class="container">
+                <div class="row">
+                    <aside class="col-md-4 widget widget_usefull_links">
+                        <div class="charity-footer-title"> <h2>Quick Links</h2> </div>
+                        <ul>
+                            <li><a href="#">Kategori</a></li>
+                            <li><a href="#">Proyek</a></li>
+                            <li><a href="#">Latest News</a></li>
+                            <li><a href="#">Seponsor</a></li>
+                            <li><a href="#">Contact us</a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-md-4 widget widget_recent_news">
+                        <div class="charity-footer-title"> <h2>Recent News</h2> </div>
+                        <ul>
+                            <li>
+                                <figure><a href="#"><img src="extra-images/kesehatan.jpg" alt=""></a></figure>
+                                <div class="widget_recent_news_text">
+                                    <h6><a href="#">Kesehatan</a></h6>
+                                    <span>22 Sept, 2018</span>
+                                </div>
+                            </li>
+                            <li>
+                                <figure><a href="#"><img src="extra-images/pendidikan.jpg" alt=""></a></figure>
+                                <div class="widget_recent_news_text">
+                                    <h6><a href="#">Pendidikan.</a></h6>
+                                    <span>20 Sept, 2018</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </aside>
+                    <aside class="col-md-4 widget widget_gallery">
+                        <div class="charity-footer-title"> <h2>Our Gallery</h2> </div>
+                        <ul>
+                            <li><a data-fancybox="gallery" href="extra-images/pendidikan.jpg"><img src="extra-images/pendidikan.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/kesehatan.jpg"><img src="extra-images/kesehatan.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/masyarakat.jpg"><img src="extra-images/masyarakat.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/pendidikan.jpg"><img src="extra-images/pendidikan.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/kesehatan.jpg"><img src="extra-images/kesehatan.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/kesehatan2.jpg"><img src="extra-images/kesehatan2.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/kesehatan3.jpg"><img src="extra-images/kesehatan3.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/pendidikan.jpg"><img src="extra-images/pendidikan.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                        </ul>
+                    </aside>
+                </div>
+                <!-- CopyRight -->
+                <div class="charity-copyright">
+                    <a href="#" class="back-top bgcolor"><i class="fa fa-angle-up"></i></a>
+                    <p>© 2018, All Right Reserved - Diferensia</p>
+                    <ul>
+                        <li><a href="404.html">Terms and conditions</a></li>
+                        <li><a href="404.html">Privacy policy</a></li>
+                    </ul>
+                </div>
+                <!-- CopyRight -->
+            </div>
+        </div>
+        <!-- Footer Widget -->
+
+    </footer>
+    <!-- Footer -->
+
+    <!-- Search Modal -->
+    <div class="modal fade searchmodal" id="searchModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <a href="#" class="charity-close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+                    <form>
+                        <input type="text" value="Type Your Keyword" onblur="if(this.value == '') { this.value ='Type Your Keyword'; }" onfocus="if(this.value =='Type Your Keyword') { this.value = ''; }">
+                        <input type="submit" value="">
+                        <i class="fa fa-search"></i>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <!-- jQuery -->
+    <script src="script/jquery.js"></script>
+    <script src="script/popper.min.js"></script>
+    <script src="script/bootstrap.min.js"></script>
+    <script src="script/slick.slider.min.js"></script>
+    <script src="script/progressbar.js"></script>
+    <script src="script/fancybox.min.js"></script>
+    <script src="script/jquery.countdown.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="script/jquery.jplayer.js"></script>
+    <script src="script/jplayer.playlist.js"></script>
+    <script src="script/functions.js"></script>
+</body>
+
+
+<!-- Mirrored from ritetags.com/html/charity/team-detail.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:17:28 GMT -->
+</html>

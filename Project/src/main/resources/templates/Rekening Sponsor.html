@@ -1,0 +1,75 @@
+<!doctype html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Raih Mimpi Konfirmasi Akun</title>
+
+    <!-- CSS -->
+    <css th:replace="link::header-css"></css>
+    <!-- CSS -->
+</head>
+
+<body onload="myFunction()" style="margin:0;" class="home">
+	<div id="loader"></div>
+	<div style="display:none;" id="myDiv" class="animate-bottom">
+    <!-- Header -->
+    <header id="charity-header" class="charity-header-one">
+    <!-- Header -->
+	    <!-- Main Header -->
+			<belumLogin th:replace="nav::nav1"></belumLogin>
+   		<!-- Main Header -->
+    </header>
+    <!-- Header -->
+
+    <!-- Banner -->
+    <div class="charity-subheader">
+        <span class="black-transparent"></span>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner -->
+
+    <!-- Content -->
+        <div class="charity-main-section">
+            <div class="container">
+                <div class="row charity-login-wrap m-l-200 m-r-200">
+                    <div class="col-md-12 charity-login">
+                        <div class="widget_title m-t-10"><h2>Langkah-Langkah Pembayaran Sponsor</h2></div>
+                           	<div><span>1. Pembayaran hanya bisa dilakukan melalui bank yang Anda pilih, dengan nomor rekening:</span><span th:text="${sponsor.bank.noRekening}"></span></div>
+							<div><span>2. Pembayaran harus dilakukan dalam durasi waktu 24 jam, jika dalam waktu 24 jam tidak melakukan pembayaran maka sponsor akan dianggap batal</span></div>
+							<div><span>3. Nominal pembayaran harus sesuai dengan dana yang telah ditentukan yaitu sebesar: </span><span th:text="${'Rp ' + #numbers.formatDecimal(sponsor.jumlahSponsor, 0, 'COMMA', 2, 'POINT')}"></span></div>
+							<div><span>4. Konfirmasi pembayaran harus dilakukan dengan mengirimkan bukti pembayaran ke email: raihmimpi@example.com</span></div>
+							<div class="p-b-30"><span>5. Jika tidak melakukan konfirmasi pembayaran, maka sponsor akan dianggap batal</span></div>							                           
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Content -->
+
+	    <!-- Footer -->
+	    <footer th:replace="footer::foot"></footer>
+   		<!-- Footer -->
+    </div>
+    <!-- jQuery -->
+	    <manyscript th:replace="script::ms"></manyscript>
+		<script13 th:replace="script::loader"></script13>	
+	    <script5 th:replace="script::pass"></script5>
+		<script7 th:replace="script::autocomplete"></script7>
+	
+	
+
+</body>
+
+
+<!-- Mirrored from ritetags.com/html/charity/event-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:15:53 GMT -->
+</html>

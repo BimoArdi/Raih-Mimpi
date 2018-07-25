@@ -1,0 +1,196 @@
+<!doctype html>
+<html xmlns:th="http://thymeleaf.org">
+
+
+<head>
+
+    <!-- meta tags -->
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Diferensia Foundation Login</title>
+
+    <!-- CSS -->
+    <css th:replace="link::header-css"></css>
+    <!-- CSS -->
+</head>
+
+<body onload="myFunction()" style="margin:0;" class="home">
+	<div id="loader"></div>
+	<div style="display:none;" id="myDiv" class="animate-bottom">
+    <!-- Header -->
+    <header id="charity-header" class="charity-header-one">
+    <!-- Header -->
+	    <!-- Main Header -->
+			<belumLogin th:replace="nav::nav1"></belumLogin>
+   		<!-- Main Header -->
+    </header>
+    <!-- Header -->
+
+    <!-- Banner -->
+    <div class="charity-subheader">
+        <span class="black-transparent"></span>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Login</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner -->
+
+    <!-- Content -->
+        <div class="charity-main-section">
+            <div class="container">
+                <div class="row charity-login-wrap">
+                    <div class="col-md-6 charity-login">
+                        <div class="widget_title m-t-10"><h2>Sign In</h2></div>
+                            <p>Welcome back, Sign in your account</p>
+                        <form method="post" class="m-b-30" th:action="@{/}">
+                            <div>
+                                <label class="m-t-15"><b>USERNAME</b></label>
+                                <input class="m-b-10" placeholder="username" name="username" type="text" value="" data-default="Name*" size="50" required>
+                            </div>
+                            <div>
+                                <label class="m-t-15"><b>PASSWORD</b></label>
+                                <input placeholder="password" name="password" type="password" value="" data-default="Name*" size="50" required>
+                            </div>
+                            <div class="charity-login-forget m-t-10" >
+                                <a href="forget-password">forgotten password</a>
+                            </div>
+                            <div class="charity-btn-profil m-l-150">
+                                <button class="charity-btn-profil-save" type="submit"><b>Sign In</b></button>
+                            </div>                        
+                        </form>
+                        <span class="charity-or"><strong>OR</strong></span> 
+                    </div>
+                    <div class="col-md-6 charity-register p-l-50">
+                        <div class="widget_title m-t-10"><h2>Create New Account</h2></div>
+                             <p>Let's Join Us!!</p>
+                        <form method="post" class="m-b-30" th:action="verifikasiakun">
+                            <div>
+                                <label class="m-t-15"><b>USERNAME</b></label>
+                                <input id="username1" class="m-b-10" placeholder="username" name="username1" type="text" size="50" required/>
+                            	<div id="validateuser"></div>
+                            </div>
+                            <div>
+                                <label class="m-t-15"><b>EMAIL</b></label>
+                                <input class="m-b-10" placeholder="email" name="email1" type="email" size="50" required/>
+                            </div>
+                            <!-- <div data-tip="Password must contain 8 charachters, including english lower/upper case letter (a-z) and at least one number(0-9)">
+                                <label class="m-t-15"><b>PASSWORD</b></label>
+                                <input placeholder="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="password1" id="password" type="password" size="50" required/>
+                            </div>
+                            <div>
+                                <label class="m-t-15"><b>RETYPE PASSWORD</b></label>
+                                <input type="password" title="must same with password" name="repassword" id="repassword" placeholder="repassword" onChange="validatePassword();" size="50" required/>
+                            </div>
+                            --> <div>
+                                <input type="checkbox" class="m-t-10" name="term" required/>
+                                <span>
+                                     I agree to the
+                                     <a href="terms-of-user"> Terms of User</a>
+                                </span>
+                            </div>
+                            <div class="charity-btn-profil m-l-150">
+                                <button id="myBtn" class="charity-btn-profil-save" type="submit"><b>Sign Up</b></button>
+                            </div>                        
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Content -->
+  <!-- Footer -->
+	    <!-- Footer -->
+    <footer th:replace="footer::foot"></footer>
+    <!-- Footer -->
+    
+    <!-- Search Modal -->
+    <searching th:replace="modal::search"></searching>
+    <!-- jQuery -->
+    <manyscript th:replace="script::ms"></manyscript>
+
+    <script5 th:replace="script::pass"></script5>
+    
+    <script>
+        jQuery(document).ready(function($) {
+            $("#username1").keyup(function(){
+                $.get("API/isusernameexist?username="+$(this).val(),function(hasil){
+                    if (!hasil){
+                        $("#validateuser").text("username tersedia");
+                        document.getElementById("myBtn").disabled = false;		
+                    }else{
+                        $("#validateuser").text("Username telah terpakai")
+                        document.getElementById("myBtn").disabled = true;
+                    }
+                });
+            });
+            $("#search-form").submit(function(event) {
+
+                // Disble the search button
+                enableSearchButton(false);
+
+                // Prevent the form from submitting via the browser.
+                event.preventDefault();
+
+                searchViaAjax();
+
+            });
+
+        });
+
+        function searchViaAjax() {
+
+            var search = {}
+            search["username"] = $("#username").val();
+            search["email"] = $("#email").val();
+
+            $.ajax({
+                type : "KEYUP",
+                contentType : "application/json",
+                url : "${home}search/api/getSearchResult",
+                data : JSON.stringify(search),
+                dataType : 'json',
+                timeout : 100000,
+                success : function(data) {
+                    console.log("SUCCESS: ", data);
+                    display(data);
+                },
+                error : function(e) {
+                    console.log("ERROR: ", e);
+                    display(e);
+                },
+                done : function(e) {
+                    console.log("DONE");
+                    enableSearchButton(true);
+                }
+            });
+
+        }
+
+        function enableSearchButton(flag) {
+            $("#btn-search").prop("disabled", flag);
+        }
+
+        function display(data) {
+            var json = "<h4>Ajax Response</h4><pre>"
+                + JSON.stringify(data, null, 4) + "</pre>";
+            $('#feedback').html(json);
+        }
+    </script>
+	<script13 th:replace="script::loader"></script13>	
+	<script7 th:replace="script::autocomplete"></script7>
+	
+	</div>	
+</body>
+
+
+<!-- Mirrored from ritetags.com/html/charity/event-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:15:53 GMT -->
+</html>
+
+

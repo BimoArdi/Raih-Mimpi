@@ -1,0 +1,91 @@
+<!doctype html>
+<html xmlns:th="http://thymeleaf.org">
+
+
+<head>
+
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Diferensia Foundation</title>
+
+    <!-- CSS -->
+    <css th:replace="link::header-css"></css>
+
+</head>
+
+<body onload="myFunction()" style="margin:0;" class="home">
+	<div id="loader"></div>
+	<div style="display:none;" id="myDiv" class="animate-bottom">
+    <!-- Header -->
+    <header id="charity-header" class="charity-header-one">
+    <!-- Header -->
+	    <!-- Main Header -->
+		<div th:if="${penggunaAktif} == null">
+			<belumLogin th:replace="nav::nav1"></belumLogin>
+		</div>
+		<div th:if="${penggunaAktif} != null">
+	        <setelahLogin th:replace="nav::nav2"></setelahLogin>
+	    </div>    	    
+   		<!-- Main Header -->
+	</header>
+    <!-- Sub Header -->
+    
+    <div class="charity-subheader">
+        <span class="light-black-transparent"></span>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>404 Error</h1>
+                    <p>Belum Tersedia.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sub Header -->
+
+    <!-- Content -->
+    <div class="charity-main-content">
+        
+        <!-- Main Section -->
+        <div class="charity-main-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="error-page-wrap">
+                            <div class="error-page-inner">
+                                <h2>404 Error</h2>
+                                <span>oops page not found</span>
+                                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit Sed urna nibh fringilla fermentum at.</p>
+                                <a href="#" class="error-page-btn">Back To Home</a>
+                                <form>
+                                    <input type="text" placeholder="Enter your Keyword">
+                                    <input type="submit" value="">
+                                    <i class="fa fa-search"></i>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+    <!-- Footer -->
+    	<footer th:replace="footer::foot"></footer>
+    <!-- Footer -->
+    
+    <!-- Search Modal -->
+    	<searching th:replace="modal::search"></searching>
+    <!-- jQuery -->
+    	<manyscript th:replace="script::ms"></manyscript>
+		<script13 th:replace="script::loader"></script13>	
+	</div>
+</body>
+
+
+<!-- Mirrored from ritetags.com/html/charity/404.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:18:07 GMT -->
+</html>
