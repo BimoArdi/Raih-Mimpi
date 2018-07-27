@@ -862,7 +862,7 @@ a.menu-link { display: none; }
     float: left;
     width: 100%;
 }
-.charity-services ul li { list-style: none; margin-bottom: 40px; }
+.charity-services ul li { list-style: none; margin-bottom: 79px; }
 .charity-modren-services-wrap {
     background-color: #ffb607;
     padding: 50px 80px;
@@ -956,13 +956,44 @@ a.menu-link { display: none; }
 .charity-short-text { margin-bottom: 60px; }
 /* Simple Services */
 .charity-simple-services {
-    float: left;
     width: 100%;
 }
 .charity-simple-services i {
+    
+    width: 65px;
+    height: 65px;
+    border-radius: 100%;
+    border: 1px solid orange;
+    text-align: center;
+    font-size: 30px;
+    padding-top: 17px;
+    margin-top: 7px;
+    -webkit-transition: all 0.4s ease-in-out;
+       -moz-transition: all 0.4s ease-in-out;
+        -ms-transition: all 0.4s ease-in-out;
+         -o-transition: all 0.4s ease-in-out;
+            transition: all 0.4s ease-in-out;
+}
+
+.charity11{
+    text-align: center;
+}
+.charity111{
+	width: 100%;
+}
+.charity123{
+	border-radius: 100%;
+	border: 1px solid orange;
+	padding: 50px;
+	color: orange;
+	font-size: 75px;
+}
+
+
+.dives {
     float: left;
-    width: 67px;
-    height: 67px;
+    width: 65px;
+    height: 65px;
     border-radius: 100%;
     border: 1px solid orange;
     text-align: center;
@@ -982,6 +1013,7 @@ a.menu-link { display: none; }
     text-transform: uppercase;
     margin-bottom: 5px;
     font-weight: bold;
+    padding-top: 35px;
 }
 .charity-simple-services-text p {
     font-size: 13px;

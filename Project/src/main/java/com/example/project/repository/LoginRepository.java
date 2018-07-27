@@ -1,6 +1,8 @@
 package com.example.project.repository;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.example.project.model.Login;
@@ -9,8 +11,8 @@ import com.example.project.model.Login;
 public interface LoginRepository extends CrudRepository<Login,Long> {
 	Login findByUsernameAndPassword(String username,String password);
 	Login findByPassword(String password);
-	Login findByconfirmationToken(String confirmationToken);
-	Login findByEmail(String Email);
-	Login findByconfirmationTokenAndUsername(String confirmationToken, String username);	
-	Login findByUsername(String username);	
+	
+	@Query("select a.username from Login a where a.username =:username")
+	String findByUsername(@Param("username") String username);
+	
 }

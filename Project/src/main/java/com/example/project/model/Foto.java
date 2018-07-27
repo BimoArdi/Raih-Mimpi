@@ -25,7 +25,7 @@ public class Foto extends Additional implements Serializable {
 
     @Column(nullable = false) //ga boleh null
     private String namaFoto;
-    private byte[] foto;
+    private byte [] foto;
     private boolean utamaProyek;
     private boolean utamaProgresProyek;
     

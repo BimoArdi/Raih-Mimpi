@@ -16,12 +16,6 @@ public class SponsorServices implements SponsorDao {
 	@Autowired
 	SponsorRepository sr;
 	
-	@Autowired
-	PenggunaServices pgs;
-	
-	@Autowired
-	ProyekServices ps;
-	
 	@Override
 	public Sponsor getById(long id) {
 		return sr.findById(id).get();
@@ -34,10 +28,10 @@ public class SponsorServices implements SponsorDao {
 		return ls;
 	}
 	
-//	@Override
-//	public List<Sponsor> getSponsorById(Long id){
-//		return sr.findSponsorById(id);
-//	}
+	@Override
+	public List<Sponsor> getSponsorById(Long id){
+		return sr.findSponsorById(id);
+	}
 
 	@Override
 	public void saveOrUpdate(Sponsor s) {
@@ -46,28 +40,11 @@ public class SponsorServices implements SponsorDao {
 	
 	@Override
 	public List<Sponsor> getByProyek (long id){
-		return sr.findByProyek(ps.getById(id));
+		return sr.findByProyek(id);
 	}
 
 	@Override
-	public int getJumlahSponsor(long id) {
-		return sr.findSponsorbyProyek(id);
+	public double jumlahdana(long id) {
+		return sr.jumlahdana(id);
 	}
-	
-	@Override
-	public float getTotalSponsor(long id) {
-		return sr.findSumProyek(id);
-	}
-	
-	@Override
-	public int getTotalSponsor() {
-		return sr.findTotalSponsor();
-	}
-
-	@Override
-	public List<Sponsor> getByPengguna(long id) {
-		return sr.findByPengguna(pgs.getId(id));
-	}
-
-
 }

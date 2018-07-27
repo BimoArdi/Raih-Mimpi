@@ -1,26 +1,25 @@
 <!doctype html>
 <html xmlns:th="http://thymeleaf.org">
 
+
 <head>
-	
 
     <!-- meta tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Raih Mimpi</title>
-    <css th:replace="link::header-css"></css>
+    <title>Diferensia Foundation</title>
+
     <!-- CSS -->
+	<css th:replace="link::header-css"></css>
 </head>
 
-<body onload="myFunction()" style="margin:0;" class="home">
-	<div id="loader"></div>
-	<div style="display:none;" id="myDiv" class="animate-bottom">
+<body class="home">
     <!-- Header -->
-	    <header id="charity-header" class="charity-header-one">
-	    <!-- Header -->
-		        <!-- Main Header -->
+    <header id="charity-header" class="charity-header-one">
+    <!-- Header -->
+	    <!-- Main Header -->
 		<div th:if="${penggunaAktif} == null">
 			<belumLogin th:replace="nav::nav1"></belumLogin>
 		</div>
@@ -28,9 +27,9 @@
 	        <setelahLogin th:replace="nav::nav2"></setelahLogin>
 	    </div>    	    
    		<!-- Main Header -->
-    	</header>
-	    <!--Gambar-->
-	    <div class="charity-banner">
+	</header>
+
+<div class="charity-banner">
 	        <div class="charity-banner-layer">
 	            <span class="charity-banner-transparent"></span>
 	            <img src="extra-images/slide1.jpg" alt="">
@@ -127,56 +126,114 @@
 	       <div class="charity-main-section" >
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-12">
+                       <div class="col-md-12">
                             <div class="charity-services charity-simple-services">
                                 <ul class="row">
                                     <li class= "col-md-1"> 
                                     </li>
                                     <li class="col-md-2">
-                                        <i class="fas fa-book charity-color1"></i>
-                                        <div class="charity-simple-services-text">
-                                            <h2>Pendidikan</h2>
-                                            <p>Penjelasan Penjelasan </p>
-                                            <a href="#" class="charity-service-link1">Read More</a>
-                                        </div>
+                                        <i class="fas fa-book charity-color1">
+                                        	<div class="charity-simple-services-text">
+                                            <h2 style="text-align: center;">Pendidikan</h2>
+                                       </div>
+                                        </i>
                                     </li>
                                     <li class="col-md-2">
-                                        <i class="fas fa-heart charity-color1"></i>
-                                        <div class="charity-simple-services-text">
-                                            <h2>Masyarakat</h2>
-                                            <p>Penjelasan Penjelasan </p>
-                                            <a href="#" class="charity-service-link1">Read More</a>
-                                        </div>
+                                        <i class="fas fa-heart charity-color1">
+                                       		<div class="charity-simple-services-text">
+                                            	<h2 style="text-align: center;">Masyarakat</h2>
+                                       		</div>
+                                        </i>                                       
                                     </li>
                                     <li class="col-md-2">
-                                        <i class="fas fa-users charity-color1"></i>
-                                        <div class="charity-simple-services-text">
-                                            <h2>Ekonomi</h2>
-                                            <p>Penjelasan Penjelasan</p>
-                                            <a href="#" class="charity-service-link1">Read More</a>
-                                        </div>
+                                        <i class="fas fa-users charity-color1">
+                                        	<div class="charity-simple-services-text">
+                                            	<h2 style="text-align: center;">Ekonomi</h2>
+                                        	</div>
+                                        </i>
                                     </li>
                                     <li class="col-md-2">
-                                        <i class="fas fa-users charity-color1"></i>
-                                        <div class="charity-simple-services-text">
-                                            <h2>Sosial</h2>
-                                            <p>Penjelasan Penjelasan</p>
-                                            <a href="#" class="charity-service-link1">Read More</a>
-                                        </div>
+	                                    <div>
+	                                    	<i class="fas fa-users charity-color1">
+	                                        	<div class="charity-simple-services-text">
+	                                            <h2 style="text-align: center;">Sosial</h2>
+	                                        </div>
+	                                        </i>
+	                                    </div>
                                     </li>
                                     <li class="col-md-2">
-                                        <i class="fas fa-users charity-color1"></i>
-                                        <div class="charity-simple-services-text">
-                                            <h2>Lingkungan</h2>
-                                            <p>Penjelasan Penjelasan</p>
-                                            <a href="#" class="charity-service-link1">Read More</a>
+                                        <i class="fas fa-users charity-color1">
+                                        	<div class="charity-simple-services-text">
+                                            <h2 style="text-align: center;">Lingkungan</h2>
                                         </div>
+                                        </i>
                                     </li>
                                     <li class= "col-md-1"> 
                                     </li>
                                 </ul>
                             </div>
                         </div>
+                  <!--       <div class="col-md-1 charity111"></div>
+                        <div class="col-md-2 charity11">
+                        	<div class="charity111">
+                        		<div>
+                        			<i class="fas fa-users charity123"></i>
+                        		</div>
+                        		<div>
+                        			<h2>Lingkungan</h2>
+                        		</div>
+                        		
+                        	</div>
+                        </div>
+                        <div class="col-md-2 charity11">
+                        	<div class="charity111">
+                        		<div>
+                        			<i class="fas fa-users charity123"></i>
+                        		</div>
+                        		<div>
+                        			<h2>Lingkungan</h2>
+                        		</div>
+                        		
+                        	</div>
+                        	
+                        </div>
+                        <div class="col-md-2 charity11">
+                        	<div class="charity111">
+                        		<div>
+                        			<i class="fas fa-users charity123"></i>
+                        		</div>
+                        		<div>
+                        			<h2>Lingkungan</h2>
+                        		</div>
+                        		
+                        	</div>
+                        	
+                        </div>
+                        <div class="col-md-2 charity11">
+                        <div class="charity111">
+                        		<div>
+                        			<i class="fas fa-users charity123"></i>
+                        		</div>
+                        		<div>
+                        			<h2>Lingkungan</h2>
+                        		</div>
+                        		
+                        	</div>
+                        
+                        </div>
+                        <div class="col-md-2 charity11">
+                        <div class="charity111">
+                        		<div>
+                        			<i class="fas fa-users charity123"></i>
+                        		</div>
+                        		<div>
+                        			<h2>Lingkungan</h2>
+                        		</div>
+                        		
+                        	</div>
+                        
+                        </div>
+                        <div class="col-md-1 charity111"></div> -->
                     </div>
                  </div>
              </div>
@@ -283,20 +340,15 @@
 			             </div>
 			          </div>
 			       </div>
-				
 	    <!-- Footer -->
-		    <!-- Footer -->
-	    <footer th:replace="footer::foot"></footer>
-	    <!-- Footer -->
-	    
-	    <!-- Search Modal -->
-	    <searching th:replace="modal::search"></searching>
-	    <!-- jQuery -->
+    <footer th:replace="footer::foot"></footer>
+    <!-- Footer -->
+    
+    <!-- Search Modal -->
+    <searching th:replace="modal::search"></searching>
+    <!-- jQuery -->
 	    <manyscript th:replace="script::ms"></manyscript>
-		<script7 th:replace="script::autocomplete"></script7>
-		<script9 th:replace="script::ajaxauto"></script9>
-		<script13 th:replace="script::loader"></script13>	
-	</div>
+
 </body>
 
 

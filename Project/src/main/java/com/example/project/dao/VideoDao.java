@@ -8,6 +8,5 @@ public interface VideoDao {
 	public Video getById(long id);
 	public List<Video> getAll();
 	public void saveOrUpdate(Video vd);
-	public List<Video> getByProyek (long id);
-	public List<Video> getByProgresProyek (long id);
+
 }

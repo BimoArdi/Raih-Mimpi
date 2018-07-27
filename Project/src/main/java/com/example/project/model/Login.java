@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -38,7 +39,7 @@ public class Login extends Additional implements Serializable {
     @Column(length = 100, unique = true)
     private String email;
     
-    private String confirmationToken;
+    private boolean status;
 
     public Login() {
     	
@@ -48,10 +49,11 @@ public class Login extends Additional implements Serializable {
     @JoinColumn(name ="IdPeran",referencedColumnName = "id"  ,nullable = true)
     private Peran peran;
     
-    @ManyToOne
-    @JoinColumn(name = "idStatus", referencedColumnName = "id", nullable = true)
-    private Status status;
-
+    
+    @PrePersist
+    public void Status(){
+        status =false;
+    }
     
     @Override
     public int hashCode() {
@@ -110,15 +112,7 @@ public class Login extends Additional implements Serializable {
         this.password = password;
     }
 
-    public String getConfirmationToken() {
-		return confirmationToken;
-	}
-
-	public void setConfirmationToken(String confirmationToken) {
-		this.confirmationToken = confirmationToken;
-	}
-
-	public String getEmail() {
+    public String getEmail() {
         return email;
     }
 
@@ -126,20 +120,20 @@ public class Login extends Additional implements Serializable {
         this.email = email;
     }
 
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
 	public Peran getPeran() {
 		return peran;
 	}
 
 	public void setPeran(Peran peran) {
 		this.peran = peran;
-	}
-
-	public Status getStatus() {
-		return status;
-	}
-
-	public void setStatus(Status status) {
-		this.status = status;
 	}
 
     

@@ -9,6 +9,4 @@ public interface KomentarDao {
 	public List<Komentar> getAll();
 	public void saveOrUpdate(Komentar komentar);
 	public List<Komentar> getByProyek(long id);
-	public List<Komentar> getByProgresProyek(long id);
-
 }

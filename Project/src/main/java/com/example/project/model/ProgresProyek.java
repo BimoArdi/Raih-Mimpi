@@ -70,11 +70,10 @@ public class ProgresProyek extends Additional implements Serializable {
 		return tes;
 	}
     
-    @SuppressWarnings("null")
-    public List<Foto> getFotoTanpaUtamaProgresProyek(){
+    public List<Foto> getFotoTanpaUtama(){
     	List<Foto> all = null;
     	for (Foto f :this.foto) {
-    		if(f.isUtamaProgresProyek() == false & f.isUtamaProyek() == false & f.getProyek() == null) {
+    		if(f.isUtamaProgresProyek() == false) {
     			all.add(f);
     		}
     	}

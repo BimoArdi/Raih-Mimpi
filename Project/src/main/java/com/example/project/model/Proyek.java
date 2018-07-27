@@ -41,23 +41,19 @@ public class Proyek extends Additional implements Serializable {
     @Column(nullable = false)
     private Date tanggalBerakhir;
     @Column(length = 30,nullable = false)
-    private float targetDana;
+    private double targetDana;
     @Column(length = 30,nullable = false)
     private double komisiPersen;
     private double komisiFlat;
     private boolean fitur;
     private int suka;
-    private float totalDana;
-    private float sisaDana;
+    private boolean status;
+    private double totalDana;
 
     @ManyToOne
     @JoinColumn(name = "idWilayah", referencedColumnName = "id", nullable = true)
     private Wilayah wilayah;
     
-    @ManyToOne
-    @JoinColumn(name = "idStatus", referencedColumnName = "id", nullable = false)
-    private Status status;
-
     
     @ManyToOne
     @JoinColumn(name = "idPengguna", referencedColumnName = "id", nullable = true)
@@ -91,7 +87,7 @@ public class Proyek extends Additional implements Serializable {
     @JsonIgnore
     private List<PencairanDana> penggunaanDana;
     
-    @JsonIgnore
+
     public Foto getFotoUtamaProyek() {
     	Foto tes = null;
 		for(Foto f : this.foto) {
@@ -103,19 +99,16 @@ public class Proyek extends Additional implements Serializable {
 		return tes;
 	}
 
-    @SuppressWarnings("null")
-	@JsonIgnore
-    public List<Foto> getFotoTanpaUtamaProyek(){
+    public List<Foto> getFotoTanpaUtama(){
     	List<Foto> all = null;
     	for (Foto f :this.foto) {
-    		if(f.isUtamaProyek() == false & f.isUtamaProgresProyek() == false & f.getProgresProyek() == null ) {
+    		if(f.isUtamaProyek() == false) {
     			all.add(f);
     		}
     	}
     	return all;
     }
     
-    @JsonIgnore
     public double getPersentaseDana() {
     	double persen = 0.0;
     	persen = (this.totalDana/this.targetDana)*100;
@@ -152,15 +145,7 @@ public class Proyek extends Additional implements Serializable {
     	
     }
     
-    public Status getStatus() {
-		return status;
-	}
-
-	public void setStatus(Status status) {
-		this.status = status;
-	}
-
-	public Kategori getKategori() {
+    public Kategori getKategori() {
 		return kategori;
 	}
 
@@ -176,16 +161,9 @@ public class Proyek extends Additional implements Serializable {
 		this.penggunaanDana = penggunaanDana;
 	}
 
-	public float getSisaDana() {
-		return sisaDana;
-	}
-
-	public void setSisaDana(float sisaDana) {
-		this.sisaDana = sisaDana;
-	}
-
 	@PrePersist
     public void set(){
+        status =false;
         komisiPersen=0.05;
         fitur=false;
         suka = 0;
@@ -255,11 +233,11 @@ public class Proyek extends Additional implements Serializable {
         this.tanggalBerakhir = tanggalBerakhir;
     }
 
-    public float getTargetDana() {
+    public double getTargetDana() {
         return targetDana;
     }
 
-    public void setTargetDana(float targetDana) {
+    public void setTargetDana(double targetDana) {
         this.targetDana = targetDana;
     }
 
@@ -295,11 +273,19 @@ public class Proyek extends Additional implements Serializable {
         this.suka = suka;
     }
 
+    public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
 	public double getTotalDana() {
         return totalDana;
     }
 
-    public void setTotalDana(float totalDana) {
+    public void setTotalDana(double totalDana) {
         this.totalDana = totalDana;
     }
 

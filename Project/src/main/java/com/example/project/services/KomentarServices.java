@@ -15,12 +15,6 @@ public class KomentarServices implements KomentarDao{
 	@Autowired
 	KomentarRepository kr;
 	
-	@Autowired
-	ProyekServices ps;
-	
-	@Autowired
-	ProgresProyekServices pps;
-
 	@Override
 	public Komentar getById(long id) {
 		return kr.findById(id).get() ;
@@ -40,12 +34,6 @@ public class KomentarServices implements KomentarDao{
 	
 	@Override
 	public List<Komentar> getByProyek(long id){
-		return kr.findByProyek(ps.getById(id));
+		return kr.findByProyek(id);
 	}
-	
-	@Override
-	public List<Komentar> getByProgresProyek(long id){
-		return kr.findByProgresProyek(pps.getById(id));
-	}
-
 }

@@ -12,24 +12,27 @@ import com.example.project.repository.BankRepository;
 
 @Service
 public class BankServices implements BankDao {
+
+	
 	@Autowired
-	BankRepository bs;
+	BankRepository br;
 	
 	@Override
-	public Bank getById(long id) {
-		return bs.findById(id).get() ;
+	public Bank getbyID(long id) {	
+		return br.findById(id).get();
 	}
 
 	@Override
-	public List<Bank> getAll() {
+	public List<Bank> getall() {
 		List<Bank> lb = new ArrayList<>();
-		bs.findAll().forEach(lb::add);
+		br.findAll().forEach(lb::add);
 		return lb;
 	}
 	
-	@Override
-	public void saveOrUpdate(Bank b) {
-		bs.save(b);
+	public void SaveOrUpdate(Bank b) {
+		br.save(b);
+		
 	}
+
 
 }

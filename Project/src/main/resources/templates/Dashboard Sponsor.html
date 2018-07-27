@@ -2,7 +2,6 @@
 <html xmlns:th="http://thymeleaf.org">
 
 
-<!-- Mirrored from ritetags.com/html/charity/event-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:15:43 GMT -->
 <head>
 
     <!-- meta tags -->
@@ -11,25 +10,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <title>Dashboard</title>
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+	<script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+	
+	
+	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css"/>
+    <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css"/>
+    <link rel="stylesheet" href="bower_components/datatables.net-bs/css/jquery.dataTables.bootstrap"/>
+    
     
     <!-- CSS -->
-   	    <link rel="stylesheet" href="css/bootstrap.css">
-	    <link rel="stylesheet" href="css/fontawesome-all.css">
-	    <link rel="stylesheet" href="css/flaticon.css">   
-	    <link rel="stylesheet" href="css/slick-slider.css">
-	    <link rel="stylesheet" href="css/fancybox.css">
-	    <link href="css/jplayer.css" rel="stylesheet">
-	    <link rel="stylesheet" href="css/style-datatable.css">
-	    <link rel="stylesheet" href="css/color.css">
-	    <link rel="stylesheet" href="css/responsive.css">		
-        <link rel="stylesheet" href="css/util.css">	
-	<!-- CSS -->
+    <css th:replace="link::header-css"></css>
+    <!-- CSS -->
 </head>
 
-<body onload="myFunction()" style="margin:0;" class="home">
-	<div id="loader"></div>
-	<div style="display:none;" id="myDiv" class="animate-bottom">
+<body class="home">
     <!-- Header -->
     <header id="charity-header" class="charity-header-one">
     <!-- Header -->
@@ -49,7 +47,7 @@
         <div class="charity-main-section m-t-10 m-b-20">
             <div class="container">
                 <div class="row charity-profil-head">
-                    <div class="col-md-2">
+                    <div class="col-md-2 md2">
                         <div>
                             <ul class="sidebar-menu" id="nav-accordion">
                                 <li class="charity-list m-t-10"><a href="dashboard-proyek">Proyek</a></li>
@@ -63,46 +61,100 @@
 
                         </div>
                     </div>
-                    <div class="col-md-10 charity-profil-bio p-b-20" style="color: white;">
+                    <div class="col-md-10 charity-profil-bio p-b-20" style="color:white;">
                     <br/>
-						<table id="example" class="m-t-20 m-b-5 m-l-5 m-r-30 p-t-20 display" style="width:100%; color:white;">
-						         <thead class="m-t-20">
-						                 <th>Judul Proyek</th>
-						                 <th>Nominal Sponsor</th>
-						                 <th>Tanggal Sponsor</th>
-						                 <th>Status Proyek</th>
-						                 <th>Status Sponsor</th>
-						                 <th></th>
-								</thead>
-								<tbody style="color: black;">
-						           <tr th:each="s,iterStat:${listsponsor}">
-						                <th th:text=${s.proyek.namaProyek}></th>
-						                <th th:text="${'Rp ' + #numbers.formatDecimal(s.jumlahSponsor, 0, 'COMMA', 2, 'POINT')}"></th>
-						                <th th:text="${s.createDate}"></th>
-						                <th th:text="${s.proyek.status}"></th>
-						                <th th:text="${s.status}"></th>
-						                <th><a th:href="@{detailsponsor(id=${s.id})}">detail</a></th>
-						        	</tr>
-						        </tbody>
-						    </table>
-                        </div>
+                        <table class="m-t-20 m-b-20 m-l-60 p-t-20" id=myTable1>
+                            <tr></tr>
+                            <tr>
+	                            <thead class="m-t-20">
+	                                <th>Judul Proyek</th>
+	                                <th>Nominal Sponsor</th>
+	                                <th>Tanggal Sponsor</th>
+	                                <th>Status Proyek</th>
+	    						</thead>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
          </div>    
-		
 
 
-    	<!-- Footer -->
-   	    <footer th:replace="footer::foot"></footer>
-		<!-- Footer -->
-    </div>
+
+    <!-- Footer -->
+    <footer id="charity-footer" class="charity-footer-one">
+        <!-- Footer Widget -->
+        <div class="charity-footer-widget">
+            <div class="container">
+                <div class="row">
+                    <aside class="col-md-4 widget widget_usefull_links">
+                        <div class="charity-footer-title"> <h2>Quick Links</h2> </div>
+                        <ul>
+                            <li><a href="#">Kategori</a></li>
+                            <li><a href="#">Projek</a></li>
+                            <li><a href="#">Latest News</a></li>
+                            <li><a href="#">Seponsor</a></li>
+                            <li><a href="#">Contact us</a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-md-4 widget widget_recent_news">
+                        <div class="charity-footer-title"> <h2>Recent News</h2> </div>
+                        <ul>
+                            <li>
+                                <figure><a href="#"><img src="extra-images/kesehatan.jpg" alt=""></a></figure>
+                                <div class="widget_recent_news_text">
+                                    <h6><a href="#">Kesehatan</a></h6>
+                                    <span>22 Sept, 2018</span>
+                                </div>
+                            </li>
+                            <li>
+                                <figure><a href="#"><img src="extra-images/pendidikan.jpg" alt=""></a></figure>
+                                <div class="widget_recent_news_text">
+                                    <h6><a href="#">Pendidikan.</a></h6>
+                                    <span>20 Sept, 2018</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </aside>
+                    <aside class="col-md-4 widget widget_gallery">
+                        <div class="charity-footer-title"> <h2>Our Gallery</h2> </div>
+                        <ul>
+                            <li><a data-fancybox="gallery" href="extra-images/pendidikan.jpg"><img src="extra-images/pendidikan.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/kesehatan.jpg"><img src="extra-images/kesehatan.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/masyarakat.jpg"><img src="extra-images/masyarakat.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/pendidikan.jpg"><img src="extra-images/pendidikan.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/kesehatan.jpg"><img src="extra-images/kesehatan.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/kesehatan2.jpg"><img src="extra-images/kesehatan2.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/kesehatan3.jpg"><img src="extra-images/kesehatan3.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                            <li><a data-fancybox="gallery" href="extra-images/pendidikan.jpg"><img src="extra-images/pendidikan.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
+                        </ul>
+                    </aside>
+                </div>
+                <!-- CopyRight -->
+                <div class="charity-copyright">
+                    <a href="#" class="back-top bgcolor"><i class="fa fa-angle-up"></i></a>
+                    <p>© 2018, All Right Reserved - Diferensia</p>
+                    <ul>
+                        <li><a href="404">Terms and conditions</a></li>
+                        <li><a href="404">Privacy policy</a></li>
+                    </ul>
+                </div>
+                <!-- CopyRight -->
+            </div>
+        </div>
+        <!-- Footer Widget -->
+
+    </footer>
+    <!-- Footer -->
+
+    <!-- Search Modal -->
+
     <!-- jQuery -->
 
-		<!--  <script>
+		 <script>
 		  $(document).ready(function() {
-			  var id =$[#a].val();
 		    $('#myTable1').DataTable({
-		    	"sAjaxSource" : "sponsorrest?id="+id,
+		    	"sAjaxSource" : "sponsorrest",
 		    	"sAjaxDataProp" : "",
 		    	"aoColumns" : [		
 			    	{"mData":"proyek.namaProjek"},
@@ -113,40 +165,9 @@
 		    })
 		  });
 		 
-		</script> -->
-		
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript">
-	    $(document).ready(function() {
-	        $('#example').DataTable( {
-	        	"columnDefs": [ 
-	        		{ "orderable": false, "targets": 5 } 
-	        	]
-	        } )
-	    } );
-
-    </script>
-    <script src="script/jquery-ui.js"></script>	
-	<script>
-		$(document).ready(function(){
-			$.get("/raihmimpi", function(x){
-				var data = [];
-				$.each(x, function(index, row){
-					data[index]={
-						index : row.id,
-						label : row.namaProyek,
-						value : row.namaProyek
-					};
-				});
-				$("#key").autocomplete({
-					source:data
-				});
-			});
-		});
-	</script>
+		</script>
 		<script13 th:replace="script::loader"></script13>	
-		
+	</div>
     
 </body>
 
