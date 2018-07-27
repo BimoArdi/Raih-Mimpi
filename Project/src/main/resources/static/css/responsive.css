@@ -357,11 +357,23 @@
 	background: #fcea9e;
 	margin-top: 30px;
 	margin-bottom: 30px;
-	margin-left: 75%; 
+	margin-left: 77%; 
 	text-align: center;
 	display: block;
 	width: 100px;
 }
+.charity-btn-profil1{
+	border: transparent solid;
+	border-radius: 5px;
+	background: #fcea9e;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	margin-left: 82%; 
+	text-align: center;
+	display: block;
+	width: 100px;
+}
+
 
 .charity-btn-profil-save{
 	background: #fcea9e;
