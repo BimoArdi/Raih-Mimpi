@@ -78,10 +78,6 @@
                                 <img alt="avatar" th:if="${penggunaAktif.pengguna.fotoProfil} != null"
                             	th:src="@{'data:image/jpg;base64,' + *{T(org.springframework.util.Base64Utils).encodeToString(penggunaAktif.pengguna.fotoProfil)}}" class="avatar">
                                     <span th:text="${penggunaAktif.username}"></span></a>
-                                    <!-- <ul class="children">
-                                        <li><a href="dashboard-profil">Profil</a></li>
-                                        <li><a  href="logout">Logout</a></li>
-                                    </ul> -->
                                 </li>
                                 <li><a href="logout">Logout</a>
                             </ul>

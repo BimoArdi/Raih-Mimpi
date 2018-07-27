@@ -4,8 +4,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.example.project.model.PencairanDana;
+import com.example.project.model.Proyek;
 
 @Repository
 public interface PencairanDanaRepository extends CrudRepository<PencairanDana, Long> {
 
+	float findByProyek (Proyek byId);
 }

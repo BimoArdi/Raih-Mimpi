@@ -1,0 +1,121 @@
+<!doctype html>
+<html xmlns:th="http://thymeleaf.org">
+
+
+<head>
+
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Diferensia Foundation</title>
+
+    <!-- CSS -->
+    <css th:replace="link::header-css"></css>
+    <page th:replace="link::page"></page>    
+    <bar th:replace="link::bar"></bar>
+    <!-- CSS -->
+</head>
+
+<body onload="myFunction()" style="margin:0;" class="home">
+	<div id="loader"></div>
+	<div style="display:none;" id="myDiv" class="animate-bottom">
+    <!-- Header -->
+    <header id="charity-header" class="charity-header-one">
+    <!-- Header -->
+	    <!-- Main Header -->
+		<div th:if="${penggunaAktif} == null">
+			<belumLogin th:replace="nav::nav1"></belumLogin>
+		</div>
+		<div th:if="${penggunaAktif} != null">
+	        <setelahLogin th:replace="nav::nav2"></setelahLogin>
+	    </div>    	    
+   		<!-- Main Header -->
+	</header>
+    <!-- Header -->
+
+    <!-- Banner -->
+    <div class="charity-subheader">
+        <span class="black-transparent"></span>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 id="key" th:text="${keyword}"></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner -->
+
+    <!-- Content -->
+    <div class="charity-main-content">
+
+        <!-- Main Section -->
+        <div class="charity-main-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        
+                        <!-- Causes -->
+                        <div class="charity-causes charity-cause-grid inner-wrap">
+                            <ul class="row" id="example">
+                                <li class="col-md-4" th:each="proyek, iterStat:${listproyek}" >
+                                    <figure><a href="#"><img th:src="@{'data:image/jpg;base64,' + *{T(org.springframework.util.Base64Utils).encodeToString(proyek.getFotoUtamaProyek().foto)}}"
+                                    alt="foto proyek" class="img"></a>
+										<a th:href="@{proyek-detail(id=${proyek.id})}"  class="charity-caption-btn"><span>View Detail</span></a>
+                                    </figure>
+                                    <div id="progressbar"></div>
+                                    <div class="charity-cause-grid-text">
+                                        <span class="charity-cause-raised">Raised <br> <strong th:text="${proyek.totalDana}"></strong></span>
+                                        <small class="charity-cause-raised">Goal <br> <strong th:text="${proyek.targetDana}"></strong></small>
+                                        <div class="clearfix"></div>
+                                        <h2><a href="#" th:text="${proyek.namaProyek}"></a></h2>
+                                        <h5 th:text="${proyek.pengguna.nama}"></h5>
+                                        <a th:href="@{login}" th:if="${penggunaAktif}==null" class="charity-more-btn"><i class="fas fa-arrow-right"></i> Sponsor Now</a>
+                                    	<a th:href="@{sponsor(id=${proyek.id})}" th:if="${penggunaAktif}!=null" class="charity-more-btn"><i class="fas fa-arrow-right"></i> Sponsor Now</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main Section -->
+    </div>
+    <!-- Content -->
+
+	    <!-- Footer -->
+	    <footer th:replace="footer::foot"></footer>
+	    <!-- Footer -->
+	    
+	    <manyscript th:replace="script::ms"></manyscript>
+	    <script12 th:replace="script::page"></script12>
+	   	<script14 th:replace="script::bar"></script14>
+		<script13 th:replace="script::loader"></script13>	
+		<script type="text/javascript">
+			var key = document.getElementsById("key").innerHTML;
+			$(document).ready(function(){
+				$.getJSON("/searching?keyword="+key, function(json){
+					console.log(json);
+					var myData = [];
+				$each(json, function(index, row){
+					myData[index] =[]
+					row.namaProyek,
+					row.tanggalBerakhir,
+					row.
+				})
+				})
+			})
+		</script>
+		<script7 th:replace="script::autocomplete"></script7>
+	
+	</div>
+    
+
+</body>
+
+
+<!-- Mirrored from ritetags.com/html/charity/cause-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:16:38 GMT -->
+</html>

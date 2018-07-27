@@ -16,6 +16,9 @@ public class PencairanDanaServices implements PencairanDanaDao {
 	@Autowired
 	PencairanDanaRepository p;
 	
+	@Autowired
+	ProyekServices ps;
+
 	@Override
 	public PencairanDana getById(long id) {
 		return p.findById(id).get() ;
@@ -32,4 +35,10 @@ public class PencairanDanaServices implements PencairanDanaDao {
 	public void saveOrUpdate(PencairanDana pd) {
 		p.save(pd);
 	}
+	
+	@Override
+	public float getByProyek(long id) {
+		return p.findByProyek(ps.getById(id));
+	}
+
 }

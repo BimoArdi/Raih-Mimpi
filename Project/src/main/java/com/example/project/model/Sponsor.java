@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 
 /**
  *
@@ -23,12 +24,18 @@ public class Sponsor extends Additional implements Serializable {
     private Long id;    
     
     @Basic(optional = false) //Gak Boleh gak di Isi 
-    @Column(nullable = false)//Gak Boleh null
-    private double jumlahSponsor;
+    @Column(nullable = false, length=50)//Gak Boleh null
+    private float jumlahSponsor;
     private String anonim;
-    private boolean status;
-    public Sponsor() {
-    	
+    private String namaSponsor;
+
+    @PrePersist
+    public void getSponsor() {
+    	if(anonim == null) {
+    		namaSponsor = pengguna.getNama();
+    	}else {
+    		namaSponsor = "anonim";
+    	}
     }
     
     @ManyToOne
@@ -42,6 +49,10 @@ public class Sponsor extends Additional implements Serializable {
     @ManyToOne
     @JoinColumn(name = "idBank", referencedColumnName = "id", nullable = false)
     private Bank bank;
+
+    @ManyToOne
+    @JoinColumn(name = "idStatus", referencedColumnName = "id", nullable = false)
+    private Status status;
 
     
     @Override
@@ -75,12 +86,12 @@ public class Sponsor extends Additional implements Serializable {
 		this.id = id;
 	}
 
-	public double getJumlahSponsor() {
+	public float getJumlahSponsor() {
 		return jumlahSponsor;
 	}
 
 
-	public void setJumlahSponsor(double jumlahSponsor) {
+	public void setJumlahSponsor(float jumlahSponsor) {
 		this.jumlahSponsor = jumlahSponsor;
 	}
 
@@ -90,13 +101,17 @@ public class Sponsor extends Additional implements Serializable {
 	}
 
 
-	public boolean isStatus() {
-		return status;
+	public void setAnonim(String anonim) {
+		this.anonim = anonim;
+	}
+
+	public String getNamaSponsor() {
+		return namaSponsor;
 	}
 
 
-	public void setStatus(boolean status) {
-		this.status = status;
+	public void setNamaSponsor(String namaSponsor) {
+		this.namaSponsor = namaSponsor;
 	}
 
 
@@ -107,11 +122,6 @@ public class Sponsor extends Additional implements Serializable {
 
 	public void setBank(Bank bank) {
 		this.bank = bank;
-	}
-
-
-	public void setAnonim(String anonim) {
-		this.anonim = anonim;
 	}
 
 
@@ -133,6 +143,14 @@ public class Sponsor extends Additional implements Serializable {
 	public void setProyek(Proyek proyek) {
 		this.proyek = proyek;
 	}
-	
-	
+
+
+	public Status getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 }

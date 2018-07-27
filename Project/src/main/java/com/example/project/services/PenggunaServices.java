@@ -15,7 +15,10 @@ public class PenggunaServices implements PenggunaDao {
 
 	@Autowired
 	PenggunaRepository p;
-	
+
+	@Autowired
+	LoginServices ls;
+
 	@Override
 	public Pengguna getId(long id) {
 		return p.findById(id).get(); 
@@ -44,8 +47,8 @@ public class PenggunaServices implements PenggunaDao {
 	}
 	
 	@Override
-	public Pengguna getPhoto (Long id) {
-		return p.findPhoto(id);
+	public Pengguna getByLogin (Long id) {
+		return p.findByLogin(ls.getById(id));
 	}
 
 }

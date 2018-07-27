@@ -16,6 +16,15 @@ public class ProyekServices implements ProyekDao{
 	@Autowired
 	ProyekRepository p;
 	
+	@Autowired
+	PenggunaServices ps;
+
+	@Autowired
+	KategoriServices ks;
+	
+	@Autowired
+	StatusServices ss;
+
 	@Override
 	public Proyek getById(long id) {
 		return p.findById(id).get() ;
@@ -34,18 +43,49 @@ public class ProyekServices implements ProyekDao{
 	}
 	
 	@Override
-	public List<Proyek> getByKategori(long id1){
-		return p.findByKategori(id1);
+	public List<Proyek> getByKategoriAndStatus(long id,String status){
+		return p.findByKategoriAndStatus(ks.getById(id),ss.getByStatus(status));
 	}
 	
 	@Override
 	public List<Proyek> getTheUser(long id) {
-		return p.findByUser(id);
+		return p.findByPengguna(ps.getId(id));
+	}
+
+
+	@Override
+	public List<Proyek> getByFitur() {
+		return p.findByFitur(true);
 	}
 
 	@Override
-	public List<Proyek> getAllProyek() {
-		return p.findAllProyek();
+	public float getSisaDana(long id) {
+		return p.findSisaDana(id);
+	}
+
+	@Override
+	public int getJumlahKategori(long id) {
+		return p.findJumlahKategori(id);
+	}
+	
+	@Override
+	public List<Proyek> getByLast() {
+		return p.findByLast();
+	}
+
+	@Override
+	public List<Proyek> getByStatus(String status) {
+		return p.findByStatus(ss.getByStatus(status));
+	}
+	
+	@Override
+	public List<Proyek> getBySearch(String keyword) {
+		return p.findBySearch(keyword);
+	}
+
+	@Override
+	public Proyek getByProyek(String namaProyek) {
+		return p.findByNamaProyek(namaProyek);
 	}
 
 }

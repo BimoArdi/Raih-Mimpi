@@ -8,9 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.PrePersist;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -39,7 +39,7 @@ public class Pengguna extends Additional implements Serializable {
     @OneToMany(mappedBy = "pengguna")
     @JsonIgnore
     private List<Komentar> komentar;
-
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)   
@@ -59,23 +59,17 @@ public class Pengguna extends Additional implements Serializable {
     
     private byte [] verifikasi;
     
-    private String status;
-    
     private byte [] fotoProfil;
     
-    @PrePersist
-    public void set() {
-    	nama=login.getUsername();
-    	telephone="-";
-    	biografi="belum diisi";
-        status = "Not Active";
-    }
-    
-    
     @OneToOne
-    @JoinColumn(name = "idLogin", referencedColumnName = "id",unique = true, nullable = false)        
+    @JoinColumn(name = "idLogin", referencedColumnName = "id", nullable = false)        
     private Login login;
+
     
+    @ManyToOne
+    @JoinColumn(name = "idStatus", referencedColumnName = "id", nullable = true)
+    private Status status;
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -149,20 +143,20 @@ public class Pengguna extends Additional implements Serializable {
         this.ktp = ktp;
     }
 
-    public byte[] getVerifikasi() {
+    public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	public byte[] getVerifikasi() {
         return verifikasi;
     }
 
     public void setVerifikasi(byte[] verifikasi) {
         this.verifikasi = verifikasi;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public List<Proyek> getProyek() {

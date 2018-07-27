@@ -22,7 +22,7 @@ public class PencairanDana extends Additional implements Serializable {
     
     private String namaPencair;
     private String noRekening;
-    private double jumlahDana;
+    private float jumlahDana;
     private boolean status;
     
 	public PencairanDana () {
@@ -86,11 +86,11 @@ public class PencairanDana extends Additional implements Serializable {
 		this.noRekening = noRekening;
 	}
 
-	public double getJumlahDana() {
+	public float getJumlahDana() {
 		return jumlahDana;
 	}
 
-	public void setJumlahDana(double jumlahDana) {
+	public void setJumlahDana(float jumlahDana) {
 		this.jumlahDana = jumlahDana;
 	}
 

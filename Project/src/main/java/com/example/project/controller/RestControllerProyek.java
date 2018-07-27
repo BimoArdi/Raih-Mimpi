@@ -3,21 +3,17 @@ package com.example.project.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
-//import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.example.project.model.Login;
+import com.example.project.model.Foto;
 import com.example.project.model.Pengguna;
 import com.example.project.model.ProgresProyek;
 import com.example.project.model.Proyek;
-//import com.example.project.model.Login;
 import com.example.project.model.Sponsor;
+import com.example.project.services.BankServices;
+import com.example.project.services.FotoServices;
 import com.example.project.services.LoginServices;
 import com.example.project.services.PenggunaServices;
 import com.example.project.services.ProgresProyekServices;
@@ -25,12 +21,14 @@ import com.example.project.services.ProyekServices;
 import com.example.project.services.SponsorServices;
 
 @RestController
-@SessionAttributes("penggunaAktif")
 public class RestControllerProyek {
 
 	@Autowired
 	SponsorServices ss;
-	
+
+	@Autowired
+	FotoServices fs;
+
 	@Autowired
 	ProyekServices ps;
 	
@@ -43,14 +41,17 @@ public class RestControllerProyek {
 	@Autowired
 	LoginServices lg;
 	
+	@Autowired
+	BankServices bs;	
+	
 	@RequestMapping(value="sponsorrest")
-	public List<Sponsor> getSponsorById(@ModelAttribute("penggunaAktif")Login l){
-		return ss.getSponsorById(l.getPengguna().getId());
+	public List<Sponsor> getSponsorById(@RequestParam("id")long id){
+		return ss.getByPengguna(id);
 	}
 	
-	@RequestMapping(value="oneproyek")
-	public Proyek getTanggal(@ModelAttribute("Proyek")com.example.project.model.Proyek p) {
-		return ps.getById(p.getId());
+	@RequestMapping(value="oneproyek") 
+	public Proyek getTanggal(@RequestParam("id")long id) {
+		return ps.getById(id);
 	}
 	
 	@RequestMapping(value="penggunausername")
@@ -63,9 +64,9 @@ public class RestControllerProyek {
 		return ps.getAll();
 	}
 	
-	@RequestMapping(value="oneprogresproyek")
-	public ProgresProyek getId (@ModelAttribute("ProgresProyek")ProgresProyek pp) {
-		return pps.getById(pp.getId());
+	@RequestMapping(value="oneprogresproyek") // ga bisa
+	public ProgresProyek getId (@RequestParam("id")long id) {
+		return pps.getById(id);
 	}
 	
 	@RequestMapping("API/isusernameexist")
@@ -73,5 +74,33 @@ public class RestControllerProyek {
 		return lg.getUsername(username);
 	}
 	
+	@RequestMapping(value="oneproyeksisadana") 
+	public float sisaDana(@RequestParam("id")long id) {
+		return ps.getSisaDana(id);
+	}
 	
+	@RequestMapping(value="kategori")
+	public int kategori(@RequestParam("id")long id) {
+		return ps.getJumlahKategori(id);
+	}
+	
+	@RequestMapping(value="totalsponsor")
+	public int sponsor() {
+		return ss.getTotalSponsor();
+	}
+	
+	@RequestMapping(value="rekeningbank")
+	public String rekeningBank (@RequestParam("id")long id) {
+		return bs.getById(id).getNoRekening();
+	}
+	
+	@RequestMapping(value="searching")
+	public List<Proyek> searching (@RequestParam("keyword")String keyword){
+		return ps.getBySearch(keyword);
+	}
+	
+	@RequestMapping(value="fotoproyek")
+	public List<Foto> getFoto(){
+		return fs.getAll();
+	}
 }
