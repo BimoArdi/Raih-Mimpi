@@ -3,62 +3,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 @import url('https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i');
 
-/*
-01. Theme Typo
-02. Header
-        02.1 Top Strip
-                02.1.1 Top Info
-                02.1.2 Search
-        02.1 Logo
-        02.2 Navigation
-                02.2.1 SubMenu
-03. Content
-
-        03.1 Blog
-                03.1.2 Blog Grid
-                03.1.3 Blog Medium
-                03.1.4 Blog Detail
-        
-        03.4 Team
-                03.4.1 Team Grid
-                03.4.2 Team Classic
-                03.4.3 Team Detail
- 
-        03.6 Default Pages Style
-                03.6.1 404
-                03.6.2 No Search Result
-                03.6.3 About Us
-                03.6.4 Contact Us
-
-        03.7 Causes
-                03.7.1 Cause Grid
-                03.7.2 Cause List
-                03.7.3 Cause Detail
-
-        03.8 Prayers
-                03.8.1 Prayer List
-                03.8.2 Prayer Grid
-                03.8.3 Prayer Detail
-
-        03.9 Events
-                03.9.1 Event Grid
-                03.9.2 Event List
-                03.9.3 Event Detail
- 
-04. Sidebar Widget
-        04.1 Widget CATEGORY WIDGET
-        04.2 Widget Search
-        04.3 Widget Our Photos
-        04.4 Widget Text
-        04.5 Widget Recent Posts
-        04.7 Widget Calendar
- 
-05. Footer
-        05.1 Widget's
-        05.2 backTo Top
-        05.3 CopyRight
-        05.4 Social Network
-*/
 
 /* Yang Baru di Tambahkan  */
 .md2{
@@ -73,13 +17,40 @@
 	border-radius: 7px;
 }
 
+
+.tab1 {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    margin-top: -23px;
+}
+
+.tab1 button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+.tab1 button:hover {
+    background-color: #ddd;
+}
+
+.tab1 button.active {
+    background-color: #ccc;
+}
+
+
 .tab {
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
 }
 
-/* Style the buttons inside the tab */
 .tab button {
     background-color: inherit;
     float: left;
@@ -91,17 +62,14 @@
     font-size: 17px;
 }
 
-/* Change background color of buttons on hover */
 .tab button:hover {
     background-color: #ddd;
 }
 
-/* Create an active/current tablink class */
 .tab button.active {
     background-color: #ccc;
 }
 
-/* Style the tab content */
 .tabcontent {
     display: none;
     padding: 6px 1px;
