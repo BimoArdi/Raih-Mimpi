@@ -18,10 +18,12 @@ import com.example.project.model.Pengguna;
 import com.example.project.model.PencairanDana;
 import com.example.project.model.Proyek;
 import com.example.project.services.KategoriServices;
+import com.example.project.services.NotifikasiServices;
 //import com.example.project.model.Proyek;
 import com.example.project.services.PencairanDanaServices;
 import com.example.project.services.PenggunaServices;
 import com.example.project.services.ProyekServices;
+import com.example.project.services.SponsorServices;
 
 @Controller
 @SessionAttributes("penggunaAktif")
@@ -38,6 +40,12 @@ public class PencairanDanaController {
 	
 	@Autowired
 	PenggunaServices pgs;
+	
+	@Autowired
+	SponsorServices ss;
+
+	@Autowired
+	NotifikasiServices ns;
 
 	@RequestMapping(value="/dashboard-pencairan")
 	public String dpencairan(@ModelAttribute("penggunaAktif")Login l,ModelMap mm) {
@@ -47,28 +55,19 @@ public class PencairanDanaController {
 		mm.put("listkategori",k);
 		return "Dashboard Pencairan";
 	}
-
-//	@RequestMapping(value="dashboard-pencairan", method=RequestMethod.POST)
-//	public String formInsertProyek (@ModelAttribute("penggunaAktif") Login l,@RequestParam("namaPencair")String np,
-//			@RequestParam("jumlahDana") double jd, @RequestParam("noRekening")String norek, @RequestParam("proyek")Proyek proyek) {
-//		Pengguna pe = pgs.getId(l.getPengguna().getId());  
-//		PencairanDana pd = new PencairanDana();
-//		pd.setJumlahDana(jd);
-//		pd.setNamaPencair(np);
-//		pd.setNoRekening(norek);
-//		pd.setProyek(proyek);
-//		pd.setPengguna(pe);
-//		pds.saveOrUpdate(pd);
-//		return "redirect:dashboard-pencairan";
-//	}
 	
 	@RequestMapping(value="/dashboard-pencairan", method=RequestMethod.POST)
 	public String formInsertProyek (@ModelAttribute("penggunaAktif") Login l,@ModelAttribute("pencairanDana")PencairanDana pd, 
 			@RequestParam("proyek")Proyek proyek) {
-		Pengguna pe = pgs.getId(l.getPengguna().getId());  
+		Pengguna pe = pgs.getId(l.getPengguna().getId());
+		Proyek proyek1 = ps.getById(proyek.getId());
 		pd.setProyek(proyek);
 		pd.setPengguna(pe);
+		pd.setStatus("Request");
 		pds.saveOrUpdate(pd);
+		proyek1.setSisaDana((ss.getTotalSponsor(proyek1.getId())-pds.getByProyek(proyek1.getId())));
+		ps.saveOrUpdate(proyek1);
+		ns.savePencairanDana();
 		return "redirect:dashboard-pencairan";
 	}
 }

@@ -1,0 +1,82 @@
+<!doctype html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Autocomplete - Default functionality</title>
+	<css th:replace="link::header-css"></css>
+	<link rel="stylesheet" href="css/style-modal.css">
+
+	
+
+</head>
+<body>
+<p>Link 1</p>
+<a th:data-aa="${namaProyek}" data-toggle="modal" title="Add this item" class="open-AddBookDialog btn btn-primary" href="#my_modal">test</a>
+
+
+<p>&nbsp;</p>
+
+<div class="modal hide" id="my_modal" role="dialog">
+	    <div class="modal-dialog modal-lg">
+	      
+	      <div class="modal-content modal-sponsor">
+	        <div class="modal-header" style="height: 55px;">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        </div>
+	        <form method="post" action="/detailsponsor">
+	        <div class="modal-body">
+	           		<h4 class="widget_title" id="bookId1"></h4>
+	           		<div class="row charity-profil-text p-t-10">
+	                     <div class="widget_title_n m-t-10"><b>Nominal</b></div>
+	                     <div class="col-md-8 charity-profil-input" style="width: 100%;" ><input type="text" name="jumlahSponsorFormatted" style="width: 100%;" required onkeyup="displayTanpaRp()" />
+							<input type="hidden" name="jumlahSponsor" style="width: 100%" id="jmlSponsor" />
+	                     </div>
+					        <input th:if="${penggunaAktif} != null"  type="hidden" name="username" th:value="${penggunaAktif.username}"/>	                  	 	         
+	                     	<input class="m-l-190" id="anonim" name="anonim" value="anonim" type="checkbox"/> Anonim
+	                 </div>
+	                 <div class="row charity-profil-text">
+	                     <div class="widget_title_b m-t-10"><b>Metode Pembayaran</b></div>
+	                     <div class="col-md-8 charity-profil-input"><select name="bank"  id="selectTujuan" style="width: 100%" onchange="displaytransfer()">
+	                     	<option th:each="bank, iterStat:${listbank}"
+	         				th:value="${bank.id}" th:text="${bank.namaBank}">
+	    					</option></select>
+                     	</div>
+                     </div>                        
+	        </div>
+	        <div class="modal-footer">
+            	<button class="charity-btn-profil-save p-l-5 p-r-5" type="submit"><b>Save</b></button>	
+                <span><button type="button" class="charity-btn-profil-save p-l-5 p-r-5" data-dismiss="modal">Close</button></span>
+	        </div>
+	        </form>
+	   </div>   
+    </div>
+  </div>
+ 
+<!-- <div class="modal hide" id="my_modal">
+ <div class="modal-header">
+    <button class="close" data-dismiss="modal">×</button>
+    <h3>Modal header</h3>
+  </div>
+    <div class="modal-body">
+        <p>some content</p>
+        <h4 id="bookId"></h4>
+    </div>
+</div>
+ --> 
+</body>
+	<script src="script/jquery.js"></script>
+  	<script src="script/bootstrap.min.js"></script>
+  	<script src="script/slick.slider.min.js"></script>
+  	<script src="script/progressbar.js"></script>
+  	<script src="script/functions.js"></script>
+	<script src="script/jquery-1.12.4.js"></script>
+  	<script src="script/jquery-ui.js"></script>
+  	<script type="text/javascript">
+	  	$(document).on("click", ".btn-primary", function () {
+	  	     var myBookId = $(this).data('aa');
+	  	     $(".modal-body #bookId1").text(myBookId);
+	  	    $('#my_modal').modal('show');
+	  	});
+	</script>
+</html>

@@ -41,19 +41,21 @@ public class Proyek extends Additional implements Serializable {
     @Column(nullable = false)
     private Date tanggalBerakhir;
     @Column(length = 30,nullable = false)
-    private double targetDana;
+    private float targetDana;
     @Column(length = 30,nullable = false)
     private double komisiPersen;
     private double komisiFlat;
     private boolean fitur;
     private int suka;
-    private boolean status;
-    private double totalDana;
-
+    private float totalDana;
+    private float sisaDana;
+    private String status;
+    
     @ManyToOne
     @JoinColumn(name = "idWilayah", referencedColumnName = "id", nullable = true)
     private Wilayah wilayah;
     
+
     
     @ManyToOne
     @JoinColumn(name = "idPengguna", referencedColumnName = "id", nullable = true)
@@ -87,7 +89,7 @@ public class Proyek extends Additional implements Serializable {
     @JsonIgnore
     private List<PencairanDana> penggunaanDana;
     
-
+    @JsonIgnore
     public Foto getFotoUtamaProyek() {
     	Foto tes = null;
 		for(Foto f : this.foto) {
@@ -99,20 +101,28 @@ public class Proyek extends Additional implements Serializable {
 		return tes;
 	}
 
-    public List<Foto> getFotoTanpaUtama(){
+    @SuppressWarnings("null")
+	@JsonIgnore
+    public List<Foto> getFotoTanpaUtamaProyek(){
     	List<Foto> all = null;
     	for (Foto f :this.foto) {
-    		if(f.isUtamaProyek() == false) {
+    		if(f.isUtamaProyek() == false & f.isUtamaProgresProyek() == false & f.getProgresProyek() == null ) {
     			all.add(f);
     		}
     	}
     	return all;
     }
     
-    public double getPersentaseDana() {
-    	double persen = 0.0;
-    	persen = (this.totalDana/this.targetDana)*100;
+    @JsonIgnore
+    public float getPersentaseDana() {
+    	float persen = (this.totalDana/this.targetDana)*100;
     	return persen;
+    }
+
+    @JsonIgnore
+    public int getTotalSponsor(){
+    	int sum = this.sponsor.size();
+    	return sum;
     }
     
     @Override
@@ -145,7 +155,15 @@ public class Proyek extends Additional implements Serializable {
     	
     }
     
-    public Kategori getKategori() {
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public Kategori getKategori() {
 		return kategori;
 	}
 
@@ -161,9 +179,16 @@ public class Proyek extends Additional implements Serializable {
 		this.penggunaanDana = penggunaanDana;
 	}
 
+	public float getSisaDana() {
+		return sisaDana;
+	}
+
+	public void setSisaDana(float sisaDana) {
+		this.sisaDana = sisaDana;
+	}
+
 	@PrePersist
     public void set(){
-        status =false;
         komisiPersen=0.05;
         fitur=false;
         suka = 0;
@@ -233,11 +258,11 @@ public class Proyek extends Additional implements Serializable {
         this.tanggalBerakhir = tanggalBerakhir;
     }
 
-    public double getTargetDana() {
+    public float getTargetDana() {
         return targetDana;
     }
 
-    public void setTargetDana(double targetDana) {
+    public void setTargetDana(float targetDana) {
         this.targetDana = targetDana;
     }
 
@@ -273,19 +298,11 @@ public class Proyek extends Additional implements Serializable {
         this.suka = suka;
     }
 
-    public boolean isStatus() {
-		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-
 	public double getTotalDana() {
         return totalDana;
     }
 
-    public void setTotalDana(double totalDana) {
+    public void setTotalDana(float totalDana) {
         this.totalDana = totalDana;
     }
 

@@ -9,14 +9,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Diferensia Foundation </title>
+    <title>Raih Mimpi</title>
 
     <!-- CSS -->
     <css th:replace="link::header-css"></css>
+    <link rel="stylesheet" href="css/style.css">
     <!-- CSS -->
 </head>
 
-<body class="home">
+<body onload="myFunction()" style="margin:0;" class="home">
+	<div id="loader"></div>
+	<div style="display:none;" id="myDiv" class="animate-bottom">
     <!-- Header -->
     <header id="charity-header" class="charity-header-one">
     <!-- Header -->
@@ -114,19 +117,19 @@
 
     </div>
     <!-- Content -->
-  <!-- Footer -->
-	    <!-- Footer -->
-    <footer th:replace="footer::foot"></footer>
-    <!-- Footer -->
     
-    <!-- Search Modal -->
-    <searching th:replace="modal::search"></searching>
-    <!-- jQuery -->
-	    <manyscript th:replace="script::ms"></manyscript>
-
-
-</body>
-
+    <!-- Footer -->
+	    <footer th:replace="footer::foot"></footer>
+    <!-- Footer -->
+	</div>    
+</body>	
+    
+    <jQuery th:replace="script::jQuery"></jQuery>
+	<autocomplete th:replace="script::autocomplete"></autocomplete>
+	<loader th:replace="script::loader"></loader>
+	<cekLogin th:replace="script::cekLogin"></cekLogin>	
+	<cekAkun th:replace="script::cekAkun"></cekAkun>
+    
 
 <!-- Mirrored from ritetags.com/html/charity/contact-us.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:18:07 GMT -->
 </html>

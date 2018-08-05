@@ -4945,8 +4945,6 @@ tbody.collapse.show {
 
 .alert {
   position: relative;
-  padding: 0.75rem 1.25rem;
-  margin-bottom: 1rem;
   border: 1px solid transparent;
   border-radius: 0.25rem;
 }
@@ -8971,8 +8969,8 @@ a.text-dark:hover, a.text-dark:focus {
 .charity-donation-parallex .progressbar .bar-container { background-color: #606060 !important; }
 
 .charity-modren-services-full { margin: -70px 0px 31px 0px; }
-.latest_causes_full { background-color:#e7e7ff; padding: 20px 0px 50px 0px; margin: 10px 0px 0px 0px; }
-.charity_counter_full { background: url(../extra-images/counter-parallax-bg.jpg); background-attachment: fixed; background-size: contain; padding: 40px 0px 3px 0px; margin-bottom: 70px; }
+.latest_causes_full { background-color:#e7e7ff; padding: 20px 0px 50px 0px; margin: 00px 0px 0px 0px; }
+.charity_counter_full { background: url(../extra-images/counter-parallax-bg.jpg); background-attachment: fixed; background-size: contain; padding: 40px 0px 0px 0px; }
 .charity-event-grid-full { margin-bottom: 40px; }
 .charity-simple-gallery-full { margin-bottom: 69px; }
 .charity-donation-parallex-full { background: url(../extra-images/donation-parallex-bg.jpg); background-attachment: fixed; background-size: cover; padding: 90px 0px 95px 0px; margin-bottom: 71px; }

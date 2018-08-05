@@ -107,6 +107,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
+	height: 0px;
 	cursor: default;
 }
 .ui-menu {
@@ -120,8 +121,8 @@
 	position: absolute;
 }
 .ui-menu .ui-menu-item {
-	margin: 0;
 	cursor: pointer;
+	height:40px;
 	/* support: IE10, see #8844 */
 	list-style-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
 }
@@ -898,11 +899,11 @@ body .ui-tooltip {
 }
 .ui-widget.ui-widget-content {
 	background-color: #272625;
-	height: 20px;
+	
 }
 .ui-widget-content {
 	background: #ffffff;
-	color: #333333;
+	color: #ffffff;
 }
 .ui-widget-content a {
 	color: #333333;

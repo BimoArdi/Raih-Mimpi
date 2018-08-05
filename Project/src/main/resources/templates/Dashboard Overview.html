@@ -9,10 +9,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>overview</title>
+    <title>Raih Mimpi</title>
 
     <!-- CSS -->
-    <css th:replace="link::header-css"></css>
+	    <css th:replace="link::header-css"></css>
+	    <link rel="stylesheet" href="css/style.css">
     <!-- CSS -->
 </head>
 
@@ -32,110 +33,64 @@
     <div class="charity-subheader" style="height: 275px;">
         <div class="black-transparent" style="height: 275px;"></div>
     </div>
-    <form method="post" th:action="@{dashboard-profil}" enctype="multipart/form-data">
-        <div class="charity-main-section m-t-30 m-b-20">
-            <div class="container">
-                <div class="row charity-profil-head">
-                    <div class="col-md-2">
-                        <div class="image-upload containerxx m-t-20">
-                            <label for="file-input">
-						    	<img id="Tfoto" th:if="${penggunaAktif.pengguna.fotoProfil} == null" th:src="@{images/index.png}" class="imgprofil m-b-20" alt="foto profil"/>					        
-						        <img id="Tfoto"  th:if="${penggunaAktif.pengguna.fotoProfil} != null" class="imgprofil m-b-20" alt="foto profil" 
-						        th:src="@{'data:image/jpg;base64,' + *{T(org.springframework.util.Base64Utils).encodeToString(penggunaAktif.pengguna.fotoProfil)}}"/>					        
-						      </label>
-					    	<div class="middle">
-							    <h6 class="text">Ganti Foto</h6>
-							</div>					
-					    	<input id="file-input" onchange="TampilFoto();" type="file" name="fotoProfil" accept="image/*"/>
-                        </div>
-                    </div>
-                    <div class="col-md-10 charity-profil-bio">
-                        <div class="row">
-                            <div class="col-md-4 m-t-10 m-b-10">
-                                <div class="col-md-12 widget_title"><h2 th:text=${penggunaAktif.username}><font color="white"></font></h2></div>
-                                <div>
-                                    <span class="col-md-4"><b>Nama</b></span>
-                                    <span class="col-md-8" th:text=${penggunaAktif.pengguna.nama} ></span>
-                                </div>
-                                <div>
-                                    <span class="col-md-2"><b>Email</b></span>
-                                    <span class="col-md-10" th:text=${penggunaAktif.email}></span>
-                                </div>
-                                <div>
-                                    <span class="col-md-4"><b>No.HP</b></span>
-                                    <span class="col-md-8" th:text=${penggunaAktif.pengguna.telephone} ></span>
-                                </div>
-                            </div>
-                            <div class="col-md-8 m-t-10 m-b-10">
-                                <div class="col-md-10"><b>Biografi</b></div>
-                                <div>
-                                    <p class="col-md-12" th:text=${penggunaAktif.pengguna.biografi}></p>        
-                                </div>
-                            </div>
-                        </div>
-                    </div>                    
-                </div>
-            </div>
-        </div>
+    <dataProfil th:replace="nav::nav3"></dataProfil>
 
         <div class="charity-main-section m-t-10 m-b-20">
             <div class="container">
                 <div class="row charity-profil-head">
-	                    <div class="col-md-2 md2">
-	                        <div>
-	                            <ul class="sidebar-menu" id="nav-accordion">
-	                            	<li class="charity-list m-t-10"><a href="dashboard-proyek">Proyek</a></li>
+                    <div class="col-md-2">
+                        <div>
+					         <ul class="children">
+	                            	<li class="charity-list m-t-10 active"><a href="#">Overview</a></li>
+	                                <li class="charity-list m-t-10"><a href="dashboard-proyek">Proyek</a></li>
 	                                <li class="charity-list"><a href="dashboard-update-proyek">Progres Proyek</a></li>
 	                                <li class="charity-list"><a href="dashboard-sponsor">Sponsor</a></li>
 	                                <li class="charity-list"><a href="dashboard-pencairan">Pencairan Dana</a></li>
-	                                <li class="charity-list active"><a href="#">Edit Profil</a></li>
+	                                <li class="charity-list"><a href="dashboard-profil">Edit Profil</a></li>
 	                                <li class="charity-list"><a href="dashboard-verifikasi">Verifikasi</a></li>
-	                                <li class="charity-list m-b-100"><a th:href="dashboard-password" >Ubah Password</a></li>
-	                           </ul>
-	                        </div>
-	                    </div>
+	                                <li class="charity-list m-b-100"><a href="dashboard-password" >Ubah Password</a></li>
+					        </ul>
+					     </div>
+                    </div>
+
 	                    <div class="col-md-10 charity-profil-bio">
                       <br>
                         <div class="col-md-12 widget_title1">
-                            <h2 >Donatur<font color="white"></font></h2>
+                            <h2 ><font color="white">Donatur</font></h2>
                             <br><br>
                             <div class="thumb-list1">
                                 <div class="text-holder" >
                                     <ul class="row">
-                                    <li class="col-md-6 charlist"><h6 class="h61">Jumlah Donasi</h6>
+                                    <li class="col-md-6 charlist"><h6 class="h61">Jumlah Sponsor</h6>
                                         <br><br>
-                                        <div><h1>123456</h1></div>
+                                        <div><h1 th:if="${Request+Berhasil+Gagal} != null" th:text="${Request+Berhasil+Gagal}"></h1>
+                                        <h1 th:if="${Request+Berhasil+Gagal} == null">0</h1></div>
                                         <ul class="row">
                                             <li class="col-md-12 charlist">
-                                                <li class="col-md-3 charlist">
-                                                     <h6> Pending </h6>
+                                                <li class="col-md-4 charlist">
+                                                     <h6> Request </h6>
                                                      <ul class="row">
                                                          <li class=" col-md-12 charlist1">
-                                                          <h6> 0 </h6>
+                                                          <h6 th:if="${Request}!=null" th:text="${Request}"></h6>
+                                                          <h6 th:if="${Request}==null">0</h6>
                                                          </li>
                                                      </ul>   
                                                 </li>
-                                                <li class="col-md-3 charlist">
-                                                    <h6>Waiting</h6>
+                                                <li class="col-md-4 charlist">
+                                                    <h6>Berhasil</h6>
                                                     <ul class="row">
                                                          <li class=" col-md-12 charlist1">
-                                                          <h6> 0 </h6>
+                                                          <h6 th:if="${Berhasil}!=null"  th:text="${Berhasil}"></h6>
+                                                          <h6 th:if="${Berhasil}==null">0</h6>
                                                          </li>
                                                      </ul>      
                                                </li>
-                                                <li class="col-md-3 charlist">
-                                                    <h6>Sukses</h6>
-                                                    <ul class="row">
-                                                         <li class=" col-md-12 charlist1">
-                                                          <h6> 0 </h6>
-                                                         </li>
-                                                     </ul>      
-                                                </li>
-                                                <li class="col-md-3 charlist">
+                                                <li class="col-md-4 charlist">
                                                     <h6>Gagal</h6>
                                                     <ul class="row">
                                                          <li class=" col-md-12 charlist1">
-                                                          <h6> 0 </h6>
+                                                          <h6 th:if="${Gagal}!=null" th:text="${Gagal}"></h6>
+                                                          <h6 th:if="${Gagal}==null">0</h6>
                                                          </li>
                                                      </ul>      
                                                 </li>
@@ -152,7 +107,8 @@
                                             <li class="col-md-11 charlist">
                                                 <h6 class="h62">TOTAL SPONSOR</h6>
                                                 <br>
-                                                <div><h1>Rp.123.456</h1></div>
+                                                <div><h1 th:if="${TotalSponsor}!= null" th:text="${'Rp ' + #numbers.formatDecimal(TotalSponsor, 0, 'COMMA', 2, 'POINT')}"></h1>
+                                                <h1 th:if="${TotalSponsor}== null" th:text="${'Rp ' + #numbers.formatDecimal('0', 0, 'COMMA', 2, 'POINT')}"></h1></div>
                                             </li>
                                         </ul>
                                     </li>
@@ -161,37 +117,50 @@
                         </div>
                     </div>
                     <div class="col-md-12 widget_title1">
-                            <h2 >Proyek<font color="white"></font></h2>
+                            <h2 ><font color="white">Proyek</font></h2>
                             <br><br>
                             <div class="thumb-list1">
                                 <div class="text-holder" >
                                     <ul class="row">
-                                    <li class="col-md-6 charlist"><h6 class="h61">Jumlah Program</h6>
+                                    <li class="col-md-6 charlist"><h6 class="h61">Jumlah Proyek</h6>
                                         <br><br>
-                                        <div><h1>123456</h1></div>
-                                        <ul class="row">
+                                        <div><h1 th:if="${Request1+Aktif+TidakAktif+Gagal1}!= null" th:text="${Request1+Aktif+TidakAktif+Gagal1}"></h1>
+                                        </div>
+                                        <ul class="row"><h1 th:if="${Request1+Aktif+TidakAktif+Gagal1}== null">0</h1>
                                             <li class="col-md-12 charlist">
-                                                <li class="col-md-4 charlist">
-                                                     <h6> Pending </h6>
+                                                <li class="col-md-3 charlist">
+                                                     <h6> Request </h6>
                                                      <ul class="row">
                                                          <li class=" col-md-12 charlist1">
-                                                          <h6> 0 </h6>
+                                                          <h6 th:if="${Request1}!=null" th:text="${Request1}"></h6>
+                                                          <h6 th:if="${Request1}==null">0</h6>
                                                          </li>
                                                      </ul>   
                                                 </li>
-                                                <li class="col-md-4 charlist">
-                                                    <h6>Berjalan</h6>
+                                                <li class="col-md-2 charlist">
+                                                    <h6>Aktif</h6>
                                                     <ul class="row">
                                                          <li class=" col-md-12 charlist1">
-                                                          <h6> 0 </h6>
+                                                          <h6 th:if="${Aktif}!= null" th:text="${Aktif}"></h6>
+                                                          <h6 th:if="${Aktif}== null">0</h6>
                                                          </li>
                                                      </ul>      
                                                </li>
                                                 <li class="col-md-4 charlist">
-                                                    <h6>Selesai</h6>
+                                                    <h6>Tidak Aktif</h6>
                                                     <ul class="row">
                                                          <li class=" col-md-12 charlist1">
-                                                          <h6> 0 </h6>
+                                                          <h6 th:if="${TidakAktif}!=null" th:text="${TidakAktif}"></h6>
+                                                          <h6 th:if="${TidakAktif}==null">0</h6>
+                                                         </li>
+                                                     </ul>      
+                                                </li>
+                                                <li class="col-md-3 charlist">
+                                                    <h6>Gagal</h6>
+                                                    <ul class="row">
+                                                         <li class=" col-md-12 charlist1">
+                                                          <h6 th:if="${Gagal1}!=null" th:text="${Gagal1}"></h6>
+                                                          <h6 th:if="${Gagal1}==null">0</h6>
                                                          </li>
                                                      </ul>      
                                                 </li>
@@ -208,7 +177,8 @@
                                             <li class="col-md-11 charlist">
                                                 <h6 class="h62">TOTAL SPONSOR TERKUMPUL</h6>
                                                 <br>
-                                                <div><h1>Rp.123.456</h1></div>
+                                                 <div><h1 th:if="${totalSponsorPengguna}!=null" th:text="${'Rp ' + #numbers.formatDecimal(totalSponsorPengguna, 0, 'COMMA', 2, 'POINT')}"></h1>
+                                                <h1 th:if="${totalSponsorPengguna}==null" th:text="${'Rp ' + #numbers.formatDecimal('0', 0, 'COMMA', 2, 'POINT')}"></h1></div>
                                             </li>
                                         </ul>
                                     </li>
@@ -228,17 +198,13 @@
     	<footer th:replace="footer::foot"></footer>
     <!-- Footer -->
     
-    <!-- Search Modal -->
-    	<searching th:replace="modal::search"></searching>
-    <!-- jQuery -->
-	    <manyscript th:replace="script::ms"></manyscript>
-    
-	    <script4 th:replace="script::s4"></script4>
-		<script13 th:replace="script::loader"></script13>	
-	</div>
-    
+	</div>    
 </body>
 
+    <jQuery th:replace="script::jQuery"></jQuery>
+	<autocomplete th:replace="script::autocomplete"></autocomplete>
+	<loader th:replace="script::loader"></loader>
+	<cekAkun th:replace="script::cekAkun"></cekAkun>
 
 <!-- Mirrored from ritetags.com/html/charity/event-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:15:53 GMT -->
 </html>

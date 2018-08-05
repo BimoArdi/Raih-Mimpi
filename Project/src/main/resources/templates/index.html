@@ -9,8 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <title>Raih Mimpi</title>
-    <css th:replace="link::header-css"></css>
-    <!-- CSS -->
+   	<!-- CSS -->
+   	    <css th:replace="link::header-css"></css>
+	    <link rel="stylesheet" href="css/style-modal.css">
+        <link rel="stylesheet" href="css/slick-slider.css">
+	<!-- CSS -->
 </head>
 
 <body onload="myFunction()" style="margin:0;" class="home">
@@ -20,8 +23,10 @@
 	    <header id="charity-header" class="charity-header-one">
 	    <!-- Header -->
 		    <!-- Main Header -->
+			<div>
 				<belumLogin th:replace="nav::nav1"></belumLogin>
-	   		<!-- Main Header -->
+			</div>
+		<!-- Main Header -->
 		</header>
 	    <!--Gambar-->
 	    <div class="charity-banner">
@@ -86,30 +91,40 @@
 <!-- Progress  -->
 		       <div class="charity-main-section charity_counter_full">
 		           <span class="black-transparent"></span>
-			          <div class="container">
-			              <div class="row">
-			                  <div class="col-md-12">
-			                      <div class="charity-counter" id="counter">
-			                          <ul class="row">
-			                              <li class="col-md-3">
-			                                  <i class="icon-donation2 bgcolor"></i>
-		                                   <span class="counter-value" data-count="5012">0</span>
-		                                   <small>Sponsor</small>
+			        <div class="container">
+			        	<div class="row">
+			            	<div class="col-md-12">
+			                	<div class="charity-counter" id="counter">
+			                    	<ul class="row">
+			                        	<li class="col-md-2">
+			                            	<i class="icon-donation2 bgcolor"></i>
+		                                   	<span class="counter-value" th:data-count="${s}"></span>
+		                                   	<small>Sponsor</small>
 		                               </li>
-		                               <li class="col-md-3">
-		                                   <i class="icon-ribbon bgcolor"></i>
-		                                   <span class="counter-value" data-count="60574">0</span>
-		                                   <small>Kesehatan</small>
+		                               <li class="col-md-2">
+		                                   	<i class="icon-ribbon bgcolor"></i>
+		                                   	<span class="counter-value" th:data-count="${k1}"></span>
+		                                   	<small>Pendidikan</small>
 		                               </li>
-		                               <li class="col-md-3">
-		                                   <i class="icon-mortarboard bgcolor"></i>
-		                                   <span class="counter-value" data-count="30047">0</span>
-		                                   <small>Pendidikan</small>
+		                               <li class="col-md-2">
+		                                   	<i class="icon-mortarboard bgcolor"></i>
+		                                   	<span class="counter-value" th:data-count="${k2}"></span>
+		                                   	<small>Masyarakat</small>
 		                               </li>
-		                               <li class="col-md-3">
-		                                   <i class="icon-help bgcolor"></i>
-		                                   <span class="counter-value" data-count="7814">0</span>
-		                                   <small>Masyarakat</small>
+		                               <li class="col-md-2">
+		                                   	<i class="icon-help bgcolor"></i>
+		                                   	<span class="counter-value" th:data-count="${k3}"></span>
+		                                   	<small>Ekonomi</small>
+		                               </li>
+		                           	   <li class="col-md-2">
+		                                   	<i class="icon-mortarboard bgcolor"></i>
+		                                   	<span class="counter-value" th:data-count="${k4}"></span>
+		                                   	<small>Sosial</small>
+		                               </li>
+		                               <li class="col-md-2">
+		                                   	<i class="icon-help bgcolor"></i>
+		                                   	<span class="counter-value" th:data-count="${k5}"></span>
+		                                   	<small>Lingkungan</small>
 		                               </li>
 		                           </ul>
 		                       </div>
@@ -118,121 +133,6 @@
 		           </div>
 		       </div>           
 		       
-	       <div class="charity-main-section" >
-                <div class="container-fluid">
-                    <div class="row">
-                       <div class="col-md-12">
-                            <div class="charity-services charity-simple-services">
-                                <ul class="row">
-                                    <li class= "col-md-1"> 
-                                    </li>
-                                    <li class="col-md-2">
-                                        <i class="fas fa-book charity-color1">
-                                        	<div class="charity-simple-services-text">
-                                            <h2 style="text-align: center;">Pendidikan</h2>
-                                       </div>
-                                        </i>
-                                    </li>
-                                    <li class="col-md-2">
-                                        <i class="fas fa-heart charity-color1">
-                                       		<div class="charity-simple-services-text">
-                                            	<h2 style="text-align: center;">Masyarakat</h2>
-                                       		</div>
-                                        </i>                                       
-                                    </li>
-                                    <li class="col-md-2">
-                                        <i class="fas fa-users charity-color1">
-                                        	<div class="charity-simple-services-text">
-                                            	<h2 style="text-align: center;">Ekonomi</h2>
-                                        	</div>
-                                        </i>
-                                    </li>
-                                    <li class="col-md-2">
-	                                    <div>
-	                                    	<i class="fas fa-users charity-color1">
-	                                        	<div class="charity-simple-services-text">
-	                                            <h2 style="text-align: center;">Sosial</h2>
-	                                        </div>
-	                                        </i>
-	                                    </div>
-                                    </li>
-                                    <li class="col-md-2">
-                                        <i class="fas fa-users charity-color1">
-                                        	<div class="charity-simple-services-text">
-                                            <h2 style="text-align: center;">Lingkungan</h2>
-                                        </div>
-                                        </i>
-                                    </li>
-                                    <li class= "col-md-1"> 
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                  <!--       <div class="col-md-1 charity111"></div>
-                        <div class="col-md-2 charity11">
-                        	<div class="charity111">
-                        		<div>
-                        			<i class="fas fa-users charity123"></i>
-                        		</div>
-                        		<div>
-                        			<h2>Lingkungan</h2>
-                        		</div>
-                        		
-                        	</div>
-                        </div>
-                        <div class="col-md-2 charity11">
-                        	<div class="charity111">
-                        		<div>
-                        			<i class="fas fa-users charity123"></i>
-                        		</div>
-                        		<div>
-                        			<h2>Lingkungan</h2>
-                        		</div>
-                        		
-                        	</div>
-                        	
-                        </div>
-                        <div class="col-md-2 charity11">
-                        	<div class="charity111">
-                        		<div>
-                        			<i class="fas fa-users charity123"></i>
-                        		</div>
-                        		<div>
-                        			<h2>Lingkungan</h2>
-                        		</div>
-                        		
-                        	</div>
-                        	
-                        </div>
-                        <div class="col-md-2 charity11">
-                        <div class="charity111">
-                        		<div>
-                        			<i class="fas fa-users charity123"></i>
-                        		</div>
-                        		<div>
-                        			<h2>Lingkungan</h2>
-                        		</div>
-                        		
-                        	</div>
-                        
-                        </div>
-                        <div class="col-md-2 charity11">
-                        <div class="charity111">
-                        		<div>
-                        			<i class="fas fa-users charity123"></i>
-                        		</div>
-                        		<div>
-                        			<h2>Lingkungan</h2>
-                        		</div>
-                        		
-                        	</div>
-                        
-                        </div>
-                        <div class="col-md-1 charity111"></div> -->
-                    </div>
-                 </div>
-             </div>
-             
 	<!--Proyek Terakhir -->
        <div class="charity-main-section latest_causes_full">
            <div class="container ">
@@ -243,111 +143,59 @@
 	                        </div>
 	                           <div class="charity-causes charity-cause-grid">
 		                            <ul class="row">
-	                                <li class="col-md-4">
-	                                    <figure><a href="proyek-detail"><img src="extra-images/pendidikan.jpg" alt="" class="img"></a>
-	                                        <figcaption><a href="proyek-detail" class="charity-cause-grid-hover"><i class="fa fa-users"></i> 21 Donors</a></figcaption>
-	                                    </figure>
-	                                    <div data-width='80' data-target='100' class="charity-cause-progressbar"></div>
-	                                    <div class="charity-cause-grid-text">
-	                                        <span class="charity-cause-raised">Raised <br> <strong>$2000</strong></span>
-	                                        <small class="charity-cause-raised">Goal <br> <strong>$5000</strong></small>
-	                                        <div class="clearfix"></div>
-	                                        <h2><a href="proyek-detail">Pendidikan</a></h2>
-	                                        <p>Deskripsi Singkat Proyek yang di lakukan</p>
-	                                        <a href="login.html" class="charity-more-btn"><i class="fas fa-arrow-right"></i> Sponsor</a>
-	                                    </div>
-	                                </li>
-	                                <li class="col-md-4">
-	                                    <figure><a href="proyek-detail"><img src="extra-images/masyarakat.jpg" alt="" class="img"></a>
-	                                        <figcaption><a href="proyek-detail" class="charity-cause-grid-hover"><i class="fa fa-users"></i> 21 Donors</a></figcaption>
-	                                    </figure>
-	                                    <div data-width='60' data-target='100' class="charity-cause-progressbar"></div>
-	                                    <div class="charity-cause-grid-text">
-	                                        <span class="charity-cause-raised">Raised <br> <strong>$1000</strong></span>
-	                                        <small class="charity-cause-raised">Goal <br> <strong>$3000</strong></small>
-	                                        <div class="clearfix"></div>
-	                                        <h2><a href="proyek-detail">Masyarakat</a></h2>
-	                                        <p>Deskripsi Singkat Proyek yang di lakukan</p>
-	                                        <a href="login.html" class="charity-more-btn"><i class="fas fa-arrow-right"></i>Sponsor</a>
-	                                    </div>
-	                                </li>
-	                                <li class="col-md-4">
-	                                    <figure><a href="proyek-detail"><img src="extra-images/kesehatan.jpg" alt="" class="img"></a>
-	                                        <figcaption><a href="proyek-detail" class="charity-cause-grid-hover"><i class="fa fa-users"></i> 21 Donors</a></figcaption>
-	                                    </figure>
-	                                    <div data-width='45' data-target='100' class="charity-cause-progressbar"></div>
-	                                    <div class="charity-cause-grid-text">
-	                                        <span class="charity-cause-raised">Raised <br> <strong>$7000</strong></span>
-	                                        <small class="charity-cause-raised">Goal <br> <strong>$9000</strong></small>
-	                                        <div class="clearfix"></div>
-	                                        <h2><a href="proyek-detail">Kesehatan</a></h2>
-	                                        <p>Deskipsi Singkat Proyek yang di lakukan </p>
-	                                        <a href="login.html" class="charity-more-btn"><i class="fas fa-arrow-right"></i>Sponosr</a>
-	                                    </div>
-	                                </li>
-	                                <li class="col-md-4">
-	                                    <figure><a href="proyek-detail"><img src="extra-images/pendidikan.jpg" alt="" class="img"></a>
-	                                        <figcaption><a href="proyek-detail" class="charity-cause-grid-hover"><i class="fa fa-users"></i> 21 Donors</a></figcaption>
-	                                    </figure>
-	                                    <div data-width='80' data-target='100' class="charity-cause-progressbar"></div>
-	                                    <div class="charity-cause-grid-text">
-	                                        <span class="charity-cause-raised">Raised <br> <strong>$2000</strong></span>
-	                                        <small class="charity-cause-raised">Goal <br> <strong>$5000</strong></small>
-	                                        <div class="clearfix"></div>
-	                                        <h2><a href="proyek-detail">Pendidikan</a></h2>
-	                                        <p>Deskripsi Singkat Proyek yang di lakukan</p>
-	                                        <a href="login.html" class="charity-more-btn"><i class="fas fa-arrow-right"></i> Sponsor</a>
-	                                    </div>
-	                                </li>
-	                                <li class="col-md-4">
-	                                    <figure><a href="proyek-detail"><img src="extra-images/masyarakat.jpg" alt="" class="img"></a>
-	                                        <figcaption><a href="proyek-detail" class="charity-cause-grid-hover"><i class="fa fa-users"></i> 21 Donors</a></figcaption>
-	                                    </figure>
-	                                    <div data-width='60' data-target='100' class="charity-cause-progressbar"></div>
-	                                    <div class="charity-cause-grid-text">
-	                                        <span class="charity-cause-raised">Raised <br> <strong>$1000</strong></span>
-	                                        <small class="charity-cause-raised">Goal <br> <strong>$3000</strong></small>
-	                                        <div class="clearfix"></div>
-	                                        <h2><a href="proyek-detail">Masyarakat</a></h2>
-	                                        <p>Deskripsi Singkat Proyek yang di lakukan</p>
-	                                        <a href="login.html" class="charity-more-btn"><i class="fas fa-arrow-right"></i>Sponsor</a>
-	                                    </div>
-	                                </li>
-	                                <li class="col-md-4">
-	                                    <figure><a href="proyek-detail"><img src="extra-images/kesehatan.jpg" alt="" class="img"></a>
-	                                        <figcaption><a href="proyek-detail" class="charity-cause-grid-hover"><i class="fa fa-users"></i> 21 Donors</a></figcaption>
-	                                    </figure>
-	                                    <div data-width='45' data-target='100' class="charity-cause-progressbar"></div>
-	                                    <div class="charity-cause-grid-text">
-	                                        <span class="charity-cause-raised">Raised <br> <strong>$7000</strong></span>
-	                                        <small class="charity-cause-raised">Goal <br> <strong>$9000</strong></small>
-	                                        <div class="clearfix"></div>
-	                                        <h2><a href="proyek-detail">Kesehatan</a></h2>
-	                                        <p>Deskipsi Singkat Proyek yang di lakukan </p>
-	                                        <a href="login.html" class="charity-more-btn"><i class="fas fa-arrow-right"></i>Sponosr</a>
-	                                    </div>
-	                                </li>
-	                            </ul>
-	                        </div>
+										<li class="col-md-4" th:each="proyek, iterStat:${listproyek}" >
+		                                    <figure><a href="#"><img th:src="@{'data:image/jpg;base64,' + *{T(org.springframework.util.Base64Utils).encodeToString(proyek.getFotoUtamaProyek().foto)}}"
+		                                    alt="foto proyek" class="img"></a>
+												<a th:href="@{proyek-detail(id=${proyek.id})}"  class="charity-caption-btn"><span>View Detail</span></a>
+		                                    </figure>
+		                                    <div th:data-width="${proyek.getPersentaseDana()}" data-target='100' class="charity-cause-progressbar"></div>
+		                                    <div class="charity-cause-grid-text">
+		                                        <span class="charity-cause-raised">Raised <br> <strong th:text="${'Rp ' + #numbers.formatDecimal(proyek.totalDana, 0, 'COMMA', 2, 'POINT')}"></strong></span>
+		                                        <small class="charity-cause-raised">Goal <br> <strong th:text="${'Rp ' + #numbers.formatDecimal(proyek.targetDana, 0, 'COMMA', 2, 'POINT')}"></strong></small>
+		                                        <div class="clearfix"></div>
+		                                        <h2><a href="#" th:text="${proyek.namaProyek}"></a></h2>
+		                                        <h5 th:text="${proyek.pengguna.nama}"></h5>
+		                                        <a th:data-namaproyek="${proyek.namaProyek}" class="charity-more-btn" href="#my_modal" data-toggle="modal" ><i class="fas fa-arsrow-right"></i> Sponsor Now</a>
+		                                    </div>								                                    	
+		                                </li>
+		                                <li class="col-md-4" th:each="proyek, iterStat:${listproyek1}" >
+		                                    <figure><a href="#"><img th:src="@{'data:image/jpg;base64,' + *{T(org.springframework.util.Base64Utils).encodeToString(proyek.getFotoUtamaProyek().foto)}}"
+		                                    alt="foto proyek" class="img"></a>
+												<a th:href="@{proyek-detail(id=${proyek.id})}"  class="charity-caption-btn"><span>View Detail</span></a>
+		                                    </figure>
+		                                    <div th:data-width="${proyek.getPersentaseDana()}" data-target='100' class="charity-cause-progressbar"></div>
+		                                    <div class="charity-cause-grid-text">
+		                                        <span class="charity-cause-raised">Raised <br> <strong th:text="${'Rp ' + #numbers.formatDecimal(proyek.totalDana, 0, 'COMMA', 2, 'POINT')}"></strong></span>
+		                                        <small class="charity-cause-raised">Goal <br> <strong th:text="${'Rp ' + #numbers.formatDecimal(proyek.targetDana, 0, 'COMMA', 2, 'POINT')}"></strong></small>
+		                                        <div class="clearfix"></div>
+		                                        <h2><a href="#" th:text="${proyek.namaProyek}"></a></h2>
+		                                        <h5 th:text="${proyek.pengguna.nama}"></h5>
+		                                        <a th:data-namaproyek="${proyek.namaProyek}" class="charity-more-btn" href="#my_modal" data-toggle="modal" ><i class="fas fa-arsrow-right"></i> Sponsor Now</a>
+		                                    </div>								                                    	
+		                                </li>	                                
+				                    </ul>
+	            	            </div>
 			                
-			                   <div class="charity-loadbtn"><a href="kategori">LIHAT SEMUA </a></div>
+			                   <div class="charity-loadbtn"><a href="all-proyek">LIHAT SEMUA </a></div>
 			                </div>
 			             </div>
 			          </div>
 			       </div>
-		    <!-- Footer -->
+    <!-- Footer -->
 	    <footer th:replace="footer::foot"></footer>
-	    <!-- Footer -->
-	    
-	    <!-- Search Modal -->
-	    <searching th:replace="modal::search"></searching>
-	    <!-- jQuery -->
-	    <manyscript th:replace="script::ms"></manyscript>
-		<script7 th:replace="script::autocomplete"></script7>
-		<script9 th:replace="script::ajaxauto"></script9>
-		<script13 th:replace="script::loader"></script13>	
+    <!-- Footer -->
 	</div>
+	<!-- Modal -->
+	<modalSponsor th:replace="modal::modalSponsor"></modalSponsor> 
+	<!-- Modal -->
 </body>
+    <jQuery th:replace="script::jQuery"></jQuery>
+	<autocomplete th:replace="script::autocomplete"></autocomplete>
+	<loader th:replace="script::loader"></loader>
+	<cekLogin th:replace="script::cekLogin"></cekLogin>	
+	<cekAkun th:replace="script::cekAkun"></cekAkun>
+	<modalSponsor th:replace="script::modalSponsor"></modalSponsor>	
+	
 
 
 <!-- Mirrored from ritetags.com/html/charity/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:13:42 GMT -->

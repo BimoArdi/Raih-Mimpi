@@ -1,6 +1,8 @@
 package com.example.project.model;
 
 import java.io.Serializable;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.PrePersist;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -39,7 +40,12 @@ public class Login extends Additional implements Serializable {
     @Column(length = 100, unique = true)
     private String email;
     
-    private boolean status;
+    private Date lastLogin;
+    
+    @Column(nullable = false)
+    private String status;
+    
+    private String confirmationToken;
 
     public Login() {
     	
@@ -49,11 +55,6 @@ public class Login extends Additional implements Serializable {
     @JoinColumn(name ="IdPeran",referencedColumnName = "id"  ,nullable = true)
     private Peran peran;
     
-    
-    @PrePersist
-    public void Status(){
-        status =false;
-    }
     
     @Override
     public int hashCode() {
@@ -112,7 +113,15 @@ public class Login extends Additional implements Serializable {
         this.password = password;
     }
 
-    public String getEmail() {
+    public String getConfirmationToken() {
+		return confirmationToken;
+	}
+
+	public void setConfirmationToken(String confirmationToken) {
+		this.confirmationToken = confirmationToken;
+	}
+
+	public String getEmail() {
         return email;
     }
 
@@ -120,11 +129,11 @@ public class Login extends Additional implements Serializable {
         this.email = email;
     }
 
-	public boolean isStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
@@ -136,6 +145,13 @@ public class Login extends Additional implements Serializable {
 		this.peran = peran;
 	}
 
+	public Date getLastLogin() {
+		return lastLogin;
+	}
+
+	public void setLastLogin(Date lastLogin) {
+		this.lastLogin = lastLogin;
+	}
     
 }
 

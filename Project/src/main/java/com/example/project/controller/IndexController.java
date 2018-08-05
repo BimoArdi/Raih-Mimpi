@@ -1,5 +1,6 @@
 package com.example.project.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.example.project.services.KategoriServices;
 import com.example.project.services.PenggunaServices;
+import com.example.project.services.ProyekServices;
+import com.example.project.services.SponsorServices;
 import com.example.project.model.Kategori;
 import com.example.project.model.Login;
+import com.example.project.model.Proyek;
 
 @Controller
 @SessionAttributes("penggunaAktif")
@@ -23,17 +27,107 @@ public class IndexController {
 	
 	@Autowired
 	PenggunaServices pgs;
+
+	@Autowired
+	ProyekServices ps;
+
+	@Autowired
+	SponsorServices ss;
+
+	@RequestMapping("x")
+	public String hoem(ModelMap mm) {
+		mm.put("namaProyek","25");
+		return "autocomplete";
+	}
 	
 	@RequestMapping(value="/")
 	public String Home(ModelMap mm) {
 		List<Kategori> k = ks.getAll();
+		List<Proyek> ls = ps.getByFitur();
+		List<Proyek> ls1 = ps.getByLast();
+		List<Proyek> ls2 = new ArrayList<>();
+		int k1 = ps.getJumlahKategori(1L);
+		int k2 = ps.getJumlahKategori(2L);
+		int k3 = ps.getJumlahKategori(3L);
+		int k4 = ps.getJumlahKategori(4L);
+		int k5 = ps.getJumlahKategori(5L);
+		int s = ss.getTotalSponsor();
+		for(int i =0 ;i< ls1.size(); i++){
+			ls2.add(ls1.get(i));
+			if(i==2) {
+				break;
+			}
+		}
+		mm.put("k1",k1);
+		mm.put("k2",k2);
+		mm.put("k3",k3);
+		mm.put("k4",k4);
+		mm.put("k5",k5);
+		mm.put("s",s);
+		mm.put("listproyek1",ls2);
+		mm.put("listproyek",ls);
 		mm.put("listkategori",k);
 		return "index";
 	}
 	
+	@RequestMapping(value="index1")
+	public String Home1(ModelMap mm) {
+		List<Kategori> k = ks.getAll();
+		List<Proyek> ls = ps.getByFitur();
+		List<Proyek> ls1 = ps.getByLast();
+		List<Proyek> ls2 = new ArrayList<>();
+		int k1 = ps.getJumlahKategori(1L);
+		int k2 = ps.getJumlahKategori(2L);
+		int k3 = ps.getJumlahKategori(3L);
+		int k4 = ps.getJumlahKategori(4L);
+		int k5 = ps.getJumlahKategori(5L);
+		int s = ss.getTotalSponsor();
+		for(int i =0 ;i< ls1.size(); i++){
+			ls2.add(ls1.get(i));
+			if(i==2) {
+				break;
+			}
+		}
+		mm.put("k1",k1);
+		mm.put("k2",k2);
+		mm.put("k3",k3);
+		mm.put("k4",k4);
+		mm.put("k5",k5);
+		mm.put("s",s);
+		mm.put("listproyek1",ls2);
+		mm.put("listproyek",ls);
+		mm.put("listkategori",k);
+		return "index-1";
+	}
+
+	
+	
 	@RequestMapping(value="index")
 	public String HomeAfterLogin(ModelMap mm, @ModelAttribute("penggunaAktif")Login l) {
 		List<Kategori> k = ks.getAll();
+		List<Proyek> ls = ps.getByFitur();
+		List<Proyek> ls1 = ps.getByLast();
+		List<Proyek> ls2 = new ArrayList<>();
+		int k1 = ps.getJumlahKategori(1L);
+		int k2 = ps.getJumlahKategori(2L);
+		int k3 = ps.getJumlahKategori(3L);
+		int k4 = ps.getJumlahKategori(4L);
+		int k5 = ps.getJumlahKategori(5L);
+		int s = ss.getTotalSponsor();
+		for(int i =0 ;i< ls1.size(); i++){
+			ls2.add(ls1.get(i));
+			if(i==2) {
+				break;
+			}
+		}
+		mm.put("k1",k1);
+		mm.put("k2",k2);
+		mm.put("k3",k3);
+		mm.put("k4",k4);
+		mm.put("k5",k5);
+		mm.put("s",s);
+		mm.put("listproyek1",ls2);
+		mm.put("listproyek",ls);
 		mm.put("listkategori",k);
 		return "index-1";
 	}
@@ -45,20 +139,6 @@ public class IndexController {
 		return "about";
 	}
 	
-	@RequestMapping(value="/Overview")
-	public String View (ModelMap mm) {
-		List<Kategori> k = ks.getAll();
-		mm.put("listkategori",k);
-		return "Dashboard Overview";
-	}
-
-	@RequestMapping(value="/404")
-	public String Error (ModelMap mm) {
-		List<Kategori> k = ks.getAll();
-		mm.put("listkategori",k);
-		return "404";
-	}
-	
 
 	@RequestMapping(value="/contact-us")
 	public String contactUs(ModelMap mm) {
@@ -67,12 +147,6 @@ public class IndexController {
 		return "contact-us";
 	}
 	
-	@RequestMapping(value="forget-password")
-	public String forgetPassword(ModelMap mm) {
-		List<Kategori> k = ks.getAll();
-		mm.put("listkategori",k);
-		return "Forget Password";
-	}
 	
 	@RequestMapping(value="terms-of-user")
 	public String termsOfUser(ModelMap mm) {
@@ -102,10 +176,4 @@ public class IndexController {
 		return "team-grid";
 	}
 	
-	@RequestMapping(value="/rincian")
-	public String rincian(ModelMap mm) {
-		List<Kategori> k = ks.getAll();
-		mm.put("listkategori",k);	
-		return "Rincian";
-	}
 }

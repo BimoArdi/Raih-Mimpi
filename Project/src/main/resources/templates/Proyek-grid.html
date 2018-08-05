@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html xmlns:th="http://thymeleaf.org">
 
@@ -10,16 +9,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Diferensia Foundation</title>
+    <title>Raih Mimpi</title>
 
     <!-- CSS -->
-    <css th:replace="link::header-css"></css>
-    <page th:replace="link::page"></page>    
-    <bar th:replace="link::bar"></bar>
+	    <css th:replace="link::header-css"></css>
+	    <link rel="stylesheet" href="css/style-modal.css">
+    	<page th:replace="link::page"></page>    
     <!-- CSS -->
 </head>
 
-<body class="home">
+<body onload="myFunction()" style="margin:0;" class="home">
+	<div id="loader"></div>
+	<div style="display:none;" id="myDiv" class="animate-bottom">
     <!-- Header -->
     <header id="charity-header" class="charity-header-one">
     <!-- Header -->
@@ -31,7 +32,7 @@
 	        <setelahLogin th:replace="nav::nav2"></setelahLogin>
 	    </div>    	    
    		<!-- Main Header -->
-	</header>
+    </header>
     <!-- Header -->
 
     <!-- Banner -->
@@ -49,7 +50,7 @@
 
     <!-- Content -->
     <div class="charity-main-content">
-
+    
         <!-- Main Section -->
         <div class="charity-main-section">
             <div class="container">
@@ -58,61 +59,49 @@
                         
                         <!-- Causes -->
                         <div class="charity-causes charity-cause-grid inner-wrap">
-                            <ul class="row" id="example">
+                            <ul class="row" id=example>
                                 <li class="col-md-4" th:each="proyek, iterStat:${listproyek}" >
                                     <figure><a href="#"><img th:src="@{'data:image/jpg;base64,' + *{T(org.springframework.util.Base64Utils).encodeToString(proyek.getFotoUtamaProyek().foto)}}"
                                     alt="foto proyek" class="img"></a>
 										<a th:href="@{proyek-detail(id=${proyek.id})}"  class="charity-caption-btn"><span>View Detail</span></a>
                                     </figure>
-                                    <div id="progressbar"></div>
+                                    <div th:data-width="${proyek.getPersentaseDana()}" data-target='100' class="charity-cause-progressbar"></div>
                                     <div class="charity-cause-grid-text">
-                                        <span class="charity-cause-raised">Raised <br> <strong th:text="${proyek.totalDana}"></strong></span>
-                                        <small class="charity-cause-raised">Goal <br> <strong th:text="${proyek.targetDana}"></strong></small>
+                                        <span class="charity-cause-raised">Raised <br> <strong th:text="${'Rp ' + #numbers.formatDecimal(proyek.totalDana, 0, 'COMMA', 2, 'POINT')}"></strong></span>
+                                        <small class="charity-cause-raised">Goal <br> <strong th:text="${'Rp ' + #numbers.formatDecimal(proyek.targetDana, 0, 'COMMA', 2, 'POINT')}"></strong></small>
                                         <div class="clearfix"></div>
                                         <h2><a href="#" th:text="${proyek.namaProyek}"></a></h2>
                                         <h5 th:text="${proyek.pengguna.nama}"></h5>
-                                        <a href="sponsor" class="charity-more-btn"><i class="fas fa-arrow-right" ></i> Sponsor Now</a>
-                                    </div>
+                                        <a th:data-namaproyek="${proyek.namaProyek}" class="charity-more-btn" href="#my_modal" data-toggle="modal" ><i class="fas fa-arsrow-right"></i> Sponsor Now</a>
+                                    </div>								                                    	
                                 </li>
                             </ul>
                         </div>
                         <!-- Causes -->
-
-                        <!-- Pagination -->
-                        <!-- <div class="charity-pagination">
-                            <ul class="page-numbers">
-                               <li><a class="previous page-numbers" href="404"><span aria-label="Next"><i class="fa fa-angle-left"></i> Previous Post</span></a></li>
-                               <li><span class="page-numbers current">01</span></li>
-                               <li><a class="page-numbers" href="404">02</a></li>
-                               <li><a class="page-numbers" href="404">03</a></li>
-                               <li><a class="page-numbers" href="404">...</a></li>
-                               <li><a class="page-numbers" href="404">10</a></li>
-                               <li><a class="next page-numbers" href="404"><span aria-label="Next">Next Post<i class="fa fa-angle-right"></i></span></a></li>
-                            </ul>
-                          </div> -->
-                          <!-- Pagination -->
-                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Main Section -->
-
+        </div>        <!-- Main Section -->
     </div>
+    </div>
+    
     <!-- Content -->
 
+   <!-- Footer -->
+	    <footer th:replace="footer::foot"></footer>
     <!-- Footer -->
-    <footer th:replace="footer::foot"></footer>
-    <!-- Footer -->
-    
-    <!-- Search Modal -->
-    <searching th:replace="modal::search"></searching>
-    <!-- jQuery -->
-    <manyscript th:replace="script::ms"></manyscript>
-    <script12 th:replace="script::page"></script12>
-   	<script14 th:replace="script::bar"></script14>
-    
+</div>
 
+  <!-- Modal -->
+	<modalSponsor th:replace="modal::modalSponsor"></modalSponsor> 
+  <!-- Modal -->
 </body>
+    <jQuery th:replace="script::jQuery"></jQuery>
+	<autocomplete th:replace="script::autocomplete"></autocomplete>
+	<loader th:replace="script::loader"></loader>
+	<cekLogin th:replace="script::cekLogin"></cekLogin>	
+	<cekAkun th:replace="script::cekAkun"></cekAkun>
+    <paginate th:replace="script::paginate"></paginate>
+	<modalSponsor th:replace="script::modalSponsor"></modalSponsor>	
 
 
 <!-- Mirrored from ritetags.com/html/charity/cause-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:16:38 GMT -->

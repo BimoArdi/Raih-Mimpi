@@ -9,14 +9,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Dashboard</title>
+    <title>Raih Mimpi</title>
 
     <!-- CSS -->
-    <css th:replace="link::header-css"></css>
+	    <css th:replace="link::header-css"></css>
+	    <link rel="stylesheet" href="css/style.css">
     <!-- CSS -->
 </head>
 
-<body class="home">
+<body onload="myFunction()" style="margin:0;" class="home">
+	<div id="loader"></div>
+	<div style="display:none;" id="myDiv" class="animate-bottom">
     <!-- Header -->
     <header id="charity-header" class="charity-header-one">
     <!-- Header -->
@@ -36,16 +39,17 @@
         <div class="charity-main-section m-t-10 m-b-20">
             <div class="container">
                 <div class="row charity-profil-head">
-                    <div class="col-md-2 md2">
+                    <div class="col-md-2">
                         <div>
                             <ul class="sidebar-menu" id="nav-accordion">
+                            	<li class="charity-list m-t-10"><a href="overview">Overview</a></li>
                                 <li class="charity-list m-t-10"><a href="dashboard-proyek">Proyek</a></li>
                                 <li class="charity-list active"><a href="#">Progres Proyek</a></li>
                                 <li class="charity-list"><a href="dashboard-sponsor">Sponsor</a></li>
                                 <li class="charity-list"><a href="dashboard-pencairan">Pencairan Dana</a></li>
-                                <li class="charity-list"><a href="dashboard-profil">Profil</a></li>
-                                <li class="charity-list "><a href="dashboard-verifikasi">Verifikasi</a></li>
-                                <li class="charity-list m-b-100"><a href="dashboard-password">Ubah Password</a></li>
+                                <li class="charity-list"><a href="dashboard-profil">Edit Profil</a></li>
+                                <li class="charity-list"><a href="dashboard-verifikasi">Verifikasi</a></li>
+                                <li class="charity-list m-b-100"><a th:href="dashboard-password" >Ubah Password</a></li>
                            </ul>
 
                         </div>
@@ -99,146 +103,17 @@
                 </div>
             </div>
         </div>
-
-
     <!-- Footer -->
-    <footer id="charity-footer" class="charity-footer-one">
-        <!-- Footer Widget -->
-        <div class="charity-footer-widget">
-            <div class="container">
-                <div class="row">
-                    <aside class="col-md-4 widget widget_usefull_links">
-                        <div class="charity-footer-title"> <h2>Quick Links</h2> </div>
-                        <ul>
-                            <li><a href="#">Kategori</a></li>
-                            <li><a href="#">Projek</a></li>
-                            <li><a href="#">Latest News</a></li>
-                            <li><a href="#">Seponsor</a></li>
-                            <li><a href="#">Contact us</a></li>
-                        </ul>
-                    </aside>
-                    <aside class="col-md-4 widget widget_recent_news">
-                        <div class="charity-footer-title"> <h2>Recent News</h2> </div>
-                        <ul>
-                            <li>
-                                <figure><a href="#"><img src="extra-images/kesehatan.jpg" alt=""></a></figure>
-                                <div class="widget_recent_news_text">
-                                    <h6><a href="#">Kesehatan</a></h6>
-                                    <span>22 Sept, 2018</span>
-                                </div>
-                            </li>
-                            <li>
-                                <figure><a href="#"><img src="extra-images/pendidikan.jpg" alt=""></a></figure>
-                                <div class="widget_recent_news_text">
-                                    <h6><a href="#">Pendidikan.</a></h6>
-                                    <span>20 Sept, 2018</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </aside>
-                    <aside class="col-md-4 widget widget_gallery">
-                        <div class="charity-footer-title"> <h2>Our Gallery</h2> </div>
-                        <ul>
-                            <li><a data-fancybox="gallery" href="extra-images/pendidikan.jpg"><img src="extra-images/pendidikan.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
-                            <li><a data-fancybox="gallery" href="extra-images/kesehatan.jpg"><img src="extra-images/kesehatan.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
-                            <li><a data-fancybox="gallery" href="extra-images/masyarakat.jpg"><img src="extra-images/masyarakat.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
-                            <li><a data-fancybox="gallery" href="extra-images/pendidikan.jpg"><img src="extra-images/pendidikan.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
-                            <li><a data-fancybox="gallery" href="extra-images/kesehatan.jpg"><img src="extra-images/kesehatan.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
-                            <li><a data-fancybox="gallery" href="extra-images/kesehatan2.jpg"><img src="extra-images/kesehatan2.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
-                            <li><a data-fancybox="gallery" href="extra-images/kesehatan3.jpg"><img src="extra-images/kesehatan3.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
-                            <li><a data-fancybox="gallery" href="extra-images/pendidikan.jpg"><img src="extra-images/pendidikan.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
-                        </ul>
-                    </aside>
-                </div>
-                <!-- CopyRight -->
-                <div class="charity-copyright">
-                    <a href="#" class="back-top bgcolor"><i class="fa fa-angle-up"></i></a>
-                    <p>© 2018, All Right Reserved - Diferensia</p>
-                    <ul>
-                        <li><a href="404">Terms and conditions</a></li>
-                        <li><a href="404">Privacy policy</a></li>
-                    </ul>
-                </div>
-                <!-- CopyRight -->
-            </div>
-        </div>
-        <!-- Footer Widget -->
-
-    </footer>
+	    <footer th:replace="footer::foot"></footer>
     <!-- Footer -->
-
-    <!-- Search Modal -->
-    <div class="modal fade searchmodal" id="searchModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <a href="#" class="charity-close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
-                    <form>
-                        <input type="text" value="Type Your Keyword" onblur="if(this.value == '') { this.value ='Type Your Keyword'; }" onfocus="if(this.value =='Type Your Keyword') { this.value = ''; }">
-                        <input type="submit" value="">
-                        <i class="fa fa-search"></i>
-                    </form>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div id="myModal" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <div>
-                <center>
-                 <h4 class="modal-title">LogOut</h4>   
-                </center>
-                 
-            </div>
-             <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <div class="modal-body">
-            <center>
-                <p>Apakah Anda Yakin ingin Keluar ?</p>    
-            </center>
-            
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-default" ><a href="index">YA</a></button>
-            <button type="button" class="btn btn-default"><a href="index-1">Tidak</a></button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-
-    <!-- jQuery -->
-    <script src="script/jquery.js"></script>
-    <script src="script/popper.min.js"></script>
-    <script src="script/bootstrap.min.js"></script>
-    <script src="script/slick.slider.min.js"></script>
-    <script src="script/progressbar.js"></script>
-    <script src="script/fancybox.min.js"></script>
-    <script src="script/jquery.countdown.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
-    <script src="script/jquery.jplayer.js"></script>
-    <script src="script/jplayer.playlist.js"></script>
-    <script src="script/functions.js"></script>
-
-	<script type="text/javascript">
-		function TampilFoto(){
-			var oFReader = new FileReader();
-			oFReader.readAsDataURL(document.getElementById("file-input").files[0]);
-			oFReader.onload = function(oFREvent){
-				document.getElementById("Tfoto").src = oFREvent.target.result;
-			};
-		};
-	</script>   
-
+	</div>
 </body>
+    
+    <jQuery th:replace="script::jQuery"></jQuery>
+	<autocomplete th:replace="script::autocomplete"></autocomplete>
+	<loader th:replace="script::loader"></loader>
+	<cekAkun th:replace="script::cekAkun"></cekAkun>
+	<getPhoto th:replace="script::getPhoto"></getPhoto>
 
 
 <!-- Mirrored from ritetags.com/html/charity/event-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:15:53 GMT -->
