@@ -6,54 +6,6 @@
 </head>
 <body>
 
-<searching th:fragment="search">
-	<div class="modal fade searchmodal" id="searchModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <a href="#" class="charity-close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
-                    <form>
-                        <input type="text" value="Type Your Keyword" onblur="if(this.value == '') { this.value ='Type Your Keyword'; }" onfocus="if(this.value =='Type Your Keyword') { this.value = ''; }">
-                        <input type="submit" value="">
-                        <i class="fa fa-search"></i>
-                    </form>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</searching>
-
-<logout th:fragment="logout">
-	<div id="myModal" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <div>
-                <center>
-                 <h4 class="modal-title">LogOut</h4>   
-                </center>
-                 
-            </div>
-             <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <div class="modal-body">
-            <center>
-                <p>Apakah Anda Yakin ingin Keluar ?</p>    
-            </center>
-            
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-default" ><a href="index">YA</a></button>
-            <button type="button" class="btn btn-default"><a href="index-1">Tidak</a></button>
-          </div>
-        </div>
-      </div>
-    </div>
-</logout>
-
 
 <image th:fragment="modalimage">
 	<div id="myModal" class="modal">
@@ -80,6 +32,61 @@
 	  </div>
 	</div>	
 </image>
+
+<modalSponsor th:fragment="modalSponsor">
+	<div class="modal hide" id="my_modal" role="dialog">
+	    <div class="modal-dialog modal-lg">	      
+	      <div class="modal-content modal-sponsor">
+	        <div class="modal-header" style="height: 55px;">
+	        	<h4> YUK GABUNG!!</h4>
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        </div>
+	        <form method="post" action="/detailsponsor">
+	        <div class="modal-body">
+			  	<h4 id="textjudul" style="float:left;"></h4>
+				<input type="hidden" name="namap" id="textjudul1" value=""/>	           	        
+	           		<div th:if="${penggunaAktif} == null" class="row charity-profil-text p-t-10">
+	           			<b>Anda Belum Login, Silahkan <span><a href="login" style="color:orange;">Login</a></span> atau berikan Sponsor tanpa login terlebih dahulu </b>
+                    </div>
+                    <div th:if="${penggunaAktif} == null" class="row charity-profil-text p-t-10">
+	                     <div class="widget_title_n m-t-10"><b>Username</b></div>
+	                     <div class="col-md-8 charity-profil-input" style="width: 100%;" >
+	                     	<input type="text" name="username" style="width: 100%;" required />
+	                     </div>
+	                 </div>
+	                 <div th:if="${penggunaAktif} == null" class="row charity-profil-text p-t-10">
+	                     <div class="widget_title_n m-t-10"><b>Email</b></div>
+	                     <div class="col-md-8 charity-profil-input" style="width: 100%;" >
+	                     	<input type="text" name="email" style="width: 100%;" required />
+	                     </div>
+	                 </div>
+	                <div class="row charity-profil-text p-t-10">
+	                     <div class="widget_title_n m-t-10"><b>Nominal</b></div>
+	                     <div class="col-md-8 charity-profil-input" style="width: 100%;" ><input type="text" name="jumlahSponsorFormatted" style="width: 100%;" id="currency" required onkeyup="displayTanpaRp()" />
+							<input type="hidden" name="jumlahSponsor" style="width: 100%" id="jmlSponsor" />
+	                     </div>
+					        <input th:if="${penggunaAktif} != null"  type="hidden" name="username" th:value="${penggunaAktif.username}"/>	                  	 	         
+	                     	<input class="m-l-190" id="anonim" name="anonim" value="anonim" type="checkbox"/> Anonim
+	                 </div>
+	                 <div class="row charity-profil-text">
+	                     <div class="widget_title_b m-t-10"><b>Metode Pembayaran</b></div>
+	                     <div class="col-md-8 charity-profil-input"><select name="bank"  id="selectTujuan" style="width: 100%" onchange="displaytransfer()">
+	                     	<option th:each="bank, iterStat:${listbank}"
+	         				th:value="${bank.id}" th:text="${bank.namaBank}">
+	    					</option></select>
+                     	</div>
+                     </div>                        
+	        </div>
+	        <div class="modal-footer">
+            	<button class="charity-btn-profil-save p-l-5 p-r-5" type="submit"><b>Save</b></button>	
+                <span><button type="button" class="charity-btn-profil-save p-l-5 p-r-5" data-dismiss="modal">Close</button></span>
+	        </div>
+	        </form>
+	   </div>   
+    </div>
+  </div>
+
+</modalSponsor>
 
 </body>
 </html>

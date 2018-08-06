@@ -9,10 +9,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Dashboard</title>
+    <title>Raih Mimpi</title>
 
     <!-- CSS -->
-    <css th:replace="link::header-css"></css>
+		<css th:replace="link::header-css"></css>
+    	<link rel="stylesheet" href="css/style.css">
     <!-- CSS -->
 </head>
 
@@ -84,13 +85,14 @@
 	                    <div class="col-md-2 md2">
 	                        <div>
 	                            <ul class="sidebar-menu" id="nav-accordion">
+	                            	<li class="charity-list m-t-10"><a href="overview">Overview</a></li>
 	                                <li class="charity-list m-t-10"><a href="dashboard-proyek">Proyek</a></li>
 	                                <li class="charity-list"><a href="dashboard-update-proyek">Progres Proyek</a></li>
 	                                <li class="charity-list"><a href="dashboard-sponsor">Sponsor</a></li>
 	                                <li class="charity-list"><a href="dashboard-pencairan">Pencairan Dana</a></li>
 	                                <li class="charity-list active"><a href="#">Edit Profil</a></li>
 	                                <li class="charity-list"><a href="dashboard-verifikasi">Verifikasi</a></li>
-	                                <li class="charity-list m-b-100"><a th:href="dashboard-password" >Ubah Password</a></li>
+	                                <li class="charity-list m-b-100"><a href="dashboard-password" >Ubah Password</a></li>
 	                           </ul>
 	                        </div>
 	                    </div>
@@ -130,21 +132,18 @@
    </form>
 
 
-  <!-- Footer -->
-	    <!-- Footer -->
+  	<!-- Footer -->
     	<footer th:replace="footer::foot"></footer>
     <!-- Footer -->
-    
-    <!-- Search Modal -->
-    	<searching th:replace="modal::search"></searching>
-    <!-- jQuery -->
-	    <manyscript th:replace="script::ms"></manyscript>
-    
-	    <script4 th:replace="script::s4"></script4>
-		<script13 th:replace="script::loader"></script13>	
 	</div>
     
 </body>
+
+    <jQuery th:replace="script::jQuery"></jQuery>
+	<autocomplete th:replace="script::autocomplete"></autocomplete>
+	<loader th:replace="script::loader"></loader>
+	<cekAkun th:replace="script::cekAkun"></cekAkun>
+    <getPhoto th:replace="script::getPhoto"></getPhoto>
 
 
 <!-- Mirrored from ritetags.com/html/charity/event-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:15:53 GMT -->

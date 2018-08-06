@@ -22,8 +22,8 @@ public class PencairanDana extends Additional implements Serializable {
     
     private String namaPencair;
     private String noRekening;
-    private double jumlahDana;
-    private boolean status;
+    private float jumlahDana;
+    private String status;
     
 	public PencairanDana () {
     	
@@ -86,11 +86,11 @@ public class PencairanDana extends Additional implements Serializable {
 		this.noRekening = noRekening;
 	}
 
-	public double getJumlahDana() {
+	public float getJumlahDana() {
 		return jumlahDana;
 	}
 
-	public void setJumlahDana(double jumlahDana) {
+	public void setJumlahDana(float jumlahDana) {
 		this.jumlahDana = jumlahDana;
 	}
 
@@ -110,12 +110,14 @@ public class PencairanDana extends Additional implements Serializable {
 		this.pengguna = pengguna;
 	}
 
-	public boolean isStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
-
+	
+	
+	
 }

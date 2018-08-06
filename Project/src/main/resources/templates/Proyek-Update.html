@@ -9,14 +9,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Diferensia Foundation</title>
+    <title>Raih Mimpi</title>
 
     <!-- CSS -->
-    <css th:replace="link::header-css"></css>
-    <!-- CSS -->
+    	<css th:replace="link::header-css"></css>
+	    <link rel="stylesheet" href="css/style.css">
+	<!-- CSS -->
 </head>
 
-<body class="home">
+<body onload="myFunction()" style="margin:0;" class="home">
+	<div id="loader"></div>
+	<div style="display:none;" id="myDiv" class="animate-bottom">
     <!-- Header -->
     <header id="charity-header" class="charity-header-one">
     <!-- Header -->
@@ -72,11 +75,6 @@
                                     <p th:text="${progresProyek.proyek.wilayah.namaWilayah}"></p>
                                 </li>
                             </ul>
-                            <div class="charity-countdown">
-                                <span class="countdown-transparent"></span>
-                                <div id="charity-countdown"></div>
-                                <a href="404" class="charity-join-btn">I Am Joining (12)</a>
-                             </div>
                             <div class="charity-cause-donate">
 									<a th:href="@{login}"  th:if="${penggunaAktif} == null" class="charity-plan-btn">Sponsor Now <i class="fa fa-heart"></i></a>
 	                                <a th:href="@{sponsor(id=${progresProyek.proyek.id})}" th:if="${penggunaAktif} != null" class="charity-plan-btn">Sponsor Now <i class="fa fa-heart"></i></a>                                <ul class="charity-cause-social">
@@ -87,8 +85,11 @@
                                     <li><a href="https://www.vimeo.com/" class="fab fa-vimeo"></a></li>
                                 </ul>
                             </div>
-                            <div class="widget_title"><h2>Event Discription</h2></div>
+                            <div class="widget_title"><h2>Event Description</h2></div>
                                 <p th:text="${progresProyek.deskripsiLengkap1}" style="text-align:justify;"></p>
+                            </div>
+                            <div th:each="video,iterStat:${listvideo}">
+                             <span>Video :</span><p th:text="${video.linkVideo}"></p>
                             </div>
                         <div class="widget_title"><h2>Proyek Progres Gallery</h2></div>
                         <div class="row charity-event-gallery">
@@ -97,59 +98,7 @@
 							    style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
 							  </div>
 						</div>                      
-                        <!-- <div class="charity-rich-editor">
-                            <div class="charity-post-tags">
-                                <div class="charity-tags">
-                                    <span>Tags:</span>
-                                    <a href="404">charity </a>
-                                    <a href="404">/ donation</a>
-                                    <a href="404"> / needy</a>
-                                </div>
-                                <div class="charity-blog-social">
-                                    <span>Share:</span>
-                                    <ul>
-                                        <li>
-                                            <a href="https://www.facebook.com/" class="fab fa-facebook"></a>
-                                        </li>
-                                        <li>
-                                            <a href="https://www.twitter.com/" class="fab fa-twitter"></a>
-                                        </li>
-                                        <li>
-                                            <a href="https://www.linkedin.com/" class="fab fa-linkedin"></a>
-                                        </li>
-                                        <li>
-                                            <a href="https://www.youtube.com/" class="fab fa-youtube"></a>
-                                        </li>
-                                        <li>
-                                            <a href="https://www.vimeo.com/" class="fab fa-vimeo"></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="charity-prenxt-post">
-                            <ul>
-                                <li class="charity-prev-post">
-                                    <figure>
-                                        <a href="404"><img src="extra-images/slide1.jpg" alt=""></a>
-                                    </figure>
-                                    <div class="charity-prev-artical">
-                                        <a href="404" class="charity-post-arrow"><i class="fa fa-angle-double-left"></i> Previous Article</a>
-                                        <h3><a href="404">Ramadhan</a></h3>
-                                    </div>
-                                </li>
-                                <li class="charity-next-post">
-                                    <figure>
-                                        <a href="404"><img src="extra-images/slide2.jpg" alt=""></a>
-                                    </figure>
-                                    <div class="charity-next-artical">
-                                        <a href="404" class="charity-post-arrow">Next Article <i class="fa fa-angle-double-right"></i></a>
-                                        <h3><a href="404">Ramadhan Tiba</a></h3>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                         -->                        <div class="widget_title"><h2>Creator</h2></div>
+						<div class="widget_title"><h2>Creator</h2></div>
                         <div class="row charity-admin-post">
                             <div class="col-md-2">
 	                            <figure>
@@ -187,55 +136,33 @@
                         <div class="comments-area">
                             <!--// coments \\-->
                             <ul class="comment-list">
-                                <li>
+                                <li th:each="komentar, iterStat:${listkomentar}" >
                                     <div class="thumb-list">
-                                        <figure><img alt="" src="extra-images/comment-img1.png"></figure>
+                                        <figure>
+	                                        <img alt="foto profil" th:if="${komentar.pengguna.fotoProfil}== null"  
+	                                        th:src="@{images/index.png}">
+	                                        <img alt="foto profil" th:if="${komentar.pengguna.fotoProfil}!= null"  
+	                                        th:src="@{'data:image/jpg;base64,' + *{T(org.springframework.util.Base64Utils).encodeToString(komentar.pengguna.fotoProfil)}}">
+										</figure>
                                         <div class="text-holder">
-                                            <h6>Mini Mouse</h6>
-                                            <time class="post-date" datetime="2008-02-14 20:00">June 16, 2017 at 2:10 pm</time>
-                                            <a class="comment-reply-link" href="#"><i class="fa fa-share"></i> Reply</a>
-                                            <p>Hai Mikiy</p>
+                                            <h6 th:text=${komentar.pengguna.nama}></h6>
+                                            <p th:text="${komentar.isiKomentar}"></p>
                                         </div>
                                     </div>
                                 </li>
-                                <!-- #comment-## -->
-                                <li>
-                                    <div class="thumb-list">
-                                        <figure><img alt="" src="extra-images/comment-img2.png"></figure>
-                                        <div class="text-holder">
-                                            <h6>Donal</h6>
-                                            <time class="post-date" datetime="2008-02-14 20:00">June 16, 2017 at 2:10 pm</time>
-                                            <a class="comment-reply-link" href="#"><i class="fa fa-share"></i> Reply</a>
-                                            <p>Hai hai hai hai</p>
-                                        </div>
-                                    </div>
-                                    <ul class="children">
-                                        <li>
-                                            <div class="thumb-list">
-                                                <figure><img alt="" src="extra-images/comment-img3.png"></figure>
-                                                <div class="text-holder">
-                                                    <h6>Brutus</h6>
-                                                    <time class="post-date" datetime="2008-02-14 20:00">June 16, 2017 at 2:10 pm</time>
-                                                    <a class="comment-reply-link" href="#"><i class="fa fa-share"></i> Reply</a>
-                                                    <p>Hai.hai hai </p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <!-- #comment-## -->
-                                    </ul>
-                                    <!-- .children -->
-                                </li>
-                                <!-- #comment-## -->
-                            </ul>
+                                </ul>
                             <!--// coments \\-->
                         </div>
                         <!--// comment-respond \\-->
                         <div class="widget_title"><h2>Leave a Comment</h2></div>
-                        <div class="comment-respond">
-                            <form method="post" th:if="${penggunaAktif} != null" th:action="@{proyek-update}">
+						<div class="comment-respond" th:if="${penggunaAktif} == null" >
+                        	<h6>Please login to leaving a comment</h6>
+                        </div>
+                        <div class="comment-respond"  th:if="${penggunaAktif} != null" >
+                            <form method="post" th:action="@{proyek-update}">
                                 <p class="charity-respond-full-form">
                                     <label>Comment:</label>
-                                    <textarea name="comment" placeholder="Type your comment*" class="commenttextarea"></textarea>
+                                    <textarea name="isiKomentar" placeholder="Type your comment*" class="commenttextarea"></textarea>
                                 </p>
                                 <p class="form-submit">
                                     <input name="submit" class="submit" value="Submit" type="submit">
@@ -245,78 +172,7 @@
                         </div>
                         <!--// comment-respond \\-->
                     </div>
-<!--                     <aside class="col-md-3">
-                
-                        Widget Search
-                        <div class="widget widget_search">
-                            <div class="widget_title"><h2>Search Here</h2></div>
-                            <form>
-                                <input type="text" placeholder="Search Here">
-                                <input type="submit" value="">
-                                <i class="fa fa-search"></i>
-                            </form>
-                        </div>
-                        Widget Search
-                        // Widget Caendar \\
-                        <div class="widget widget_calendar">
-                            <div class="widget_title"><h2>Proyek Calender</h2></div>
-                            <table>
-                                <caption>January 2017</caption>
-                                <thead>
-                                    <tr>
-                                        <th title="Monday">M</th>
-                                        <th title="Tuesday">T</th>
-                                        <th title="Wednesday">W</th>
-                                        <th title="Thursday">T</th>
-                                        <th title="Friday">F</th>
-                                        <th title="Saturday">S</th>
-                                        <th title="Sunday">S</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td colspan="5"></td><td id="today">1</td><td>2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td>
-                                    </tr>
-                                    <tr>
-                                        <td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td>
-                                    </tr>
-                                    <tr>
-                                        <td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td>
-                                    </tr>
-                                    <tr>
-                                        <td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td>
-                                    </tr>
-                                    <tr>
-                                        <td>31</td><td colspan="6"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        // Widget Caendar \\
-                        Widget Gallery
-                        <div class="widget widget_gallery">
-                            <div class="widget_title"> <h2>Our Gallery</h2> </div>
-                            <ul>
-                                <li><a data-fancybox="gallery" href="extra-images/pendidikan.jpg"><img src="extra-images/pendidikan.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
-                                <li><a data-fancybox="gallery" href="extra-images/kesehatan.jpg"><img src="extra-images/kesehatan.jpg" alt=""> <i class="fa fa-plus"></i>
-                                </a></li>
-                                <li><a data-fancybox="gallery" href="extra-images/masyarakat.jpg"><img src="extra-images/masyarakat.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
-                                <li><a data-fancybox="gallery" href="extra-images/pendidikan.jpg"><img src="extra-images/pendidikan.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
-                                <li><a data-fancybox="gallery" href="extra-images/kesehatan.jpg"><img src="extra-images/kesehatan.jpg" alt=""> <i class="fa fa-plus"></i>
-                                </a></li>
-                                <li><a data-fancybox="gallery" href="extra-images/kesehatan2.jpg"><img src="extra-images/kesehatan2.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
-                                <li><a data-fancybox="gallery" href="extra-images/kesehatan3.jpg"><img src="extra-images/kesehatan3.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
-                                <li><a data-fancybox="gallery" href="extra-images/pendidikan.jpg"><img src="extra-images/pendidikan.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
-                                <li><a data-fancybox="gallery" href="extra-images/pendidikan.jpg"><img src="extra-images/pendidikan.jpg" alt=""> <i class="fa fa-plus"></i> </a></li>
-                            </ul>
-                        </div>
-                        Widget Gallery
-
-                    </aside>
- -->                </div>
+                </div>
             </div>
         </div>
         <!-- Main Section -->
@@ -325,16 +181,16 @@
     <!-- Content -->
 
     <!-- Footer -->
-	    <!-- Footer -->
-    <footer th:replace="footer::foot"></footer>
+	    <footer th:replace="footer::foot"></footer>
     <!-- Footer -->
-    
-    <!-- Search Modal -->
-    <searching th:replace="modal::search"></searching>
-    <!-- jQuery -->
-    <manyscript th:replace="script::ms"></manyscript>
-
+	</div>
 </body>
+
+    <jQuery th:replace="script::jQuery"></jQuery>
+	<autocomplete th:replace="script::autocomplete"></autocomplete>
+	<loader th:replace="script::loader"></loader>
+	<cekLogin th:replace="script::cekLogin"></cekLogin>	
+	<cekAkun th:replace="script::cekAkun"></cekAkun>
 
 
 <!-- Mirrored from ritetags.com/html/charity/cause-detail.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:16:42 GMT -->

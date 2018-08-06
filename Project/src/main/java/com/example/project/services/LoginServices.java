@@ -16,9 +16,12 @@ public class LoginServices implements LoginDao {
 	
 	@Autowired
 	LoginRepository lg ;
-
+	
 	@Autowired
-	EmailSender emailSend;
+	EmailSender emailSender;
+	
+	@Autowired
+	PenggunaServices ps;
 	
 	@Override
 	public Login getById(long id) {
@@ -26,7 +29,7 @@ public class LoginServices implements LoginDao {
 	}
 
 	@Override
-	public List<Login> select() {
+	public List<Login> getAll() {
 		List<Login> ll= new ArrayList<>();
 		lg.findAll().forEach(ll::add);
 		return ll;
@@ -38,20 +41,18 @@ public class LoginServices implements LoginDao {
 	}
 
 	@Override
-	public boolean getExistUsername(String username) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public Login getbyEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		return lg.findByEmail(email);
 	}
-
+	
 	@Override
 	public void saveOrUpdate(Login l) {
 		lg.save(l);
+		emailSender.sendMessage(l.getEmail(),"Registration Confirmation","To confirm your e-mail address, please copy this link below into your url:\n"+"localhost:8080/confirm?code="+l.getConfirmationToken());
+	}
+		
+	public void sendEmail(Login l, String subject, String message) {
+		emailSender.sendMessage(l.getEmail(),subject, message);
 	}
 	
 	@Override
@@ -64,8 +65,26 @@ public class LoginServices implements LoginDao {
 		return (lg.findByUsername(username))!= null;
 	}
 	
-	public void saveWithEmail (Login l) {
-		lg.save(l);
-		emailSend.sendMessage(l.getEmail(),"Verifikasi Berhasil","selamat");
+	@Override
+	public boolean getEmail(String email) {
+		return (lg.findByEmail(email))!= null;
 	}
+
+	@Override
+	public Login getConfirmationToken(String confirmationToken) {
+		return lg.findByconfirmationToken(confirmationToken);
+	}
+
+	@Override
+	public Login getByUsername(String username) {
+		return lg.findByUsername(username);
+	}
+	
+	public boolean findbyemail(String email) {
+		if(lg.findByEmail(email)!=null)
+			return true;
+		else
+			return false;
+	}
+	
 }

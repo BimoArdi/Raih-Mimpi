@@ -10,6 +10,5 @@ public interface PenggunaDao {
 	public List<Pengguna> getAll();
 	public Pengguna getByTelp(String telepon);
 	public void saveOrUpdate(Pengguna pg);
-	public Pengguna getPhoto (Long id);
-	
+	public Pengguna getByLogin (Long id);
 }

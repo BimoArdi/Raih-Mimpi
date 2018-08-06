@@ -10,10 +10,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Diferensia Foundation Login</title>
+    <title>Raih Mimpi</title>
 
     <!-- CSS -->
-    <css th:replace="link::header-css"></css>
+	    <css th:replace="link::header-css"></css>
+	    <link rel="stylesheet" href="css/style.css">	    
     <!-- CSS -->
 </head>
 
@@ -49,7 +50,7 @@
                     <div class="col-md-6 charity-login">
                         <div class="widget_title m-t-10"><h2>Sign In</h2></div>
                             <p>Welcome back, Sign in your account</p>
-                        <form method="post" class="m-b-30" th:action="@{/}">
+                        <form method="post" class="m-b-30" th:action="@{/home}">
                             <div>
                                 <label class="m-t-15"><b>USERNAME</b></label>
                                 <input class="m-b-10" placeholder="username" name="username" type="text" value="" data-default="Name*" size="50" required>
@@ -71,24 +72,24 @@
                         <div class="widget_title m-t-10"><h2>Create New Account</h2></div>
                              <p>Let's Join Us!!</p>
                         <form method="post" class="m-b-30" th:action="verifikasiakun">
-                            <div>
-                                <label class="m-t-15"><b>USERNAME</b></label>
+							<div>
+								<div class="alert alert-info info">
+									<span class="p-l-10 p-b-8" id="validateuser" style="width: 100%"></span>
+									<div class="alert-close">×</div>
+								</div>
+                                <label class="m-t-5"><b>USERNAME</b></label>
                                 <input id="username1" class="m-b-10" placeholder="username" name="username1" type="text" size="50" required/>
-                            	<div id="validateuser"></div>
+                            	<div ></div>
                             </div>
                             <div>
-                                <label class="m-t-15"><b>EMAIL</b></label>
-                                <input class="m-b-10" placeholder="email" name="email1" type="email" size="50" required/>
-                            </div>
-                            <!-- <div data-tip="Password must contain 8 charachters, including english lower/upper case letter (a-z) and at least one number(0-9)">
-                                <label class="m-t-15"><b>PASSWORD</b></label>
-                                <input placeholder="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="password1" id="password" type="password" size="50" required/>
+								<div class="alert alert-info info1">
+									<span class="p-l-10 p-b-8" id="validatemail" style="width: 100%"></span>
+									<div class="alert-close">×</div>
+								</div>                            
+                                <label class="m-t-5"><b>EMAIL</b></label>
+                                <input id="email" class="m-b-10" placeholder="email" name="email1" type="email" size="50" required/>
                             </div>
                             <div>
-                                <label class="m-t-15"><b>RETYPE PASSWORD</b></label>
-                                <input type="password" title="must same with password" name="repassword" id="repassword" placeholder="repassword" onChange="validatePassword();" size="50" required/>
-                            </div>
-                            --> <div>
                                 <input type="checkbox" class="m-t-10" name="term" required/>
                                 <span>
                                      I agree to the
@@ -109,86 +110,16 @@
 	    <!-- Footer -->
     <footer th:replace="footer::foot"></footer>
     <!-- Footer -->
-    
-    <!-- Search Modal -->
-    <searching th:replace="modal::search"></searching>
-    <!-- jQuery -->
-    <manyscript th:replace="script::ms"></manyscript>
-
-    <script5 th:replace="script::pass"></script5>
-    
-    <script>
-        jQuery(document).ready(function($) {
-            $("#username1").keyup(function(){
-                $.get("API/isusernameexist?username="+$(this).val(),function(hasil){
-                    if (!hasil){
-                        $("#validateuser").text("username tersedia");
-                        document.getElementById("myBtn").disabled = false;		
-                    }else{
-                        $("#validateuser").text("Username telah terpakai")
-                        document.getElementById("myBtn").disabled = true;
-                    }
-                });
-            });
-            $("#search-form").submit(function(event) {
-
-                // Disble the search button
-                enableSearchButton(false);
-
-                // Prevent the form from submitting via the browser.
-                event.preventDefault();
-
-                searchViaAjax();
-
-            });
-
-        });
-
-        function searchViaAjax() {
-
-            var search = {}
-            search["username"] = $("#username").val();
-            search["email"] = $("#email").val();
-
-            $.ajax({
-                type : "KEYUP",
-                contentType : "application/json",
-                url : "${home}search/api/getSearchResult",
-                data : JSON.stringify(search),
-                dataType : 'json',
-                timeout : 100000,
-                success : function(data) {
-                    console.log("SUCCESS: ", data);
-                    display(data);
-                },
-                error : function(e) {
-                    console.log("ERROR: ", e);
-                    display(e);
-                },
-                done : function(e) {
-                    console.log("DONE");
-                    enableSearchButton(true);
-                }
-            });
-
-        }
-
-        function enableSearchButton(flag) {
-            $("#btn-search").prop("disabled", flag);
-        }
-
-        function display(data) {
-            var json = "<h4>Ajax Response</h4><pre>"
-                + JSON.stringify(data, null, 4) + "</pre>";
-            $('#feedback').html(json);
-        }
-    </script>
-	<script13 th:replace="script::loader"></script13>	
-	<script7 th:replace="script::autocomplete"></script7>
-	
-	</div>	
+	</div>
 </body>
-
+	<script src="script/jquery-1.12.4.js"></script>
+  	<script src="script/jquery-ui.js"></script>
+	<autocomplete th:replace="script::autocomplete"></autocomplete>
+	<loader th:replace="script::loader"></loader>
+	<cekLogin th:replace="script::cekLogin"></cekLogin>	
+    <samePassword th:replace="script::samePassword"></samePassword>
+	<checkUsername th:replace="script::checkUsername"></checkUsername> 
+	<checkEmail th:replace="script::checkEmail"></checkEmail> 
 
 <!-- Mirrored from ritetags.com/html/charity/event-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:15:53 GMT -->
 </html>

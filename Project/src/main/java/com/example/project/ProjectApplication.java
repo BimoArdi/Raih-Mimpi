@@ -23,15 +23,17 @@ public class ProjectApplication {
 		JavaMailSenderImpl mailsender = new JavaMailSenderImpl();
 		mailsender.setHost("smtp.gmail.com");
 		mailsender.setPort(587);
-		mailsender.setUsername("send.kepoit@gmail.com");
-		mailsender.setPassword("sumatera1");
+		mailsender.setUsername("raihmimpi88@gmail.com");
+		mailsender.setPassword("RaihMimpi1234");
 		Properties p = mailsender.getJavaMailProperties();
 		p.put("mail.transport.protocol","smtp");
 		p.put("mail.smtp.auth","true");
 		p.put("mail.smtp.starttls.enable","true");
 		p.put("mail.debug","true");
+		p.put("mail.smtp.ssl.trust", "smtp.gmail.com");
 		return mailsender;
 	}
+	
 	@Bean
 	public SimpleMailMessage getTemplate() {
 		SimpleMailMessage message = new SimpleMailMessage();

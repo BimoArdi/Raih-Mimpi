@@ -9,28 +9,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Proyek</title>
+    <title>Raih Mimpi</title>
 
-<!--<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-      
-    <script src="script/slick.slider.min.js"></script>
-    <script src="script/progressbar.js"></script>
-    <script src="script/fancybox.min.js"></script>
-    <script src="script/jquery.countdown.min.js"></script>
-   
-    <script src="script/jquery.jplayer.js"></script>
-    <script src="script/jplayer.playlist.js"></script>
- -->
 	<!-- CSS -->	
     <css th:replace="link::header-css"></css>
+	<link rel="stylesheet" href="css/style.css">
     <date th:replace="link::date"></date>
     <!-- CSS -->
         
 </head>
 
-<body class="home">
+<body onload="myFunction()" style="margin:0;" class="home">
+	<div id="loader"></div>
+	<div style="display:none;" id="myDiv" class="animate-bottom">
     <!-- Header -->
     <header id="charity-header" class="charity-header-one">
     <!-- Header -->
@@ -81,20 +72,18 @@
                             </div>
                              <div class="row charity-profil-text">
                                 <div class="widget_title_b m-t-10"><b>Kategori</b></div>
-                                <div class="col-md-8 charity-profil-input">
-                                <select th:name="kategori" style="width: 100%">
-                                <option th:each="kategori, iterStat:${listkategori}"
+                                <div class="col-md-8 charity-profil-input"><select th:name="kategori" style="width: 100%" required>
+                                <option>Pilih Kategori</option><option th:each="kategori, iterStat:${listkategori}"
 				                th:value="${kategori.id}" th:text="${kategori.namaKategori}">
                					</option>
                                 </select></div>
                             </div>
                              <div class="row charity-profil-text">
                                 <div class="widget_title_b m-t-10"><b>Lokasi</b></div>
-                                <div class="col-md-8 charity-profil-input"><select th:name="wilayah" style="width: 100%">
-                                <option th:each="wilayah, iterStat:${listwilayah}"
+                                <div class="col-md-8 charity-profil-input"><select th:name="wilayah" style="width: 100%" required>
+                                <option>Pilih Lokasi<option th:each="wilayah, iterStat:${listwilayah}"
 				   	            th:value="${wilayah.id}" th:text="${wilayah.namaWilayah}">
 				                </option>
-
                                 </select></div>
                             </div> 
                             <div class="row charity-profil-text">
@@ -115,24 +104,23 @@
                                 <input type="file" name="fototambahan" accept="image/*"  style="width: 100%;" multiple/></div>
                             </div>
                             <div class="row charity-profil-text">
-                                <div class="widget_title_b m-t-10"><b>Video Proyek</b></div>
+                                <div class="widget_title_b m-t-10"><b>Video Proyek (url)</b></div>
                                 <div class="col-md-8 charity-profil-input">
-                                <input type="text" name="linkVideo" style="width: 100%;" id="url" onChange="ValidURL();" required/></div>
+                                <input input type="url" pattern="https?://.+" title="Include http://" placeholder="Include http://" name="linkVideo" style="width: 100%;"/></div>
                             </div>
                             <div class="row charity-profil-text">
                                 <div class="widget_title_b m-t-10"><b>Deskripsi Singkat</b></div>
                                 <div class="col-md-8 charity-profil-input">
-                                <textarea name="deskripsiSingkat" id="txtEditor" style="width: 100%; height:100px;" required></textarea></div>
+                                <textarea data-max-words="50" name="deskripsiSingkat" data-announce="true" style="width: 100%; height:100px;" required></textarea></div>
                             </div>
                             <div class="row charity-profil-text">
                                 <div class="widget_title_b m-t-10"><b>Deskripsi Lengkap</b></div>
                                 <div class="col-md-8 charity-profil-input">
-                                <textarea name="deskripsiLengkap" id="txtEditor1" onkeydown="InsertBreak(event);"
-                                rows="15" cols="50" style="width: 100%; height:300px;" required></textarea></div>
+                                <textarea data-max-words="500" data-announce="true" name="deskripsiLengkap" rows="15" cols="50" style="width: 100%; height:300px;" required></textarea></div>
                             	</br>
                             </div>                            
                             <div class="charity-btn-profil">
-                                <button class="charity-btn-profil-save" type="submit" onclick="ValidURL();"><b>Save</b></button>
+                                <button class="charity-btn-profil-save" type="submit"><b>Save</b></button>
                             </div>
                         </form>
                     </div>
@@ -142,21 +130,22 @@
 
     <!-- Content -->
     <!-- Footer -->
-    <footer th:replace="footer::foot"></footer>
+	    <footer th:replace="footer::foot"></footer>
     <!-- Footer -->
-    
-    <!-- Search Modal -->
-    <searching th:replace="modal::search"></searching>
-    <!-- jQuery -->
-    <manyscript th:replace="script::ms"></manyscript>
-
-	<script2 th:replace="script::s2"></script2>
-	<script3 th:replace="script::s3"></script3>
-	<script4 th:replace="script::s4"></script4>
-	<script10 th:replace="script::date"></script10>	
+</div>
+    <!-- jQuery -->	
+	<jQuery th:replace="script::jQuery"></jQuery>
+	<autocomplete th:replace="script::autocomplete"></autocomplete>
+	<loader th:replace="script::loader"></loader>
 	
+
 </body>
+    <jQuery th:replace="script::jQuery"></jQuery>
+	<autocomplete th:replace="script::autocomplete"></autocomplete>
+	<loader th:replace="script::loader"></loader>
+	<cekAkun th:replace="script::cekAkun"></cekAkun>
+	<datepicker th:replace="script::datepicker"></datepicker>
+	<getPhoto th:replace="script::getPhoto"></getPhoto>
+	<cekCountWord th:replace="script::cekCountWord"></cekCountWord>
 
-
-<!-- Mirrored from ritetags.com/html/charity/event-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:15:53 GMT -->
 </html>

@@ -16,6 +16,9 @@ public class ProgresProyekServices implements ProgresProyekDao {
 	@Autowired
 	ProgresProyekRepository p;
 	
+	@Autowired
+	ProyekServices ps;
+
 	@Override
 	public ProgresProyek getById(long id) {
 		return p.findById(id).get() ;
@@ -35,6 +38,6 @@ public class ProgresProyekServices implements ProgresProyekDao {
 	
 	@Override
 	public List<ProgresProyek> getByProyek (long id){
-		return p.findByProyek(id);
+		return p.findByProyek(ps.getById(id));
 	}
 }

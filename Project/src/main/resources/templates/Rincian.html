@@ -1,104 +1,5 @@
 <!doctype html>
 <html xmlns:th="http://thymeleaf.org">
-
-
-<!-- <head>
-
-    meta tags
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <title>Dashboard</title>
-
-    CSS
-    <link rel="stylesheet" href="css/bootstrap.css"/>
-    <link rel="stylesheet" href="css/fontawesome-all.css"/>
-    <link rel="stylesheet" href="css/flaticon.css"/>
-    <link rel="stylesheet" href="css/slick-slider.css"/>
-    <link rel="stylesheet" href="css/fancybox.css"/>
-    <link href="css/jplayer.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="css/style.css"/>
-    <link rel="stylesheet" href="css/color.css"/>
-    <link rel="stylesheet" href="css/responsive.css"/>
-    <link rel="stylesheet" href="css/slick-theme.css"/>
-    <link rel="stylesheet" href="css/util.css"/>
-
-
-</head>
-
-<body class="home">
-    Header
-    <header id="charity-header" class="charity-header-one">
-        
-        Top Strip
-        <div class="charity-top-strip">
-            <div class="container">
-                <div class="row">
-                    <aside class="col-6 charity-strip-text">
-                        <p>Explore The Deferensia </p>
-                        <span><i class="fas fa-phone fa-rotate-90"></i> 082-6613704 </span>
-                        <span><i class="far fa-envelope"></i> <a href="mailto:name@email.com">Admin@deferensia.org</a></span>
-                    </aside>
-                    <aside class="col-6">
-                        <div class="float-right">
-                          <ul class="charity-social-network">
-                              <li><a href="#" class="fab fa-facebook-f"></a></li>
-                              <li><a href="#" class="fab fa-google"></a></li>
-                              <li><a href="#" class="fab fa-pinterest-p"></a></li>
-                              <li><a href="#" class="fab fa-linkedin-in"></a></li>
-                              <li><a href="#" class="fab fa-twitter"></a></li>
-                          </ul>
-                          <a href="kategori.html" class="charity-strip-btn charity-bgcolor">Sponsor Now</a>
-                        </div>
-                    </aside>
-                </div>
-            </div>
-        </div>
-        Top Strip
-
-        Main Header
-        <div class="charity-main-header">
-            <div class="container">
-                <div class="row">
-                    <aside class="col-3"><a href="index.html" class="charity-logo"><img src="images/logo.png" alt=""></a></aside>
-                    <aside class="col-9">
-                        <div class="float-right">
-                            <a href="#menu" class="menu-link active"><span></span></a>
-                            <nav id="menu" class="menu charity-navigation">
-                                <ul>
-                                    <li><a href="index-1.html">Home</a></li>
-                                    <li><a href="#">Kategori</a>
-                                        <ul class="children">
-                                            <li th:each="kategori, iterStat:${listkategori}">
-                                            <a th:value="${kategori.id}" 
-				                			th:text="${kategori.namaKategori}" 
-				                			th:href="@{by-kategori-login.html(id=${kategori.id})}">
-				                			</a></li>
-				                			<li><a href="all-proyek-login.html">Lihat Semua</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="proyek.html">Create Proyek</a></li>
-                                    <li><a href="team-grid.html">Team</a></li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="contact-us.html">Contact</a></li>
-                                    <li><a href="#" data-toggle="modal" data-target="#searchModal"><i class="fas fa-search"></i></a></li>
-                                    <li><a href="#"><img src="images/avatar.png" alt="Avatar"  class="avatar">
-                                    <span th:text="${penggunaAktif.username}"></span></a>
-                                    <ul class="children">
-                                        <li><a href="dashboard-profil.html">Profil</a></li>
-                                        <li><a  style="color: #fcea9e" data-toggle="modal" data-target="#myModal">Logout</a></li>
-                                    </ul>
-                                   </li>
-                                </ul>
-                            </nav> 
-                        </div>
-                    </aside>
-                </div>
-            </div>
-        </div>
-        Main Header -->
-
 <head>
 
     <!-- meta tags -->
@@ -109,7 +10,10 @@
     <title>Overview</title>
 
     <!-- CSS -->
-    <css th:replace="link::header-css"></css>
+		<css th:replace="link::header-css"></css>
+		<link rel="stylesheet" href="css/style1.css">		
+		<link rel="stylesheet" href="css/style-datatable.css">
+		<link rel="stylesheet" href="css/jquery.dataTables.min.css">	    	    
     <!-- CSS -->
 </head>
 
@@ -131,42 +35,7 @@
         <div class="black-transparent" style="height: 275px;"></div>
     </div>
 
-        <div class="charity-main-section m-t-30 m-b-20">
-            <div class="container">
-                <div class="row charity-profil-head">
-                    <div class="col-md-2">
-                        <div>
-                            <img class="charity-profil-photo m-b-20" src="images/male.png">
-                        </div>
-                    </div>
-                    <div class="col-md-10 charity-profil-bio">
-                        <div class="row">
-                            <div class="col-md-4 m-t-10 m-b-10">
-                                <div class="col-md-12 widget_title"><h2> Nama<font color="white"></font></h2></div>
-                                <div>
-                                    <span class="col-md-4"><b>Nama</b></span>
-                                    <span class="col-md-8" th:text=${penggunaAktif.pengguna.nama} ></span>
-                                </div>
-                                <div>
-                                    <span class="col-md-2"><b>Email</b></span>
-                                    <span class="col-md-10" th:text=${penggunaAktif.email}></span>
-                                </div>
-                                <div>
-                                    <span class="col-md-4"><b>No.HP</b></span>
-                                    <span class="col-md-8" th:text=${penggunaAktif.pengguna.telephone} ></span>
-                                </div>
-                            </div>
-                            <div class="col-md-8 m-t-10 m-b-10">
-                                <div class="col-md-10"><b>Biografi</b></div>
-                                <div>
-                                    <p class="col-md-12" th:text=${penggunaAktif.pengguna.biografi}></p>        
-                                </div>
-                            </div>
-                        </div>
-                    </div>                    
-                </div>
-            </div>
-        </div>
+	<dataProfil th:replace="nav::nav3"></dataProfil>
 
         <div class="charity-main-section m-t-10 m-b-20">
             <div class="container">
@@ -174,13 +43,14 @@
                     <div class="col-md-2 md2">
                         <div>
                             <ul class="sidebar-menu" id="nav-accordion">
-                               <li class="charity-list m-t-10"><a href="dashboard-proyek">Proyek</a></li>
-	                                <li class="charity-list"><a href="dashboard-update-proyek">Progres Proyek</a></li>
-	                                <li class="charity-list"><a href="dashboard-sponsor">Sponsor</a></li>
-	                                <li class="charity-list"><a href="dashboard-pencairan">Pencairan Dana</a></li>
-	                                <li class="charity-list active"><a href="#">Edit Profil</a></li>
-	                                <li class="charity-list"><a href="dashboard-verifikasi">Verifikasi</a></li>
-	                                <li class="charity-list m-b-100"><a th:href="dashboard-password" >Ubah Password</a></li>
+                               <li class="charity-list m-t-10 active"><a href="overview">Overview</a></li>
+                                <li class="charity-list m-t-10"><a href="dashboard-proyek">Proyek</a></li>
+                                <li class="charity-list"><a href="dashboard-update-proyek">Progres Proyek</a></li>
+                                <li class="charity-list"><a href="dashboard-sponsor">Sponsor</a></li>
+                                <li class="charity-list"><a href="dashboard-pencairan">Pencairan Dana</a></li>
+                                <li class="charity-list"><a href="dashboard-profil">Edit Profil</a></li>
+                                <li class="charity-list"><a href="dashboard-verifikasi">Verifikasi</a></li>
+                                <li class="charity-list m-b-100"><a href="dashboard-password" >Ubah Password</a></li>
                            </ul>
 
                         </div>
@@ -189,7 +59,7 @@
                         <br>
                         <br>
                         <div id="menu" class="tab1 charity-navigation1">
-						  <button class="tablinks" onclick="openCity(event, 'overview')">Overview</button>
+						  <button class="tablinks active" onclick="openCity(event, 'overview')">Overview</button>
 						  <button class="tablinks" onclick="openCity(event, 'laporansponsor')">Laporan Sponsor</button>
 						  <button class="tablinks" onclick="openCity(event, 'laporanpencairan')">Laporan Pencairan</button>
 						  <button class="tablinks" onclick="openCity(event, 'progresproyek')">Progres Proyek</button>
@@ -199,16 +69,16 @@
 		                        <div class="thumb-list2">
 		                                <div class="text-holder" >
 		                                    <ul class="row">
-		                                    <li class="col-md-6 charlist"><h6 class="h61">Nama Proyek</h6>
+		                                    <li class="col-md-6 charlist"><h6 class="h61" th:text="${proyek.namaProyek}"></h6>
 		                                        <br><br>
-		                                        <div><h1>Rp.123456</h1></div>
+		                                        <div><h1 th:text="${'Rp ' + #numbers.formatDecimal(proyek.totalDana, 0, 'COMMA', 2, 'POINT')}"></h1></div>
 		                                        <ul class="row">
 		                                            <li class="col-md-12 charlist">
 		                                                <li class="col-md-4 charlist">
 		                                                     <h6> Mulai </h6>
 		                                                     <ul class="row">
 		                                                         <li class=" col-md-12 charlist1">
-		                                                          <h6>0 </h6>
+		                                                          <h6 th:text="${proyek.createDate}"></h6>
 		                                                         </li>
 		                                                     </ul>   
 		                                                </li>
@@ -216,7 +86,7 @@
 		                                                    <h6>Berakir</h6>
 		                                                    <ul class="row">
 		                                                         <li class=" col-md-12 charlist1">
-		                                                          <h6> 0 </h6>
+		                                                          <h6 th:text="${proyek.tanggalBerakhir}"></h6>
 		                                                         </li>
 		                                                     </ul>      
 		                                               </li>
@@ -225,7 +95,7 @@
 		                                                    <h6>Sponsor</h6>
 		                                                    <ul class="row">
 		                                                         <li class=" col-md-12 charlist1">
-		                                                          <h6> 0 </h6>
+		                                                          <h6 th:text="${proyek.getTotalSponsor()}"></h6>
 		                                                         </li>
 		                                                     </ul>      
 		                                                </li>
@@ -242,7 +112,7 @@
 		                                            <li class="col-md-11 charlist">
 		                                                <h6 class="h62">Total Pencairan</h6>
 		                                                <br>
-		                                                <div><h1>Rp.123.456</h1></div>
+		                                                <div><h1 th:text="${'Rp ' + #numbers.formatDecimal(proyek.getTotalPencairanDana(), 0, 'COMMA', 2, 'POINT')}"></h1></div>
 		                                            </li>
 		                                        </ul>
 		                                    </li>
@@ -253,55 +123,42 @@
 		                      <div id="laporansponsor" class="tabcontent">
 		                        <div class="thumb-list2">
 		                                <div class="text-holder" >
-		                                    <ul class="row">
-		                                    <li class="col-md-6 charlist"><h6 class="h61">Namaaaaa Proyek</h6>
-		                                        <br><br>
-		                                        <div><h1>Rp.123456</h1></div>
-		                                        <ul class="row">
-		                                            <li class="col-md-12 charlist">
-		                                                <li class="col-md-4 charlist">
-		                                                     <h6> Mulai </h6>
-		                                                     <ul class="row">
-		                                                         <li class=" col-md-12 charlist1">
-		                                                          <h6>0 </h6>
-		                                                         </li>
-		                                                     </ul>   
-		                                                </li>
-		                                                <li class="col-md-4 charlist">
-		                                                    <h6>Berakir</h6>
-		                                                    <ul class="row">
-		                                                         <li class=" col-md-12 charlist1">
-		                                                          <h6> 0 </h6>
-		                                                         </li>
-		                                                     </ul>      
-		                                               </li>
-		                                               
-		                                                <li class="col-md-4 charlist">
-		                                                    <h6>Sponsor</h6>
-		                                                    <ul class="row">
-		                                                         <li class=" col-md-12 charlist1">
-		                                                          <h6> 0 </h6>
-		                                                         </li>
-		                                                     </ul>      
-		                                                </li>
-		                                            </li>
-		                                        </ul>
-		                                    </li>
-		                                    <li class="col-md-6 charlist">
-		                                        <ul class="row">
-		                                            <li class="col-md-1 charlist">
-		                                                <div>
-		                                                  <p class="charlist2"></p>  
-		                                                </div>
-		                                            </li>
-		                                            <li class="col-md-11 charlist">
-		                                                <h6 class="h62">Total Pencairan</h6>
-		                                                <br>
-		                                                <div><h1>Rp.123.456</h1></div>
-		                                            </li>
-		                                        </ul>
-		                                    </li>
-		                                 </ul>
+											<table id="example1" class="m-t-20 m-b-5 m-l-5 m-r-30 p-t-20 display" style="width:100%; color:white;">
+										         <thead class="m-t-20">
+										                 <th>Tanggal Sponsor</th>
+										                 <th>Nama Sponsor</th>
+										                 <th>Jumlah Sponsor</th>
+										                 <th></th>
+												</thead>
+												<tbody style="color: black;">
+										           <tr th:each="s,iterStat:${listsponsor}">
+										                <th th:text=${s.createDate}></th>
+										                <th th:text="${s.pengguna.nama}"></th>
+										                <th th:text="${'Rp ' + #numbers.formatDecimal(s.jumlahSponsor, 0, 'COMMA', 2, 'POINT')}"></th>
+										        	</tr>
+										        </tbody>
+										    </table>
+		                            </div>
+		                        </div>
+		                     </div>
+		                     <div id="laporanpencairan" class="tabcontent">
+		                        <div class="thumb-list2">
+		                                <div class="text-holder" >
+											<table id="example1" class="m-t-20 m-b-5 m-l-5 m-r-30 p-t-20 display" style="width:100%; color:white;">
+										         <thead class="m-t-20">
+										                 <th>Tanggal Pencairan</th>
+										                 <th>Nama Pencair</th>
+										                 <th>Jumlah Dana</th>
+										                 <th></th>
+												</thead>
+												<tbody style="color: black;">
+										           <tr th:each="pd,iterStat:${listpencairandana}">
+										                <th th:text=${pd.createDate}></th>
+										                <th th:text="${pd.namaPencair}"></th>
+										                <th th:text="${'Rp ' + #numbers.formatDecimal(pd.jumlahDana, 0, 'COMMA', 2, 'POINT')}"></th>
+										        	</tr>
+										        </tbody>
+										    </table>
 		                            </div>
 		                        </div>
 		                     </div>
@@ -311,22 +168,18 @@
 		    </div>
 
 
- <!-- Footer -->
-	    <!-- Footer -->
-    	<footer th:replace="footer::foot"></footer>
+	 <!-- Footer -->
+		<footer th:replace="footer::foot"></footer>
     <!-- Footer -->
-    
-    <!-- Search Modal -->
-    	<searching th:replace="modal::search"></searching>
-    <!-- jQuery -->
-	    <manyscript th:replace="script::ms"></manyscript>
-    
-	    <script4 th:replace="script::s4"></script4>
-		<script13 th:replace="script::loader"></script13>	
 	</div>
     
 </body>
+    <jQuery th:replace="script::jQuery"></jQuery>
+	<DataTable1 th:replace="script::DataTable1"></DataTable1>		
+	<autocomplete th:replace="script::autocomplete"></autocomplete>
+	<loader th:replace="script::loader"></loader>
+	<cekAkun th:replace="script::cekAkun"></cekAkun>
 
-<!-- --->
+
 <!-- Mirrored from ritetags.com/html/charity/event-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:15:53 GMT -->
 </html>

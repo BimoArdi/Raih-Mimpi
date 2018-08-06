@@ -5,26 +5,76 @@
 <title>Insert title here</title>
 </head>
 <body>
-<script1 th:fragment="s1">
-	  <script>
-	  $( function() {
-	    function log( message ) {
-	      $( "<div>" ).text( message ).prependTo( "#log" );
-	      $( "#log" ).scrollTop( 0 );
-	    }
-	 
-	    $( "#birds" ).autocomplete({
-	      source: "search.php",
-	      minLength: 2,
-	      select: function( event, ui ) {
-	        log( "Selected: " + ui.item.value + " aka " + ui.item.id );
-	      }
-	    });
-	  } );
-	  </script>
- </script1>
 
-<script2 th:fragment="s2"> 
+<cekLogin th:fragment="cekLogin">
+	<script type="text/javascript">
+		function alertlogin(){
+			alert("silahkan login terlebih dahulu")
+		}
+	</script>
+</cekLogin>
+
+<cekAkun th:fragment="cekAkun">
+	<script>
+		function alertverfikasi(){
+			alert("silahkan verifikasi akun anda dan tunggu konfirmasi dari kami")
+		}
+	</script>
+</cekAkun>
+
+<pengecekanDana th:fragment="pengecekanDana">
+	<script>
+ 		var sisa;
+ 		function myfunction(){
+ 		 	var proyek = $("#proyek").val();
+ 	 		$.ajax({
+			  url:"oneproyeksisadana?id="+proyek,
+			  success: function( result ) {
+				  sisa = result;
+				  document.getElementById("sisaDana").value = sisa;
+				  }
+			});
+ 		};		
+	</script>	
+</pengecekanDana>
+
+<pencairanDana th:fragment="pencairanDana">
+	<script>
+		function dana(){
+		 	var sisadana = $("#sisaDana").val();
+		 	var jumlahdana = $("#jumlahDana").val();
+		 	if(jumlahdana > sisadana){
+		 		alert ("dana tidak bisa dicairkan")
+		 		document.getElementById("myBtn").disabled = true;	
+		 	}
+	 	};
+	</script>
+</pencairanDana>
+
+<cekCountWord th:fragment="cekCountWord">
+	<script type="text/javascript">
+		document.querySelectorAll('textarea[data-max-words]').forEach(input => {
+		  // Remember the word limit for the current input
+		  let maxWords = parseInt(input.getAttribute('data-max-words') || 0)
+		  // Add an eventlistener to test for key inputs
+		  input.addEventListener('keydown', e => {
+		    let target = e.currentTarget
+		    // Split the text in the input and get the current number of words
+		    let words = target.value.split(/\s+/).length
+		    // If the word count is > than the max amount and a space is pressed
+		    // Don't allow for the space to be inserted
+		    if (!target.getAttribute('data-announce'))
+		      // Note: this is a shorthand if statement
+		      // If the first two tests fail allow the key to be inserted
+		      // Otherwise we prevent the default from happening
+		      words >= maxWords && e.keyCode == 32 && e.preventDefault()
+		    else
+		      words >= maxWords && e.keyCode == 32 && (e.preventDefault() || alert('Word Limit Reached'))
+		  });
+		});
+	</script>
+</cekCountWord>
+<datepicker th:fragment="datepicker"> 
    <script>
       $(function() {
     	  var $dp1 = $("#datepicker");
@@ -36,29 +86,10 @@
     	  });
       });
   </script>
-</script2>
+</datepicker>
 
-<script3 th:fragment="s3"> 
-	<script>		
-	  	var str =document.getElementById("url");
-	  	var pattern = new RegExp('^(https?:\/\/)?'+ // protocol
-		    '((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|'+ // domain name
-		    '((\d{1,3}\.){3}\d{1,3}))'+ // OR ip (v4) address
-		    '(\:\d+)?(\/[-a-z\d%_.~+]*)*'+ // port and path
-		    '(\?[;&a-z\d%_.~+=-]*)?'+ // query string
-		    '(\#[-a-z\d_]*)?$','i'); // fragment locater
-	    function ValidURL() {
-	    if(!pattern.test(str)) {
-			str.setCustomValidity("Please enter a valid URL.");
-		  } else {
-			  str.setCustomValidity(''); 
-		  }
-		}
-	    str.onkeyup = ValidURL;    
-	</script>  
-</script3>
 
-<script4 th:fragment="s4"> 
+<getPhoto th:fragment="getPhoto"> 
 	<script type="text/javascript">
 		function TampilFoto(){
 			var oFReader = new FileReader();
@@ -68,9 +99,21 @@
 			};
 		};
 	</script>
-</script4>
+</getPhoto>
 
-<script5 th:fragment="pass">
+<getPhoto1 th:fragment="getPhoto1"> 
+	<script type="text/javascript">
+		function TampilFoto1(){
+			var oFReader = new FileReader();
+			oFReader.readAsDataURL(document.getElementById("file-input1").files[0]);
+			oFReader.onload = function(oFREvent){
+				document.getElementById("Tfoto1").src = oFREvent.target.result;
+			};
+		};
+	</script>   
+</getPhoto1>
+
+<samePassword th:fragment="samePassword">
     <script type="text/javascript">
       var password = document.getElementById("password")
       , confirm_password = document.getElementById("repassword");
@@ -85,9 +128,9 @@
       password.onchange = validatePassword;
       confirm_password.onkeyup = validatePassword;
     </script>
-</script5>
+</samePassword>
 
-<script6 th:fragment="countdown">
+<countdownTime th:fragment="countdownTime">
 	<script>
 		// Set the date we're counting down to
 		var countDown = $("#date1").val();
@@ -132,29 +175,29 @@
 	    }
 	}, 1000);
 	</script>
-</script6>
+</countdownTime>
 
-<script7 th:fragment="autocomplete">
-	<script>
+<autocomplete th:fragment="autocomplete">
+  	<script>
 		$(document).ready(function(){
-			$.get("/allproyek", function(x){
+			$.get("/raihmimpi", function(x){
 				var data = [];
-				$.each(x,function(index, row){
+				$.each(x, function(index, row){
 					data[index]={
-						index = row.id,
-						label = row.namaProyek,
-						value = row.namaProyek
+						index : row.id,
+						label : row.namaProyek,
+						value : row.namaProyek
 					};
 				});
-			$("#project").autocomplete({
-				source:data
-				});	
+				$("#key").autocomplete({
+					source:data
+				});
 			});
 		});
-	</script>
-</script7>
+  	</script>
+</autocomplete>
 
-<script8 th:fragment="modalgallery">
+<modalGallery th:fragment="modalGallery">
 	<script>
 		function openModal() {
 		  document.getElementById('myModal').style.display = "block";
@@ -193,129 +236,10 @@
 		  captionText.innerHTML = dots[slideIndex-1].alt;
 		}
 	</script>			
-</script8>
+</modalGallery>
 
-<script9 th:fragment="ajaxauto">
-	<script>
-		function autocomplete(inp, arr) {
-		  /*the autocomplete function takes two arguments,
-		  the text field element and an array of possible autocompleted values:*/
-		  var currentFocus;
-		  /*execute a function when someone writes in the text field:*/
-		  inp.addEventListener("input", function(e) {
-		      var a, b, i, val = this.value;
-		      /*close any already open lists of autocompleted values*/
-		      closeAllLists();
-		      if (!val) { return false;}
-		      currentFocus = -1;
-		      /*create a DIV element that will contain the items (values):*/
-		      a = document.createElement("DIV");
-		      a.setAttribute("id", this.id + "autocomplete-list");
-		      a.setAttribute("class", "autocomplete-items");
-		      /*append the DIV element as a child of the autocomplete container:*/
-		      this.parentNode.appendChild(a);
-		      /*for each item in the array...*/
-		      for (i = 0; i < arr.length; i++) {
-		        /*check if the item starts with the same letters as the text field value:*/
-		        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-		          /*create a DIV element for each matching element:*/
-		          b = document.createElement("DIV");
-		          /*make the matching letters bold:*/
-		          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-		          b.innerHTML += arr[i].substr(val.length);
-		          /*insert a input field that will hold the current array item's value:*/
-		          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-		          /*execute a function when someone clicks on the item value (DIV element):*/
-		          b.addEventListener("click", function(e) {
-		              /*insert the value for the autocomplete text field:*/
-		              inp.value = this.getElementsByTagName("input")[0].value;
-		              /*close the list of autocompleted values,
-		              (or any other open lists of autocompleted values:*/
-		              closeAllLists();
-		          });
-		          a.appendChild(b);
-		        }
-		      }
-		  });
-		  /*execute a function presses a key on the keyboard:*/
-		  inp.addEventListener("keydown", function(e) {
-		      var x = document.getElementById(this.id + "autocomplete-list");
-		      if (x) x = x.getElementsByTagName("div");
-		      if (e.keyCode == 40) {
-		        /*If the arrow DOWN key is pressed,
-		        increase the currentFocus variable:*/
-		        currentFocus++;
-		        /*and and make the current item more visible:*/
-		        addActive(x);
-		      } else if (e.keyCode == 38) { //up
-		        /*If the arrow UP key is pressed,
-		        decrease the currentFocus variable:*/
-		        currentFocus--;
-		        /*and and make the current item more visible:*/
-		        addActive(x);
-		      } else if (e.keyCode == 13) {
-		        /*If the ENTER key is pressed, prevent the form from being submitted,*/
-		        e.preventDefault();
-		        if (currentFocus > -1) {
-		          /*and simulate a click on the "active" item:*/
-		          if (x) x[currentFocus].click();
-		        }
-		      }
-		  });
-		  function addActive(x) {
-		    /*a function to classify an item as "active":*/
-		    if (!x) return false;
-		    /*start by removing the "active" class on all items:*/
-		    removeActive(x);
-		    if (currentFocus >= x.length) currentFocus = 0;
-		    if (currentFocus < 0) currentFocus = (x.length - 1);
-		    /*add class "autocomplete-active":*/
-		    x[currentFocus].classList.add("autocomplete-active");
-		  }
-		  function removeActive(x) {
-		    /*a function to remove the "active" class from all autocomplete items:*/
-		    for (var i = 0; i < x.length; i++) {
-		      x[i].classList.remove("autocomplete-active");
-		    }
-		  }
-		  function closeAllLists(elmnt) {
-		    /*close all autocomplete lists in the document,
-		    except the one passed as an argument:*/
-		    var x = document.getElementsByClassName("autocomplete-items");
-		    for (var i = 0; i < x.length; i++) {
-		      if (elmnt != x[i] && elmnt != inp) {
-		        x[i].parentNode.removeChild(x[i]);
-		      }
-		    }
-		  }
-		  /*execute a function when someone clicks in the document:*/
-		  document.addEventListener("click", function (e) {
-		      closeAllLists(e.target);
-		      });
-		}
-		
-		/*An array containing all the country names in the world:*/
-		$.get("/allproyek", function(x)){
-			var countries = [];
-			$.each(x,function(index,row){
-				countries[index]={
-					index = row.id,
-					label=row.namaProyek,
-					value = row.namaProyek
-				};
-			});
-		};
-		/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-		autocomplete(document.getElementById("myInput"), countries);
-	</script>
-</script9>
 
-<script10 th:fragment="date">
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	
-</script10>
-
-<script11 th:fragment="editor">
+<editor th:fragment="editor">
 	<script src="script/editor.js"></script>
 	<script>
 			$(document).ready(function() {
@@ -327,10 +251,9 @@
 				$("#txtEditor1").Editor();
 			});
 	</script>
-</script11>
+</editor>
 
-<script12 th:fragment="page">
-	<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<paginate th:fragment="paginate">
 	<script src="script/jquery.paginate.js"></script>
 	<script>
 		//call paginate
@@ -350,9 +273,9 @@
 	  })();
 	
 	</script>	
-</script12>
+</paginate>
 
-<script13 th:fragment="loader">
+<loader th:fragment="loader">
 	<script>
 		var myVar;
 		
@@ -365,11 +288,9 @@
 		  document.getElementById("myDiv").style.display = "block";
 		}
 	</script>
-</script13>
+</loader>
 
-<script14 th:fragment="bar">
-	<script src="script/jquery-1.12.4.js"></script>
-	<script src="script/jquery-ui.js"></script>
+<progressBar th:fragment="progressBar">
 	<script th:inline="javascript">
 		/*<![CDATA[*/
 		 $( function() {
@@ -380,25 +301,116 @@
 		 } );
 		/*]]>*/
 	</script>
-</script14>
+</progressBar>
 
-<manyscript th:fragment="ms"> 
-    <script src="script/jquery.js"></script>
-    <script src="script/popper.min.js"></script>
-    <script src="script/bootstrap.min.js"></script>
-    <script src="script/slick.slider.min.js"></script>
-    <script src="script/progressbar.js"></script>
-    <script src="script/fancybox.min.js"></script>
-    <script src="script/jquery.countdown.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
-    <script src="script/jquery.jplayer.js"></script>
-    <script src="script/jplayer.playlist.js"></script>
-    <script src="script/functions.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
-    <script src="script/jquery.maskMoney.js" type="text/javascript"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</manyscript>
+<DataTable th:fragment="DataTable">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+	    $(document).ready(function() {
+	        $('#example').DataTable( {
+	        	"columnDefs": [ 
+	        		{ "orderable": false, "targets": 5 } 
+	        	]
+	        } )
+	    } );
+    </script>
+</DataTable>
+<DataTable1 th:fragment="DataTable1">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+	    $(document).ready(function() {
+	        $('#example1').DataTable( {} )
+	    } );
+    </script>
+        <script type="text/javascript">
+	    $(document).ready(function() {
+	        $('#example2').DataTable( {} )
+	    } );
+    </script>
+    
+</DataTable1>
+
+<checkUsername th:fragment="checkUsername">
+    <script>
+	    jQuery(document).ready(function($) {
+	        $("#username1").keyup(function(){
+	            $.get("API/isusernameexist?username="+$(this).val(),function(hasil){
+	                if (!hasil){
+	                    $("#validateuser").text("username bisa digunakan");
+	                    document.getElementById("myBtn").disabled = false;
+	                    $( "div.info" ).fadeIn( 300 ).delay( 1500 );
+	                }else{
+	                    $("#validateuser").text("Username telah digunakan")
+	                    document.getElementById("myBtn").disabled = true;
+	                    $( "div.info" ).fadeIn( 300 ).delay( 1500 );
+	                }
+	            });
+	        });
+	    });	
+    </script>
+</checkUsername>
+
+<checkEmail th:fragment="checkEmail">
+    <script>
+	    jQuery(document).ready(function($) {
+	        $("#email").keyup(function(){
+	            $.get("API/isemailexist?email="+$(this).val(),function(hasil){
+	                if (!hasil){
+	                    $("#validatemail").text("email bisa digunakan");
+	                    document.getElementById("myBtn").disabled = false;
+	                    $( "div.info1" ).fadeIn( 300 ).delay( 1500 );
+	                }else{
+	                    $("#validatemail").text("email telah digunakan")
+	                    document.getElementById("myBtn").disabled = true;
+	                    $( "div.info1" ).fadeIn( 300 ).delay( 1500 );
+	                }
+	            });
+	        });
+	    });	
+	    
+	    $(document).ready(function(c) {
+			$('.alert-close').on('click', function(c){
+				$(this).parent().fadeOut('slow', function(c){
+				});
+			});	
+		});
+    </script>
+</checkEmail>
+
+
+<modalSponsor th:fragment="modalSponsor">
+  	<script src="script/jquery.maskMoney.js" type="text/javascript"></script>	
+	<script>
+	  	$(document).on("click", ".charity-more-btn", function () {
+	 	     var namaProyek = $(this).data('namaproyek');
+	 	     $(".modal-body #textjudul").text(namaProyek);
+	 	    $(".modal-body #textjudul1").val(namaProyek);
+	 	    $('#my_modal').modal('show');
+	 	});
+	</script>
+	<script>
+	  $(function() {
+		  $("#currency").maskMoney({prefix:'Rp ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
+	  })
+	</script>
+</modalSponsor>
+
+<tocreateDatepicker th:fragment="datepicker">
+	<script src="script/jquery-1.12.4.js"></script>
+	<script src="script/jquery-ui.js"></script>	
+</tocreateDatepicker>
+
+<jQuery th:fragment="jQuery"> 
+	<script src="script/jquery.js"></script>
+  	<script src="script/bootstrap.min.js"></script>
+  	<script src="script/slick.slider.min.js"></script>
+  	<script src="script/progressbar.js"></script>
+  	<script src="script/functions.js"></script>
+	<script src="script/jquery-1.12.4.js"></script>
+  	<script src="script/jquery-ui.js"></script>
+</jQuery>
 
 </body>
 </html>

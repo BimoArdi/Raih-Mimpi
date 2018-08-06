@@ -7,10 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Raih Mimpi Akun</title>
+    <title>Raih Mimpi</title>
 
     <!-- CSS -->
-    <css th:replace="link::header-css"></css>
+	    <css th:replace="link::header-css"></css>
+	    <link rel="stylesheet" href="css/style.css">
     <!-- CSS -->
 </head>
 
@@ -57,17 +58,14 @@
 	    <footer th:replace="footer::foot"></footer>
    		<!-- Footer -->
     </div>
-    <!-- Search Modal -->
-    <searching th:replace="modal::search"></searching>
-    <!-- jQuery -->
-	    <manyscript th:replace="script::ms"></manyscript>
-		<script13 th:replace="script::loader"></script13>	
-	    <script5 th:replace="script::pass"></script5>
-		<script7 th:replace="script::autocomplete"></script7>
-	
-	
-
 </body>
+
+    <jQuery th:replace="script::jQuery"></jQuery>
+	<autocomplete th:replace="script::autocomplete"></autocomplete>
+	<loader th:replace="script::loader"></loader>
+	<cekLogin th:replace="script::cekLogin"></cekLogin>	
+	<cekAkun th:replace="script::cekAkun"></cekAkun>
+    <samePassword th:replace="script::samePassword"></samePassword>
 
 
 <!-- Mirrored from ritetags.com/html/charity/event-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 May 2018 10:15:53 GMT -->
